@@ -127,3 +127,5 @@ Note: To view the Docker containers, open another terminal console then enter `d
 | Redirect User     | `redirect@email.com`   | When `redirect` is set with complete URL, e.i. `https://github.com/anthub-services`, user shall be redirected to external page if no location path (referrer) found on the Sign In page |
 | Blocked User      | `blocked@email.com`    | User is signed in but the account is blocked |
 | Unauthorized User | `<any invalid email>`  | Simply enter wrong `email` and/or `password` |
+
+Anna deployed something :)
