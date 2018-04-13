@@ -127,3 +127,12 @@ Note: To view the Docker containers, open another terminal console then enter `d
 | Redirect User     | `redirect@email.com`   | When `redirect` is set with complete URL, e.i. `https://github.com/anthub-services`, user shall be redirected to external page if no location path (referrer) found on the Sign In page |
 | Blocked User      | `blocked@email.com`    | User is signed in but the account is blocked |
 | Unauthorized User | `<any invalid email>`  | Simply enter wrong `email` and/or `password` |
+
+## Flow and ESlint
+First you need to install all the new dependencies by doing:
+`yarn install`
+then, while you're at it you also need to install flow globally by using
+`yarn global add flow-bin`
+Then predd Ctrl+, (Ord cmd+, on a mac) and add this to the preferences:
+`"javascript.validate.enable": false`
+Then, you need to download and add the flow-support for VC code, and restart VS Code.
