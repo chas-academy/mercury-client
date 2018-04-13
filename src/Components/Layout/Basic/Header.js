@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import { Navbar } from 'react-bootstrap'
-import { NavLink, AuthNavLink } from '../../../Lib/Common/Views'
-import SignOutButton from '../../../Redux/Containers/Sessions/SignOutButton'
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Navbar } from 'react-bootstrap';
+import { NavLink, AuthNavLink } from '../../../Lib/Common/Views';
+import SignOutButton from '../../../Redux/Containers/Sessions/SignOutButton';
 
 class Header extends Component {
   render() {
-    const path = this.props.match.path
-    const referrer = window.location.pathname
+    const path = this.props.match.path;
+    const referrer = window.location.pathname;
 
     return (
       <header className="header">
@@ -27,8 +27,8 @@ class Header extends Component {
           </Navbar.Collapse>
         </Navbar>
       </header>
-    )
+    );
   }
 }
 
-export default withRouter(Header)
+export default withRouter(Header);

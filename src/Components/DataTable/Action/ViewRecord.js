@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import ViewModal from '../../Modals/Default'
+import React, { Component } from 'react';
+import ViewModal from '../../Modals/Default';
 
 export default class ViewRecord extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = { showModal: false }
+    this.state = { showModal: false };
   }
 
-  handleToggleViewModal(resourceId=null) {
-    this.setState({ showModal: !this.state.showModal })
+  handleToggleViewModal(resourceId = null) {
+    this.setState({ showModal: !this.state.showModal });
   }
 
   handleOpenModal(e) {
-    e.preventDefault()
-    this.setState({ showModal: true })
+    e.preventDefault();
+    this.setState({ showModal: true });
   }
 
   render() {
-    const props = this.props
+    const props = this.props;
 
-    if (!props.showViewRecord) return null
+    if (!props.showViewRecord) return null;
 
-    const resourceId = props.resource[props.resourceIdKey]
+    const resourceId = props.resource[props.resourceIdKey];
 
     return (
       <span>
@@ -41,6 +41,6 @@ export default class ViewRecord extends Component {
           View
         </a>
       </span>
-    )
+    );
   }
 }
