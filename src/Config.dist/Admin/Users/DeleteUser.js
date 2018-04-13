@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default {
   title: 'Delete user?',
@@ -8,5 +8,5 @@ export default {
       shall be deleted. You cannot undo this action.
     </span>
   ),
-  button: { title:  'Delete', style: 'danger' }
-}
+  button: { title: 'Delete', style: 'danger' },
+};

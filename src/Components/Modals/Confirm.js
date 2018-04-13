@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import _ from 'lodash'
-import { Modal, Button } from 'react-bootstrap'
+import React, { Component } from 'react';
+import _ from 'lodash';
+import { Modal, Button } from 'react-bootstrap';
 
 export default class Confirm extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       onHide: props.closeModalHandler,
@@ -13,9 +13,9 @@ export default class Confirm extends Component {
       button: {
         title: (props.button && props.button.title) || 'Confirm',
         style: (props.button && props.button.style) || 'primary',
-        disabled: false
-      }
-    }
+        disabled: false,
+      },
+    };
   }
 
   toggleButton(state) {
@@ -24,24 +24,24 @@ export default class Confirm extends Component {
       backdrop: state ? 'static' : true,
       button: _.merge(
         this.state.button,
-        { disabled: state }
-      )
-    })
+        { disabled: state },
+      ),
+    });
   }
 
   handleConfirmRequest() {
-    this.toggleButton(true)
-    this.props.processRequestHandler()
+    this.toggleButton(true);
+    this.props.processRequestHandler();
   }
 
   componentWillReceiveProps() {
-    this.toggleButton(this.props.requestInProcess)
+    this.toggleButton(this.props.requestInProcess);
   }
 
   render() {
-    const props = this.props
-    const state = this.state
-    const button = state.button
+    const props = this.props;
+    const state = this.state;
+    const button = state.button;
 
     return (
       <Modal
@@ -58,9 +58,9 @@ export default class Confirm extends Component {
 
         <Modal.Footer>
           {props.showCloseButton ? (
-              <Button onClick={props.closeModalHandler}>
+            <Button onClick={props.closeModalHandler}>
                 Close
-              </Button>
+            </Button>
             ) : (
               <div>
                 <Button
@@ -81,6 +81,6 @@ export default class Confirm extends Component {
           }
         </Modal.Footer>
       </Modal>
-    )
+    );
   }
 }
