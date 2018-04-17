@@ -1,5 +1,4 @@
 // @flow
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
@@ -20,6 +19,7 @@ const rootReducer = (state, action) => {
 };
 const middleware = typeof (composeEnhancers) === 'function' ? composeEnhancers(applyMiddleware(thunk)) : applyMiddleware(thunk);
 const store = createStore(rootReducer, middleware);
+
 const app: any = document.getElementById('app');
 ReactDOM.render(
   <Provider store={store}>
