@@ -34,7 +34,6 @@
     "store": "^2.0.12"
   },
   "devDependencies": {
-    "bootstrap": "3.3.7",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",

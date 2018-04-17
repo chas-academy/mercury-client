@@ -31,16 +31,29 @@ export const NavLink = ({ ...props }) => {
 
   return showNavLink ? (
     <li className={navLinkIsActive({ ...props })}>
-      <Link to={props.to} onClick={closeNavbar}>{props.title}</Link>
+      <Link to={props.to} onClick={closeNavbar}>
+        {props.title}
+      </Link>
     </li>
   ) : null;
 };
 
-export const AuthNavLink = ({ ...props }) => (Session.isAuthorised(props.to) ? (
-  <li className={navLinkIsActive({ ...props })}>
-    <Link to={props.to}>{props.title}</Link>
-  </li>
-) : null);
+export const CustomLink = ({ ...props }) => {
+  const showNavLink = props.isSignedOut ? Session.isSignedOut() : true;
+
+  return showNavLink ? (
+    <li className={navLinkIsActive({ ...props })}>
+      <Link to={props.to}>{props.title}</Link>
+    </li>
+  ) : null;
+};
+
+export const AuthNavLink = ({ ...props }) =>
+  (Session.isAuthorised(props.to) ? (
+    <li className={navLinkIsActive({ ...props })}>
+      <Link to={props.to}>{props.title}</Link>
+    </li>
+  ) : null);
 
 export function closeNavbar() {
   const { width } = viewportDimension();
