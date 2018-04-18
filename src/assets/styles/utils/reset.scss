@@ -66,17 +66,15 @@ td {
   font-style: inherit;
   font-size: 100%;
   font-family: inherit;
-  vertical-align: -webkit-baseline-middle;
-}
+  vertical-align: -webkit-baseline-middle; }
+
 /* remember to define focus styles! */
 :focus {
-  outline: 0;
-}
+  outline: 0; }
 
 ol,
 ul {
-  list-style: none;
-}
+  list-style: none; }
 
 button {
   background: none;
@@ -89,17 +87,17 @@ button {
   overflow: visible;
   padding: 0;
   user-select: none;
-  -webkit-appearance: none; /* for input */
-  -webkit-user-select: none; /* for button */
+  -webkit-appearance: none;
+  /* for input */
+  -webkit-user-select: none;
+  /* for button */
   -moz-user-select: none;
-  -ms-user-select: none;
-}
+  -ms-user-select: none; }
 
 input::-moz-focus-inner,
 button::-moz-focus-inner {
   border: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 /** Credit to Geoff Graham at css tricks! **/
 /** src: https://css-tricks.com/snippets/css/change-autocomplete-styles-webkit-browsers/ **/
@@ -114,8 +112,7 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px whitesmoke inset;
   transition: background-color 5000s ease-in-out 0s;
-  box-shadow: 0.5px 0.5px 3px 0px #585858;
-}
+  box-shadow: 0.5px 0.5px 3px 0px #585858; }
 
 fieldset {
   -webkit-margin-start: 0;
@@ -123,5 +120,4 @@ fieldset {
   -webkit-padding-before: 0;
   -webkit-padding-start: 0;
   -webkit-padding-end: 0;
-  -webkit-padding-after: 0;
-}
+  -webkit-padding-after: 0; }

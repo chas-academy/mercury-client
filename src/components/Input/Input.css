@@ -1,19 +1,15 @@
 input {
-    border-radius: var(--border-rounded);
-    padding: 0.5em;
-    font-weight: 400;
-}
+  border-radius: var(--border-rounded);
+  padding: 0.5em;
+  font-weight: 400; }
 
 .default {
-    background: var(--color-default);
-}
+  background: var(--color-default); }
 
 .primary {
-    background: var(--color-primary);
-    color: var(--color-light);
-}
+  background: var(--color-primary);
+  color: var(--color-light); }
 
 .secondary {
-    background: var(--color-secondary);
-    color: var(--color-light);
-}
+  background: var(--color-secondary);
+  color: var(--color-light); }

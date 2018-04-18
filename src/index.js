@@ -8,10 +8,13 @@ import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
 
 import rootReducer from './reducers';
-import App from './components/App';
-import AddItem from './components/Views/AddItem';
-import Settings from './components/Views/Settings';
-import './index.css';
+
+import AddItem from './views/AddItem';
+import Settings from './views/Settings';
+
+import { App } from './components';
+
+import './assets/styles/style.css';
 
 const middleware = [thunk];
 

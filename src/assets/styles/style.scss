@@ -1,0 +1,14 @@
+@import url("./utils/reset.css");
+@import url("./utils/variables.css");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  font-family: "Quicksand", sans-serif;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
