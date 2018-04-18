@@ -9,9 +9,10 @@ coverage
 # production
 build
 !bin/css/build
-src/Assets/Styles/**/*.css
-!src/Assets/Styles/Style.css
+src/assets/styles/**/*.css
+!src/assets/styles/style.css
 src/Config
+src/components/**/*.css
 
 # misc
 .DS_Store
