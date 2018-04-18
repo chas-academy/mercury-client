@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
 
 import withTests from './withTests';
 /* Global CSS */
-import '../index.css';
+import '../assets/styles/style.css';
 
 import { Button, Input } from '../components';
 

@@ -1,0 +1,31 @@
+.App-button {
+    border-radius: var(--border-rounded);
+    padding: 1em;
+    font-weight: 400;
+    -webkit-box-shadow: var(--box-shadow);
+    -moz-box-shadow: var(--box-shadow);
+    box-shadow: var(--shadow-primary);
+}
+
+.App-button.default {
+    background: var(--gradient-webkit);
+}
+
+.App-button.plain {
+    background: var(--color-light);
+}
+
+.App-button.primary {
+    background: var(--color-primary);
+    color: var(--color-light);
+}
+
+.App-button.secondary {
+    background: var(--color-secondary);
+    color: var(--color-light);
+}
+
+.App-button:disabled {
+    background: var(--color-default);
+    color: var(--color-light);
+}

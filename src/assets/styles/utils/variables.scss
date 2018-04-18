@@ -1,0 +1,22 @@
+/***** Color *****/
+:root {
+  --color-default: #b1b1b1;
+  --color-dark: #212121;
+  --color-light: #fbfbfb;
+  --color-primary: #ff9b3b;
+  --color-secondary: #ffd235; }
+
+/***** Border *****/
+:root {
+  --border-rounded: 8px; }
+
+/***** Size *****/
+:root {
+  --size-small: 1em;
+  --size-medium: 2em; }
+
+/***** Boxshadow *****/
+/* X offset | Y offset | Blur | Spread | (optional: Inset) | Color */
+:root {
+  --shadow-dark: 0px 2px 11px -6px var(--color-dark);
+  --shadow-primary: 0px 6px 38px -16px var(--color-primary); }
