@@ -1,0 +1,26 @@
+/***** Color *****/
+:root {
+  --color-default: rgb(177, 177, 177);
+  --color-dark: rgba(33, 33, 33, 1);
+  --color-light: rgba(251, 251, 251, 1);
+  --color-primary: rgb(255, 155, 59);
+  --color-secondary: rgb(255, 210, 53);
+}
+
+/***** Border *****/
+:root {
+  --border-rounded: 8px;
+}
+
+/***** Size *****/
+:root {
+  --size-small: 1em;
+  --size-medium: 2em;
+}
+
+/***** Boxshadow *****/
+/* X offset | Y offset | Blur | Spread | (optional: Inset) | Color */
+:root {
+  --shadow-dark: 0px 2px 11px -6px var(--color-dark);
+  --shadow-primary: 0px 6px 38px -16px var(--color-primary);
+}
