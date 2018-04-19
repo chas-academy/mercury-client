@@ -1,4 +1,4 @@
-.App-button {
+.button {
   border-radius: var(--border-rounded);
   padding: 1em;
   font-weight: 400;
@@ -6,20 +6,19 @@
   -moz-box-shadow: var(--box-shadow);
   box-shadow: var(--shadow-primary); }
 
-.App-button.default {
-  background: var(--gradient-webkit); }
+.button.default {
+  background: var(--light); }
 
-.App-button.plain {
-  background: var(--color-light); }
+.button.info {
+  background: var(--info-color); }
 
-.App-button.primary {
-  background: var(--color-primary);
-  color: var(--color-light); }
+.button.primary {
+  background: var(--primary-color);
+  color: var(--light); }
 
-.App-button.secondary {
-  background: var(--color-secondary);
-  color: var(--color-light); }
+.button.secondary {
+  background: var(--secondary-color);
+  color: var(--light); }
 
-.App-button:disabled {
-  background: var(--color-default);
-  color: var(--color-light); }
+.button:disabled {
+  background: var(--disabled-color); }
