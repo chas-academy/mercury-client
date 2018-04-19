@@ -1,25 +1,26 @@
 {
-  "name": "project-app-boilerplate",
+  "name": "worth-it",
   "version": "0.2.0",
-  "description": "App Boilerplate",
-  "author": "Chas Academy",
+  "description": "Worth It",
+  "author": "Team Mercury",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "git@github.com:chas-academy/project-app-boilerplate.git"
+    "url": "git@github.com:chas-academy/mercury-client.git"
   },
   "bugs": {
-    "url": "https://github.com/chas-academy/project-app-boilerplate/issues"
+    "url": "https://github.com/chas-academy/mercury-client/issues"
   },
-  "homepage": "https://github.com/chas-academy/project-app-boilerplate/tree/master",
+  "homepage": "https://github.com/chas-academy/mercury-client/tree/master",
   "dependencies": {
     "axios": "^0.17.1",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "flow-bin": "^0.69.0",
     "jsonwebtoken": "^8.1.1",
     "moment": "^2.21.0",
     "node-sass-chokidar": "^0.0.3",
     "query-string": "^5.1.0",
     "react": "^16.2.0",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "react-jsonschema-form": "^1.0.0",
@@ -32,9 +33,21 @@
     "store": "^2.0.12"
   },
   "devDependencies": {
-    "bootstrap": "3.3.7",
+    "@storybook/addon-actions": "^3.4.2",
+    "@storybook/addon-jest": "^3.4.1",
+    "@storybook/addon-knobs": "^3.4.1",
+    "@storybook/addon-links": "^3.4.2",
+    "@storybook/addons": "^3.4.2",
+    "babel-core": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
     "node-sass": "^4.7.2",
-    "rebuild-node-sass": "^1.1.0"
+    "rebuild-node-sass": "^1.1.0",
+    "@storybook/react": "^3.4.2"
   },
   "scripts": {
     "rebuild-node-sass": "rebuild-node-sass",
@@ -43,6 +56,10 @@
     "start": "PORT=7771 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "test:generate-output": "jest --json --outputFile=jest-test-results.json || true"
   }
 }

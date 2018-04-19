@@ -1,35 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import { AUTH } from './Redux/Actions/Sessions/Types'
-import reducers from './Redux/Reducers'
-import Routes from './Components/Routes'
-import registerServiceWorker from './registerServiceWorker'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './Assets/Styles/Style.css'
+// @flow
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import thunk from 'redux-thunk';
+import registerServiceWorker from './registerServiceWorker';
 
-const composeEnhancers = initReduxDevTools()
-const appReducer = combineReducers(reducers)
-const rootReducer = (state, action) => {
-  if (action.type === AUTH)
-    state = undefined
+import rootReducer from './reducers';
 
-  return appReducer(state, action)
-}
-const middleware = typeof(composeEnhancers) === 'function' ? composeEnhancers(applyMiddleware(thunk)) : applyMiddleware(thunk)
-const store = createStore(rootReducer, middleware)
+import AddItem from './views/AddItem';
+import Settings from './views/Settings';
+
+import { App } from './components';
+
+import './assets/styles/style.css';
+
+const middleware = [thunk];
+
+const store = createStore(rootReducer, applyMiddleware(...middleware));
+
+const app = document.getElementById('app');
 
 ReactDOM.render(
   <Provider store={store}>
-    <Routes />
+    <Router>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route path="/add" component={AddItem} />
+        <Route path="/settings" component={Settings} />
+      </div>
+    </Router>
   </Provider>,
-  document.getElementById('app')
-)
+  app: HTMLElement | null,
+);
 
-registerServiceWorker()
-
-function initReduxDevTools() {
-  return process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null
-}
+registerServiceWorker();
