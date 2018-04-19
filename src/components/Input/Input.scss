@@ -5,15 +5,15 @@ input {
 }
 
 .default {
-    background: var(--color-default);
+    background: var(--light);
 }
 
 .primary {
-    background: var(--color-primary);
-    color: var(--color-light);
+    background: var(--primary-color);
+    color: var(--light);
 }
 
 .secondary {
-    background: var(--color-secondary);
-    color: var(--color-light);
+    background: var(--secondary-color);
+    color: var(--light);
 }
