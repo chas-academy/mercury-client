@@ -3,9 +3,9 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
+import { withNotes } from '@storybook/addon-notes';
 
 import withTests from "./withTests";
-/* Global CSS */
 import "../assets/styles/style.css";
 
 import { Button, Input, Progress, GlobalNav, LinkList, Item } from "../components";
@@ -23,7 +23,7 @@ knobStoriesButton.add("disable/enable", () => (
 ));
 
 storiesOf("Elements/Button", module)
-  .add("default", () => <Button color="w">Info</Button>)
+  .add("default",  withNotes('A very simple component')(() => <Button color="info">Info</Button>))
   .add("primary", () => <Button color="primary">Primary</Button>)
   .add("hovered", () => <Button color="secondary">Secondary</Button>)
   .add("active", () => <Button color="default">Default</Button>);

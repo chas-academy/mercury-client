@@ -13,6 +13,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "@storybook/addon-notes": "^3.4.2",
     "axios": "^0.17.1",
     "eslint-plugin-flowtype": "^2.46.1",
     "flow-bin": "^0.69.0",
@@ -38,6 +39,7 @@
     "@storybook/addon-knobs": "^3.4.1",
     "@storybook/addon-links": "^3.4.2",
     "@storybook/addons": "^3.4.2",
+    "@storybook/react": "^3.4.2",
     "babel-core": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "eslint": "^4.19.1",
@@ -46,8 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "node-sass": "^4.7.2",
-    "rebuild-node-sass": "^1.1.0",
-    "@storybook/react": "^3.4.2"
+    "rebuild-node-sass": "^1.1.0"
   },
   "scripts": {
     "rebuild-node-sass": "rebuild-node-sass",
