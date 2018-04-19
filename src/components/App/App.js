@@ -1,19 +1,19 @@
 // @flow
-import React from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+import { Home, AddItem, Settings } from '../../views';
+import { LinkList } from '../';
 
 const App = () => (
-  <ul>
-    <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/add">Add item</Link>
-    </li>
-    <li>
-      <Link to="/settings">Settings</Link>
-    </li>
-  </ul>
+  <Fragment>
+    <LinkList />
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/add" component={AddItem} />
+      <Route path="/settings" component={Settings} />
+    </Switch>
+  </Fragment>
 );
 
 export default App;

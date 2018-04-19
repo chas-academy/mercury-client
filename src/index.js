@@ -7,11 +7,11 @@ import Root from './containers/Root';
 
 import './assets/styles/style.css';
 
-const root = document.getElementById('root');
+// const root = document.getElementById('root');
 
 ReactDOM.render(
   <Root />,
-  root: HTMLElement | null,
+  document.getElementById('root'),
 );
 
 registerServiceWorker();
