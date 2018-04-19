@@ -41,4 +41,4 @@ const Root = () => (
 //   }
 // }
 
-export default connect(mapStateToProps)(Root);
+export default Root;
