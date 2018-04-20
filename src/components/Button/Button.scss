@@ -2,29 +2,36 @@
   border-radius: var(--border-rounded);
   padding: 1em;
   font-weight: 400;
-  -webkit-box-shadow: var(--box-shadow);
-  -moz-box-shadow: var(--box-shadow);
-  box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-dark);
+  color: var(--light);
 }
 
-.button.default {
-  background: var(--light);
+.button.primary {
+  background: var(--primary-color);
+}
+
+.button.secondary {
+  background: var(--secondary-color);
 }
 
 .button.info {
   background: var(--info-color);
 }
 
-.button.primary {
-  background: var(--primary-color);
-  color: var(--light);
+.button.warning {
+  background: var(--warning-color);
 }
 
-.button.secondary {
-  background: var(--secondary-color);
-  color: var(--light);
+.button.success {
+  background: var(--success-color);
 }
 
 .button:disabled {
   background: var(--disabled-color);
+  color: var(--dark);
+}
+
+.button.default {
+  background: inherit;
+  color: var(--dark);
 }
