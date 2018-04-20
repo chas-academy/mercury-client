@@ -8,7 +8,7 @@ import withTests from "./withTests";
 /* Global CSS */
 import "../assets/styles/style.css";
 
-import { Button, Input } from "../components";
+import { Button, Input, Item } from "../components";
 
 /***** Stories of Button component *****/
 action("trigger-an-event-perhaps");
@@ -41,3 +41,6 @@ storiesOf("Elements/Input", module)
   .add("number", () => <Input type="number" />)
   .add("radio", () => <Input type="radio" />)
   .add("checkbox", () => <Input type="checkbox" />);
+
+  storiesOf("Elements/Item", module)
+  .add("text", () => <Item ItemId="1" ItemTitle="Titel" />)
