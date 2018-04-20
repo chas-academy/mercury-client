@@ -1,5 +1,5 @@
 import React from "react";
-import GlobalNav from "../components/GlobalNav/globalNav";
+import { GlobalNav } from "../components";
 
 const Home = () => (
   <div>
