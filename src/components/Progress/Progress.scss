@@ -1,0 +1,48 @@
+progress,
+progress[role] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background-size: auto;
+  height: 2.4em;
+  width: 100%;
+}
+
+.progress-holder {
+  display: flex;
+  position: relative;
+}
+
+.progress-holder > p {
+  align-self: center;
+  position: absolute;
+  color: #fff;
+  line-height: 1;
+  font-size: 1em;
+  left: 2em;
+  top: 0.8em;
+  z-index: 100;
+}
+
+.progress-holder > ::-webkit-progress-value { 
+  -webkit-animation: bar-fill 2s;
+  width: 0px;
+}
+
+/* Style the bar colors */
+.progress::-webkit-progress-value {
+  background: var(--primary-color);
+}
+
+.progress::-moz-progress-bar {
+  background: var(--primary-color);
+}
+
+@-webkit-keyframes bar-fill {
+  0% { width: 0; }
+}
+
+@keyframes bar-fill {
+  0% { width: 0; }
+}
