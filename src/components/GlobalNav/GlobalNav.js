@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "..";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '..';
 
 const GlobalNav = () => (
   <nav className="navbarMenu">
