@@ -3,7 +3,6 @@ import React from 'react';
 import './Progress.css';
 
 const Progress = ({
-  color = 'primary',
   value = '0',
   max = '100',
   children,
@@ -13,7 +12,7 @@ const Progress = ({
     <p>{value}%</p>
     {children}
     <progress
-      className={`progress ${color}`}
+      className="progress"
       value={value}
       max={max}
       {...props}
