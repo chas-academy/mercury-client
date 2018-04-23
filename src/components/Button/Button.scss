@@ -1,30 +1,47 @@
 .button {
-  border-radius: var(--border-rounded);
-  padding: 1em;
+  padding: 0.4em;
   font-weight: 400;
-  -webkit-box-shadow: var(--box-shadow);
-  -moz-box-shadow: var(--box-shadow);
-  box-shadow: var(--shadow-primary);
+  border-radius: var(--border-rounded);
+  box-shadow: var(--shadow-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-.button.default {
-  background: var(--light);
+.default {
+  color: var(--dark);
+  &:hover,
+  &:active {
+    color: var(--primary-color);
+  }
 }
 
-.button.info {
-  background: var(--info-color);
-}
-
-.button.primary {
+.primary {
+  color: var(--light);
   background: var(--primary-color);
-  color: var(--light);
+  &:hover,
+  &:active {
+    color: var(--primary-color);
+    background: var(--light);
+  }
 }
 
-.button.secondary {
-  background: var(--secondary-color);
+.secondary {
   color: var(--light);
+  background: var(--secondary-color);
+  &:hover,
+  &:active {
+    color: var(--secondary-color);
+    background: var(--light);
+  }
 }
 
 .button:disabled {
-  background: var(--disabled-color);
+  color: var(--dark);
+  background: var(--light);
+  box-shadow: var(--light);
+}
+
+.button > span {
+  margin: 0 0.1em;
 }

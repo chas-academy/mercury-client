@@ -7,7 +7,7 @@
   --info-color: #5ac6dd;
   --warning-color: #ee5934;
   --success-color: #fa709a;
-  --disabled-color: #b1b1b1;
+  --disabled-color: #c7c7c7;
 }
 
 /***** Skin properties - how to explain it? *****/
@@ -15,12 +15,4 @@
   --border-rounded: 8px;
   --shadow-dark: 0px 2px 11px -6px var(--dark);
   --shadow-primary: 0px 6px 38px -16px var(--primary-color);
-}
-
-/***** Size *****/
-:root {
-  --font-size: 16px;
-  --small: 1em;
-  --medium: 1.5em;
-  --large: 2em;
 }
