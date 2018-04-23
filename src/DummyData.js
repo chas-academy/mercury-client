@@ -4,7 +4,7 @@ const DummyData = [
     ItemTitle: 'iphone X',
     Goal: '100',
     Usage: '300 ggr',
-    PurchasePrice: '12490 kr',
+    PurchasePrice: 12490,
     PurchaseDate: '17-11-19',
   },
   {
@@ -12,7 +12,7 @@ const DummyData = [
     ItemTitle: 'Bose quietcomfort 35 ii',
     Goal: '20',
     Usage: '67 ggr',
-    PurchasePrice: '3990 kr',
+    PurchasePrice: 3990,
     PurchaseDate: '18-03-01',
   },
   {
@@ -20,7 +20,7 @@ const DummyData = [
     ItemTitle: 'LOUIS VUITTON Belmont Damier Ebene Canvas',
     Goal: '50',
     Usage: '38 ggr',
-    PurchasePrice: '9995 kr',
+    PurchasePrice: 9995,
     PurchaseDate: '16-11-23',
   },
   {
@@ -28,7 +28,7 @@ const DummyData = [
     ItemTitle: '15-tums MacBook Pro',
     Goal: '100',
     Usage: '20 ggr',
-    PurchasePrice: '32995 kr',
+    PurchasePrice: 32995,
     PurchaseDate: '18-01-02',
   },
 ];
