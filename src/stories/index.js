@@ -17,6 +17,7 @@ import {
   Item,
   Icon
 } from "../components";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 
 /***** Stories of Button component *****/
 
@@ -77,10 +78,10 @@ const progressStories = storiesOf("Elements/Progress", module);
 progressStories.addDecorator(withKnobs);
 
 progressStories
-  .add("0%", () => <Progress />)
-  .add("30%", () => <Progress value="30" />)
-  .add("60%", () => <Progress value="60" />)
-  .add("100%", () => <Progress value="100" />);
+  .add("0%", () => <ProgressBar progressBarCurrent="0" progressBarMax="100"/>)
+  .add("30%", () => <ProgressBar progressBarCurrent="30" progressBarMax="100" />)
+  .add("60%", () => <ProgressBar progressBarCurrent="60" progressBarMax="100"/>)
+  .add("100%", () => <ProgressBar progressBarCurrent="100" progressBarMax="100"/>);
 
 storiesOf("Elements/Icon", module)
   .add("home, default size - small", () => <Icon icon="home" color="#5e515a" />)

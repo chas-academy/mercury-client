@@ -3,14 +3,17 @@ import * as React from 'react';
 import './ProgressBar.css';
 
 const ProgressBar =
- ({ ProgressBarMax, ProgressBarCurrent }:
- {ProgressBarMax: number, ProgressBarCurrent: number}) => (
-   <progress
-     max={ProgressBarMax}
-     value={ProgressBarCurrent}
-   >
-     <p>Du har en gammal webbläsare</p>
-   </progress>
+ ({ progressBarMax, progressBarCurrent }:
+ {progressBarMax: number, progressBarCurrent: number}) => (
+   <span>
+     <span>{progressBarCurrent} %</span>
+     <progress
+       max={progressBarMax}
+       value={progressBarCurrent}
+     >
+       <i>Du har en gammal webbläsare</i>
+     </progress>
+   </span>
  );
 
 export default ProgressBar;
