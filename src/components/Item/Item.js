@@ -15,13 +15,8 @@ const Item = ({ key, item }: { key: number, item: Object }) => (
       <dd>{item.purchasePrice}</dd>
     </dl>
     <p>
-<<<<<<< 187c8e301ce7a6d48a1bd7e85a05734bff68ceea
-        Framsteg<br />
+    Framsteg<br />
       <ProgressBar progressBarMax={100} progressBarCurrent={5} />
-=======
-      Framsteg<br />
-      <ProgressBar ProgressBarMax={100} ProgressBarCurrent={5} />
->>>>>>> Change name of props into camelCase
     </p>
   </article>
 );
