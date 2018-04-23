@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/chas-academy/mercury-client/issues"
   },
-  "homepage": "https://github.com/chas-academy/mercury-client/tree/master",
+  "homepage": "",
   "dependencies": {
     "axios": "^0.17.1",
     "eslint-plugin-flowtype": "^2.46.1",
