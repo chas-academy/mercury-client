@@ -69,7 +69,7 @@ storiesOf("Elements/Input", module)
   .add("checkbox", () => <Input type="checkbox" />);
 
 storiesOf("Elements/Item", module).add("text", () => (
-  <Item ItemId="1" ItemTitle="Titel" />
+  <Item itemId="1" itemTitle="Titel" />
 ));
 
 /***** Stories of Progress component *****/
