@@ -1,25 +1,23 @@
-<<<<<<< d0fa2c086d9b9a438aa3ed873e1e9b95cc96a6e5
-.icon-wrapper {
-    width: 100px;
-    height: 100px;
-}
-=======
 .icon {
   display: inline-block;
 }
 
 .small {
+  width: 24px;
+  height: 24px;
+}
+
+.medium {
   width: 32px;
   height: 32px;
 }
 
-.medium {
+.large {
   width: 64px;
   height: 64px;
 }
 
-.large {
+.xlarge {
   width: 128px;
   height: 128px;
 }
->>>>>>> Add sizing option and set width/height at <path> instead of <svg> for correct scaling

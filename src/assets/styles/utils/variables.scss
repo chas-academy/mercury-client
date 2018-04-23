@@ -16,12 +16,3 @@
   --shadow-dark: 0px 2px 11px -6px var(--dark);
   --shadow-primary: 0px 6px 38px -16px var(--primary-color);
 }
-
-/***** Size - this is not thought through... *****/
-/* just an example of how we can achive cohesive CSS */
-:root {
-  --font-size: 16px;
-  --small: 1em;
-  --medium: 1.5em;
-  --large: 2em;
-}

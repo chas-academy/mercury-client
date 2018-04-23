@@ -1,29 +1,35 @@
 .button {
-  border-radius: var(--border-rounded);
-  padding: 1em;
+  padding: 0.4em;
   font-weight: 400;
+  border-radius: var(--border-rounded);
   box-shadow: var(--shadow-dark);
-  color: var(--light); }
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; }
 
-.button.primary {
+.default {
+  color: var(--dark); }
+  .default:hover, .default:active {
+    color: var(--primary-color); }
+
+.primary {
+  color: var(--light);
   background: var(--primary-color); }
+  .primary:hover, .primary:active {
+    color: var(--primary-color);
+    background: var(--light); }
 
-.button.secondary {
+.secondary {
+  color: var(--light);
   background: var(--secondary-color); }
-
-.button.info {
-  background: var(--info-color); }
-
-.button.warning {
-  background: var(--warning-color); }
-
-.button.success {
-  background: var(--success-color); }
+  .secondary:hover, .secondary:active {
+    color: var(--secondary-color);
+    background: var(--light); }
 
 .button:disabled {
-  background: var(--disabled-color);
-  color: var(--dark); }
+  color: var(--dark);
+  background: var(--light);
+  box-shadow: var(--light); }
 
-.button.default {
-  background: inherit;
-  color: var(--dark); }
+.button > span {
+  margin: 0 0.1em; }
