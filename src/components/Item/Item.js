@@ -16,7 +16,7 @@ const Item = ({ ItemId, ItemTitle }: {ItemId: number, ItemTitle: string}) => (
     </dl>
     <p>
         Framsteg<br />
-      <ProgressBar ProgressBarMax={100} ProgressBarCurrent={5} />
+      <ProgressBar progressBarMax={100} progressBarCurrent={5} />
     </p>
   </article>
 );
