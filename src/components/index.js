@@ -6,6 +6,6 @@ export { default as LinkList } from './LinkList/LinkList';
 export { default as GlobalNav } from './GlobalNav/GlobalNav';
 export { default as ProgressBar } from './ProgressBar/ProgressBar';
 export { default as Item } from './Item/Item';
-export { default as ItemList } from './Item/Item';
+export { default as Items } from './Items/Items';
 export { default as Icon } from './Icon/Icon';
 export { default as DummyData } from '../DummyData';

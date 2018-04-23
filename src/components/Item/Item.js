@@ -1,18 +1,18 @@
 // @flow
-import * as React from 'react';
-import './Item.css';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import * as React from "react";
+import "./Item.css";
+import ProgressBar from "../ProgressBar/ProgressBar";
 
-const Item = ({ itemId, itemTitle }: { itemId: number, itemTitle: string }) => (
-  <article id={itemId}>
-    <h2>{itemTitle}</h2>
+const Item = ({ key, item }: { key: number, item: Object }) => (
+  <article id={key}>
+    <h2>{item.itemTitle}</h2>
     <dl>
       <dt>Mål:</dt>
-      <dd>10 kr</dd>
+      <dd>{item.goal}</dd>
       <dt>Användningar:</dt>
-      <dd>55 ggr</dd>
-      <dt>Inköpspris</dt>
-      <dd>550 kr</dd>
+      <dd>{item.usage}</dd>
+      <dt>Inköpspris:</dt>
+      <dd>{item.purchasePrice}</dd>
     </dl>
     <p>
 <<<<<<< 187c8e301ce7a6d48a1bd7e85a05734bff68ceea
