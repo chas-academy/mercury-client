@@ -68,9 +68,10 @@ storiesOf("Elements/Input", module)
   .add("radio", () => <Input type="radio" />)
   .add("checkbox", () => <Input type="checkbox" />);
 
+  /* Needs fixin
 storiesOf("Elements/Item", module).add("text", () => (
-  <Item itemId="1" itemTitle="Titel" />
-));
+  <Item item={item}/>
+)); */
 
 /***** Stories of Progress component *****/
 
