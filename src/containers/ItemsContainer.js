@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { fetchData } from '../actions/items';
 import { Items } from '../components';
-import DUMMYDATA from '../DummyData';
 
 class ItemsContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.data = DUMMYDATA;
+  componentWillMount() {
+    this.props.dispatch(fetchData('items'));
   }
 
   render() {
-    return <Items items={this.data} />;
+    const { itemReducer: { isFetching, items } } = this.props;
+
+    return (
+      isFetching ? <p>Loading...</p> : <Items items={items} />
+    );
   }
 }
 
-function mapStateToProps(state) {
-  const { items } = state;
-  return { items };
-}
+const mapStateToProps = ({ itemReducer }) => ({ itemReducer });
 
 export default connect(mapStateToProps)(ItemsContainer);

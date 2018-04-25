@@ -9,7 +9,7 @@ const initialState = {
   isFetching: false,
 };
 
-const user = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_AUTH:
       return {
@@ -34,4 +34,4 @@ const user = (state = initialState, action) => {
   }
 };
 
-export default user;
+export default userReducer;
