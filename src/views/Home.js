@@ -1,9 +1,14 @@
 import React from 'react';
 import ItemsContainer from '../containers/ItemsContainer';
 
+const style = {
+  fontSize: '5em',
+  textAlign: 'center',
+};
+
 const Home = () => (
   <div>
-    <h1>Welcome to Worth It!</h1>
+    <h1 style={style}>Hem</h1>
     <ItemsContainer />
   </div>
 );

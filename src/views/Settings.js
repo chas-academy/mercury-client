@@ -1,7 +1,11 @@
 import React from 'react';
 
+const style = {
+  fontSize: '5em',
+  textAlign: 'center',
+};
 const Settings = () => (
-  <h1>This is where we will allow the user to change the settings</h1>
+  <h1 style={style}>Inställningar</h1>
 );
 
 export default Settings;
