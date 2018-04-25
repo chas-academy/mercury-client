@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '..';
+import { Icon } from '..';
+import './GlobalNav.css';
+
 
 const GlobalNav = () => (
-  <nav className="navbarMenu">
-    <Button>
-      <Link to="/">Home</Link>
-    </Button>
-    <Button>
-      <Link to="/add">Add</Link>
-    </Button>
-    <Button>
-      <Link to="/settings">Settings</Link>
-    </Button>
+  <nav>
+    <Link to="/">
+      <Icon icon="home" color="turquoise" />
+    </Link>
+    <Link to="/add">
+      <Icon icon="plus" color="indianred" />
+    </Link>
+    <Link to="/settings">
+      <Icon icon="cog" color="goldenrod" />
+    </Link>
   </nav>
 );
 
