@@ -16,7 +16,7 @@ const Item = ({ item }) => (
     </dl>
     <p>
       Framsteg<br />
-      <ProgressBar progressBarMax={100} progressBarCurrent={5} />
+      <ProgressBar progressBarMax={item.goal} progressBarCurrent={item.delimiter} />
     </p>
   </article>
 );

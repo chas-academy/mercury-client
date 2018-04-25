@@ -20,6 +20,7 @@ span > ::-webkit-progress-value {
   progress {
       margin-top: 0.5em;
       border-radius: 0.5em;
+      width: 100%;
   }
   /* Style the bar colors */
   progress::-webkit-progress-bar {
