@@ -4,6 +4,7 @@ export type ItemT = {
   id: number,
   name: string,
   price: number,
+  goal: number,
   delimiter: number,
   created: Date,
   updated: Date
