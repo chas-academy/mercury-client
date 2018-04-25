@@ -2,8 +2,9 @@
 import * as React from 'react';
 import './Item.css';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import type { ItemT } from '../../types';
 
-const Item = ({ item }) => (
+const Item = ({ item }: { item: ItemT }) => (
   <article id={item.id}>
     <h2>{item.name}</h2>
     <dl>
