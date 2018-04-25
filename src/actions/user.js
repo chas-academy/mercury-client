@@ -1,3 +1,7 @@
+/* TODO: integrate with the actual database
+  This code was written in conjunction with the initial "code pruning",
+  with the intention to test how to connect the client to the API
+*/
 // @flow
 import { REQUEST_AUTH, RECEIVE_USER, AUTH_FAILED } from './action-types';
 
@@ -7,7 +11,7 @@ export const authFailed = () => ({ type: AUTH_FAILED });
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-const requestSignIn = user => (dispatch) => {
+export const requestSignIn = user => (dispatch) => {
   dispatch(requestAuth());
 
   return fetch(`${API_BASE_URL}/fakeAuth`, {
@@ -19,5 +23,3 @@ const requestSignIn = user => (dispatch) => {
     .then(json => dispatch(receiveUser(json.user)))
     .catch(err => dispatch(authFailed()));
 };
-
-export { requestSignIn };
