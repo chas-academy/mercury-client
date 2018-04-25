@@ -3,8 +3,27 @@ import * as React from 'react';
 import './Item.css';
 import ProgressBar from '../ProgressBar/ProgressBar';
 
+
 const Item = ({ item }) => (
-  <article id={item.id}>
+  
+this.state = { isOpen: false } ,
+
+
+toggleCard = () => {
+  this.setState({
+    isOpen: !this.state.isOpen
+  });
+
+
+<article id={item.id} onClick={this.toggleCard}>
+<h2>{item.name}</h2>
+<p>
+  Framsteg<br />
+  <ProgressBar progressBarMax={100} progressBarCurrent={5} />
+</p>
+</article>
+
+<article id={item.id} show={this.state.isOpen} onClose={this.toggleCard}>
     <h2>{item.name}</h2>
     <dl>
       <dt>Mål:</dt>
