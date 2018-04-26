@@ -1,7 +1,10 @@
+// @flow
 import React from 'react';
 
-const Card = ({ children, ...props }) => (
-  <div />
+const Card = ({ variant = 'circle', children }) => (
+  <div className={variant}>
+    {children}
+  </div>
 );
 
 export default Card;
