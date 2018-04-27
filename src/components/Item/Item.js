@@ -1,11 +1,18 @@
 // @flow
 
-import React, { Component } from "react";
-import "./Item.css";
-import ProgressBar from "../ProgressBar/ProgressBar";
+import React, { Component } from 'react';
+import './Item.css';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import type { ItemT } from '../../types';
 
-class Item extends Component {
-  constructor(props) {
+type Props = Object;
+
+type State = {
+  isOpen: boolean,
+};
+
+class Item extends Component<Props, State> {
+  constructor(props: ItemT) {
     super(props);
 
     // This binding is necessary to make `this` work in the callback
@@ -16,7 +23,7 @@ class Item extends Component {
 
   toggleCard = () => {
     this.setState(prevState => ({
-      isOpen: !prevState.isOpen
+      isOpen: !prevState.isOpen,
     }));
   };
 
