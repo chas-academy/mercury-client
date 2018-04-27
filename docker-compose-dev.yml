@@ -1,8 +1,7 @@
 version: '3.5'
 services:
   client:
-    image: ludlun/mercury-client-dev
-    working_dir: /usr/share/nginx/html
+    image: ludlun/mercury-client-dev:latest
     networks:
       - traefik
     deploy:
@@ -11,6 +10,8 @@ services:
         traefik.backend: 'mercury_client_dev'
         traefik.docker.network: 'traefik'
         traefik.frontend.rule: 'Host:mercury-dev.lndgrn.xyz'
+    environment:
+      - REACT_APP_MOCK=https://5adef892bf932f0014d11b48.mockapi.io/api
     env_file:
       - .env
 
