@@ -1,0 +1,7 @@
+{
+  "name": "mercury_client",
+  "restart": "no",
+  "domain": "mercury-dev.chas.school",
+  "project": "mercury",
+  "template": "dockerfile"
+}
