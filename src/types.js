@@ -7,7 +7,7 @@ export type ItemT = {
   goal: number,
   delimiter: number,
   created: Date,
-  updated: Date
+  updated: Date,
 };
 
 export type User = {

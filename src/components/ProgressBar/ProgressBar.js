@@ -15,7 +15,9 @@ const ProgressBar =
      <progress
        className={percent(progressBarCurrent, progressBarMax) > 98 ? 'fullBar' : ''}
        max={100}
-       value={percent(progressBarCurrent, progressBarMax) < 2 ? 2 : percent(progressBarCurrent, progressBarMax)}
+       value={percent(progressBarCurrent, progressBarMax) < 2 
+        ? 2 
+        : percent(progressBarCurrent, progressBarMax)}
      >
        <i>Du har en gammal webbläsare</i>
      </progress>
