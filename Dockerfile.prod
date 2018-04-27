@@ -9,7 +9,9 @@ ENV PATH=$PATH:/node_modules/.bin
 WORKDIR /app
 COPY . /app
 
+
 RUN yarn --ignore-engines
+
 RUN yarn run build-css
 RUN yarn run build
 
