@@ -3,6 +3,8 @@ services:
   client:
     image: ludlun/mercury-client-dev
     working_dir: /usr/share/nginx/html
+    networks:
+      - traefik
     deploy:
       labels:
         traefik.port: '80'
@@ -11,3 +13,7 @@ services:
         traefik.frontend.rule: 'Host:mercury-dev.lndgrn.xyz'
     env_file:
       - .env
+
+networks:
+  traefik:
+    external: true
