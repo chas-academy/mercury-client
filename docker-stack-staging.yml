@@ -1,15 +1,15 @@
 version: '3.5'
 services:
   client:
-    image: ludlun/mercury-client-dev:latest
+    image: registry.chas.school/mercury-client-staging:latest
     networks:
       - traefik
     deploy:
       labels:
         traefik.port: '80'
-        traefik.backend: 'mercury_client_dev'
+        traefik.backend: 'mercury_client_staging'
         traefik.docker.network: 'traefik'
-        traefik.frontend.rule: 'Host:mercury-dev.lndgrn.xyz'
+        traefik.frontend.rule: 'Host:mercury-staging.chas.school'
     environment:
       - REACT_APP_MOCK=https://5adef892bf932f0014d11b48.mockapi.io/api
     env_file:
