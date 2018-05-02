@@ -3,10 +3,10 @@
   with the intention to test how to connect the client to the API
 */
 // @flow
-import { REQUEST_AUTH, RECEIVE_USER, AUTH_FAILED } from './action-types';
+import { REQUESTING_AUTH, RECEIVED_USER, AUTH_FAILED } from './action-types';
 
-export const requestAuth = () => ({ type: REQUEST_AUTH });
-export const receiveUser = user => ({ type: RECEIVE_USER, payload: user });
+export const requestAuth = () => ({ type: REQUESTING_AUTH });
+export const receiveUser = user => ({ type: RECEIVED_USER, payload: user });
 export const authFailed = () => ({ type: AUTH_FAILED });
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;

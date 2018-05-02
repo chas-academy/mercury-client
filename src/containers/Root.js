@@ -10,8 +10,10 @@ import rootReducer from '../reducers';
 import { App } from '../components';
 
 const middleware = [thunk];
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
-
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(...middleware)),
+);
 
 const Root = () => (
   <Provider store={store}>
