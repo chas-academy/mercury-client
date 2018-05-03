@@ -58,62 +58,63 @@ class AddItem extends Component {
       <div>
         <h1 style={style}>Lägg till Pryl</h1>
         <ItemNav />
-        <ReactCSSTransitionGroup
+        {/* <ReactCSSTransitionGroup
           transitionName="progressButtonChange"
           transitionEnterTimeout={400}
           transitionLeaveTimeout={400}
-        >
-          {this.state.currentStep === 1 && (
-            <form key="1" onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="description"
-                placeholder="Vad har du köpt?"
-                value={this.state.description}
-                onChange={this.handleChange}
-              />
-            </form>
-          )}
+        > */}
+        {this.state.currentStep === 1 && (
+          <form className="inputForm" key="1" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="description"
+              placeholder="Vad har du köpt?"
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
+          </form>
+        )}
 
-          {this.state.currentStep === 2 && (
-            <form key="2" onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="cost"
-                placeholder="Vad kostar den?"
-                value={this.state.cost}
-                onChange={this.handleChange}
-              />
-            </form>
-          )}
+        {this.state.currentStep === 2 && (
+          <form className="inputForm" key="2" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="cost"
+              placeholder="Vad kostar den?"
+              value={this.state.cost}
+              onChange={this.handleChange}
+            />
+          </form>
+        )}
 
-          {this.state.currentStep === 3 && (
-            <form key="3" onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="goal"
-                placeholder="Vad är ditt mål?"
-                value={this.state.goal}
-                onChange={this.handleChange}
-              />
-            </form>
-          )}
+        {this.state.currentStep === 3 && (
+          <form className="inputForm" key="3" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="goal"
+              placeholder="Vad är ditt mål?"
+              value={this.state.goal}
+              onChange={this.handleChange}
+            />
+          </form>
+        )}
 
-          {this.state.currentStep === 4 && (
-            <form key="4" onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                name="notifications"
-                placeholder="Hur ofta vill du ha notiser?"
-                value={this.state.notification}
-                onChange={this.handleChange}
-              />
-            </form>
-          )}
-        </ReactCSSTransitionGroup>
-
-        <button onClick={this.goBack}>Back</button>
-        <button onClick={this.goNext}>Next</button>
+        {this.state.currentStep === 4 && (
+          <form className="inputForm" key="4" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name="notifications"
+              placeholder="Hur ofta vill du ha notiser?"
+              value={this.state.notification}
+              onChange={this.handleChange}
+            />
+          </form>
+        )}
+        {/* </ReactCSSTransitionGroup> */}
+        <div className="btnGroup">
+          <button onClick={this.goBack}>Back</button>
+          <button onClick={this.goNext}>Next</button>
+        </div>
       </div>
     );
   }
