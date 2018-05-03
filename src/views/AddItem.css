@@ -1,0 +1,30 @@
+input {
+    padding: 0.5em;
+    font-weight: 400;
+    background: transparent;
+    box-sizing: border-box;
+    border: none;
+    width: 30em;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default {
+    background: var(--light);
+}
+
+.primary {
+    background: var(--primary-color);
+    color: var(--light);
+}
+
+.secondary {
+    background: var(--secondary-color);
+    color: var(--light);
+}
