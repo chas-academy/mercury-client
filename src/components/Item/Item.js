@@ -1,14 +1,14 @@
 // @flow
 
-import React, { Component } from 'react';
-import './Item.css';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import type { ItemT } from '../../types';
+import React, { Component } from "react";
+import "./Item.css";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import type { ItemT } from "../../types";
 
 type Props = Object;
 
 type State = {
-  isOpen: boolean,
+  isOpen: boolean
 };
 
 class Item extends Component<Props, State> {
@@ -23,7 +23,7 @@ class Item extends Component<Props, State> {
 
   toggleCard = () => {
     this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
+      isOpen: !prevState.isOpen
     }));
   };
 
@@ -31,8 +31,8 @@ class Item extends Component<Props, State> {
     const { item } = this.props;
 
     return (
-      <article id={item.id} onClick={this.toggleCard}>
-        <h2>{item.name}</h2>
+      <article id={item.itemId} onClick={this.toggleCard}>
+        <h2>{item.CanonicalItem.name}</h2>
         {this.state.isOpen && (
           <dl>
             <dt>Mål:</dt>

@@ -1,26 +1,27 @@
-import { REQUEST_DATA, REQUEST_SUCCEDED } from '../actions/action-types';
+// @flow
+import { REQUESTING_DATA, RECEIVED_DATA } from '../actions/action-types';
 
-const initialState = {
+const defaultState = {
   isFetching: false,
-  items: [],
+  allItems: [],
 };
 
-const itemReducer = (state = initialState, action) => {
+const items = (state = defaultState, action) => {
   switch (action.type) {
-    case REQUEST_DATA:
+    case REQUESTING_DATA:
       return {
         ...state,
         isFetching: true,
       };
-    case REQUEST_SUCCEDED:
+    case RECEIVED_DATA:
       return {
         ...state,
         isFetching: false,
-        items: action.payload,
+        allItems: action.payload,
       };
     default:
       return state;
   }
 };
 
-export default itemReducer;
+export default items;

@@ -1,15 +1,18 @@
 // @flow
 
 export type ItemT = {
-  id: number,
-  name: string,
+  itemId: number,
+  CanonicalItem: Object,
   price: number,
   goal: number,
   delimiter: number,
-  created: Date,
-  updated: Date,
+  createdAt: Date,
+  updatedAt: Date,
+  auto: boolean,
+  completed: boolean
 };
 
+/* TODO: Update types */
 export type User = {
   id: number,
   name: string

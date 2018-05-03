@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { fetchData } from '../actions/items';
 import { Items } from '../components';
 
 class ItemsContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(fetchData('items'));
   }
 
   render() {
-    const { itemReducer: { isFetching, items } } = this.props;
+    const {
+      items: { isFetching, allItems },
+    } = this.props;
 
-    return (
-      isFetching ? <p>Loading...</p> : <Items items={items} />
-    );
+    return isFetching ? <p>Loading...</p> : <Items items={allItems} />;
   }
 }
 
-const mapStateToProps = ({ itemReducer }) => ({ itemReducer });
+const mapStateToProps = ({ items }) => ({ items });
 
-export default connect(mapStateToProps)(ItemsContainer);
+export default withRouter(connect(mapStateToProps)(ItemsContainer));
