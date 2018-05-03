@@ -30,11 +30,6 @@ const ItemNav = () => (
         </Button>
       </div>
     </nav>
-    <form>
-      <label>
-        <input type="text" name="name" placeholder="Vad har du köpt?" />
-      </label>
-    </form>
   </div>
 );
 
