@@ -1,9 +1,12 @@
 // @flow
-import {Component} from 'React';
+import React, { Component } from 'react'
+import Form from 'react-jsonschema-form'
 import JWT from 'jsonwebtoken';
 
+// Type hinting for props. Sadly, what props goes here is unknown.
 type Props = Object;
 
+// Type hinting state. Alert and alertmeessage might be unnecessary?
 type State = {
   key: any,
   formData: Object,
@@ -17,7 +20,8 @@ type State = {
 export default class SignIn extends Component<Props,State> {
   constructor(props: Object) {
     super(props);
-    (this: any).onSubmit = this.onSubmit.bind(this);
+    // (this:any) is important for flowtype
+    (this: any).onSubmit = this.onSubmit.bind(this); 
     this.state = {
       key: Date.now(),
       formData: initFormData,
@@ -40,6 +44,7 @@ export default class SignIn extends Component<Props,State> {
       showAlertMessage: true,
     });
 
+    // Creates JWT token
     const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
 
     /*TODO*/
@@ -48,9 +53,66 @@ export default class SignIn extends Component<Props,State> {
     // On error, scream
   }
   render(){
-    (
-      <input type="text">
+
+    return (
+      // Creates a form from bloody json, stored in Schema and UiSchema
+      <Form
+      className="form"
+      autocomplete="off"
+      key={this.state.key}
+      formData={this.state.formData}
+      schema={Schema}
+      uiSchema={UISchema}
+      validate={validate}
+      ErrorList={null}
+      onSubmit={this.onSubmit}
+     >
+      <button
+        type="submit"
+        className=""
+        disabled={this.state.isSigningIn}
+      >
+        Sign In
+      </button>
+    </Form>
+
     )
   }
 }
-const initFormData = {'hej': 'hej'};
+
+//Initial data as the component is loading
+const initFormData = {
+  email: '',
+  password: ''
+}
+
+const Schema = {
+  'type': 'object',
+  'properties': {
+    'email': {
+      'type': 'string',
+      'title': 'Email'
+    },
+    'password': {
+      'type': 'string',
+      'title': 'Password'
+    }
+  }
+}
+
+const UISchema = {
+  'ui:rootFieldId': 'log_in',
+  'email': {
+    'ui:widget': 'email',
+    'ui:autofocus': true,
+    'ui:placeholder': 'Enter your email'
+  },
+  'password': {
+    'ui:widget': 'password',
+    'ui:placeholder': 'Enter your password'
+  }
+}
+//Function that does nothing to validate the input
+function validate() {
+  return null
+}
