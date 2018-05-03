@@ -1,10 +1,15 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Icon, Button } from '..';
 import './ItemNav.css';
 
 const ItemNav = () => (
-  <div>
-    <nav>
+  <nav>
+    <ReactCSSTransitionGroup
+      transitionName="progressButtonChange"
+      transitionEnterTimeout={400}
+      transitionLeaveTimeout={400}
+    >
       <div>
         <p>namn</p>
         <Button color="primary">
@@ -29,8 +34,8 @@ const ItemNav = () => (
           <Icon icon="rocket" color="pink" />
         </Button>
       </div>
-    </nav>
-  </div>
+    </ReactCSSTransitionGroup>
+  </nav>
 );
 
 export default ItemNav;

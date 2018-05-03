@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
-import './Input.css';
+import "./Input.css";
 
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { value: "" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,8 +22,12 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div className="formContainer">
-        <form onSubmit={this.handleSubmit}>
+      <ReactCSSTransitionGroup
+        transitionName="progressButtonChange"
+        transitionEnterTimeout={400}
+        transitionLeaveTimeout={400}
+      >
+        <form key="1" onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Vad har du köpt?"
@@ -30,7 +35,8 @@ class Input extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        <form onSubmit={this.handleSubmit}>
+
+        <form key="2" onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Vad kostar den?"
@@ -38,7 +44,8 @@ class Input extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        <form onSubmit={this.handleSubmit}>
+
+        <form key="3" onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Vad är ditt mål?"
@@ -46,7 +53,8 @@ class Input extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-        <form onSubmit={this.handleSubmit}>
+
+        <form key="4" onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Hur ofta vill du ha notiser?"
@@ -54,7 +62,7 @@ class Input extends React.Component {
             onChange={this.handleChange}
           />
         </form>
-      </div>
+      </ReactCSSTransitionGroup>
     );
   }
 }
