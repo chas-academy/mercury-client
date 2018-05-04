@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import JWT from 'jsonwebtoken';
-// import Axios from 'axios';
 
 import { requestLogin } from '../../actions/user';
 import { Input } from '../';
