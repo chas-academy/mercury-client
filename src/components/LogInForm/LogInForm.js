@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import JWT from 'jsonwebtoken';
-import Axios from 'axios';
+import { connect } from 'react-redux';
 
+import { requestLogin } from '../../actions/user';
 import { Input } from '../';
 
 class LogInForm extends Component {
@@ -11,37 +11,16 @@ class LogInForm extends Component {
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.state = {
-    //   key: Date.now(),
       formData: {
         email: '',
         password: '',
       },
-    //   alertMessage: {},
-    //   showAlertMessage: false,
-    //   isSigningIn: false,
-    //   redirect: '/',
     };
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const token = JWT.sign(this.state.formData, process.env.REACT_APP_API_JWT_SECRET);
-    Axios.post(process.env.REACT_APP_API_SIGN_IN_URL, { token })
-      .then((response) => {
-        console.log(response);
-      });
-    // TODO: Add redux logic that handles logged-in status
-    // when a token is successfully returned
-    // this.setState({
-    //   key: Date.now(),
-    //   formData,
-    //   alertMessage: {
-    //     type: 'info',
-    //     message: 'logging in...',
-    //   },
-    //   isSigningIn: true,
-    //   showAlertMessage: true,
-    // });
+    this.props.dispatch(requestLogin(this.state.formData));
   }
 
   onEmailChange(e) {
@@ -73,9 +52,15 @@ class LogInForm extends Component {
         <button type="submit">
             skicka
         </button>
+        <br />
+        {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' }
       </form>
     );
   }
 }
 
-export default LogInForm;
+const mapStateProps = state => ({
+  authenticated: state.user.authenticated,
+});
+
+export default connect(mapStateProps)(LogInForm);

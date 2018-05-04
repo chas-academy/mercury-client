@@ -1,31 +1,32 @@
 import {
-  REQUESTING_AUTH,
-  RECEIVED_USER,
-  AUTH_FAILED,
-} from '../actions/action-types';
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+} from '../constants';
 
 const defaultState = {
-  verifyingUser: false,
-  signedInUser: null,
+  fetchingUser: false,
+  authenticated: false,
+  user: {},
 };
 
 const user = (state = defaultState, action) => {
   switch (action.type) {
-    case REQUESTING_AUTH:
+    case LOGIN_START:
       return {
         ...state,
-        verifyingUser: true,
+        fetchingUser: true,
       };
-    case RECEIVED_USER:
+    case LOGIN_SUCCESS:
       return {
         ...state,
-        verifyingUser: false,
-        signedInUser: action.payload,
+        fetchingUser: false,
+        user: action.payload,
       };
-    case AUTH_FAILED:
+    case LOGIN_FAILURE:
       return {
         ...state,
-        verifyingUser: false,
+        fetchingUser: false,
       };
     default:
       return state;
