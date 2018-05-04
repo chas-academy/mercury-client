@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import './ItemNavInput.css';
 
 const style = {
   fontSize: '5em',
-  textAlign: 'center'
+  textAlign: 'center',
 };
 
 class ItemNavInput extends Component {
@@ -16,7 +16,7 @@ class ItemNavInput extends Component {
       description: '',
       cost: '',
       goal: '',
-      notification: ''
+      notification: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -39,16 +39,16 @@ class ItemNavInput extends Component {
   goBack(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep - 1
+    this.setState(previousState => ({
+      currentStep: previousState.currentStep - 1,
     }));
   }
 
   goNext(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep + 1
+    this.setState(previousState => ({
+      currentStep: previousState.currentStep + 1,
     }));
   }
 
