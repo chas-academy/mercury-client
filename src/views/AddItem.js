@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { ItemNav } from '../components';
 import { ItemNavInput } from '../components';
 
