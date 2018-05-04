@@ -1,7 +1,15 @@
 // @flow
-import React, { Component } from 'react';
-import './Item.css';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import React, { Component } from "react";
+import type { ItemT } from "../../types";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import Icon from "../Icon/Icon";
+import "./Item.css";
+
+type Props = Object;
+
+type State = {
+  isOpen: boolean
+};
 
 class Item extends Component {
   constructor(props) {
@@ -12,9 +20,10 @@ class Item extends Component {
 
     this.state = { isOpen: false };
   }
-
   toggleCard = () => {
-    this.setState((prevState) => ({
+
+    this.setState(prevState => ({
+
       isOpen: !prevState.isOpen
     }));
   };
@@ -23,8 +32,11 @@ class Item extends Component {
     const { item } = this.props;
 
     return (
-      <article id={item.id} onClick={this.toggleCard}>
-        <h2>{item.name}</h2>
+      <article id={item.itemId} onClick={this.toggleCard}>
+        <header>
+          <h2>{item.CanonicalItem.name}</h2>
+          <Icon icon={item.CanonicalItem.icon} />
+        </header>
         {this.state.isOpen && (
           <dl>
             <dt>Mål:</dt>
@@ -35,13 +47,11 @@ class Item extends Component {
             <dd>{item.price}</dd>
           </dl>
         )}
-        <p>
-          Framsteg<br />
-          <ProgressBar
-            progressBarMax={item.goal}
-            progressBarCurrent={item.delimiter}
-          />
-        </p>
+        <h3> Framsteg </h3>
+        <ProgressBar
+          progressBarMax={item.goal}
+          progressBarCurrent={item.delimiter}
+        />
       </article>
     );
   }

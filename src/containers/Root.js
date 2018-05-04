@@ -1,17 +1,19 @@
 // @flow
 import React from 'react';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import rootReducer from '../reducers';
 import { App } from '../components';
 
 const middleware = [thunk];
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
 
+const enhancer = composeWithDevTools(applyMiddleware(...middleware));
+
+const store = createStore(rootReducer, enhancer);
 
 const Root = () => (
   <Provider store={store}>

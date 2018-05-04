@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Icon } from '..';
 import './GlobalNav.css';
 
-
 const GlobalNav = () => (
   <nav>
     <Link to="/">

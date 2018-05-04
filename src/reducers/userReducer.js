@@ -1,37 +1,35 @@
 import {
-  REQUEST_AUTH,
-  RECEIVE_USER,
+  REQUESTING_AUTH,
+  RECEIVED_USER,
   AUTH_FAILED,
 } from '../actions/action-types';
 
-const initialState = {
-  isAuthenticated: false,
-  isFetching: false,
+const defaultState = {
+  verifyingUser: false,
+  signedInUser: null,
 };
 
-const userReducer = (state = initialState, action) => {
+const user = (state = defaultState, action) => {
   switch (action.type) {
-    case REQUEST_AUTH:
+    case REQUESTING_AUTH:
       return {
         ...state,
-        isFetching: true,
+        verifyingUser: true,
       };
-    case RECEIVE_USER:
+    case RECEIVED_USER:
       return {
         ...state,
-        isFetching: false,
-        isAuthenticated: true,
+        verifyingUser: false,
+        signedInUser: action.payload,
       };
     case AUTH_FAILED:
-      /* TODO */
       return {
         ...state,
-        isFetching: false,
-        isAuthenticated: false,
+        verifyingUser: false,
       };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default user;
