@@ -2,7 +2,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Home, AddItem, Settings, PageNotFound } from '../../views';
+import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
 import { GlobalNav } from '../';
 import './App.css';
 
@@ -12,6 +12,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route path="/add" component={AddItem} />
       <Route path="/settings" component={Settings} />
+      <Route path="/login" component={LogIn} />
       <Route path="/*" component={PageNotFound} />
     </Switch>
     <frosted-glass
