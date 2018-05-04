@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import JWT from 'jsonwebtoken';
+import Axios from 'axios';
 
 import { Input } from '../';
 
@@ -24,8 +25,11 @@ class LogInForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    // const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
-    console.log(this.state.formData);
+    const token = JWT.sign(this.state.formData, process.env.REACT_APP_API_JWT_SECRET);
+    Axios.post(process.env.REACT_APP_API_SIGN_IN_URL, { token })
+      .then((response) => {
+        console.log(response);
+      });
     // this.setState({
     //   key: Date.now(),
     //   formData,
