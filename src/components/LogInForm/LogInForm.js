@@ -43,17 +43,24 @@ class LogInForm extends Component {
     });
   }
 
-
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <Input type="email" placeholder="e-mail" value={this.state.formData.email} onChange={this.onEmailChange} />
-        <Input type="password" placeholder="lösenord" value={this.state.formData.password} onChange={this.onPasswordChange} />
-        <button type="submit">
-            skicka
-        </button>
+        <Input
+          type="email"
+          placeholder="e-mail"
+          value={this.state.formData.email}
+          onChange={this.onEmailChange}
+        />
+        <Input
+          type="password"
+          placeholder="lösenord"
+          value={this.state.formData.password}
+          onChange={this.onPasswordChange}
+        />
+        <button type="submit">skicka</button>
         <br />
-        {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' }
+        {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad'}
       </form>
     );
   }
