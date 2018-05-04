@@ -38,7 +38,6 @@ export const requestLogin = (formData: Object) => (dispatch: Dispatch) => {
       } else {
         console.error(error);
       }
-
       dispatch(requestFailure());
     });
 };
