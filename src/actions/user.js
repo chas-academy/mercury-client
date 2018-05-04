@@ -1,25 +1,18 @@
-/* TODO: integrate with the actual database
-  This code was written in conjunction with the initial "code pruning",
-  with the intention to test how to connect the client to the API
-*/
-// @flow
+import Axios from 'axios';
+import JWT from 'jsonwebtoken';
+
 import { REQUESTING_AUTH, RECEIVED_USER, AUTH_FAILED } from './action-types';
 
 export const requestAuth = () => ({ type: REQUESTING_AUTH });
 export const receiveUser = user => ({ type: RECEIVED_USER, payload: user });
 export const authFailed = () => ({ type: AUTH_FAILED });
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
 
-export const requestSignIn = user => (dispatch) => {
-  dispatch(requestAuth());
-
-  return fetch(`${API_BASE_URL}/fakeAuth`, {
-    method: 'post',
-    mode: 'no-cors',
-    body: user,
-  })
-    .then(res => res.json)
-    .then(json => dispatch(receiveUser(json.user)))
-    .catch(err => dispatch(authFailed()));
+export const requestLogin = (formData) => {
+  const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
+  Axios.post(API_LOGIN_URL, { token })
+    .then((response) => {
+      console.log(response);
+    });
 };
