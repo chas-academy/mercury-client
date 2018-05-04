@@ -11,8 +11,8 @@ type State = {
   isOpen: boolean
 };
 
-class Item extends Component {
-  constructor(props) {
+class Item extends Component<Props, State> {
+  constructor(props: ItemT) {
     super(props);
 
     // This binding is necessary to make `this` work in the callback
