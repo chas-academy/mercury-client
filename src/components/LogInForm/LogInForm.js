@@ -1,5 +1,9 @@
+<<<<<<< 19858b01d06ed5617b9a01ec6f3321a5a95f070e
 import React, { Component } from "react";
 import { connect } from "react-redux";
+=======
+import React, { Component } from 'react';
+>>>>>>> add simple error handling to login action
 
 import { requestLogin } from "../../actions/user";
 import { Input } from "../";
