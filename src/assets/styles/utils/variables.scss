@@ -2,9 +2,11 @@
 :root {
   --dark: #212121;
   --light: #fbfbfb;
-  --primary-color: #f3af4c;
+  --primary-color: #ff9f31;
   --secondary-color: #ffa067;
   --pink: #ff4379;
+  --yellow: #f3af4c;
+  --peach: #ffa067;
 }
 
 /***** Skin properties - how to explain it? *****/
@@ -15,9 +17,5 @@
 }
 
 :root {
-  --gradient-warm: linear-gradient(
-    180deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
-  );
+  --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
 }

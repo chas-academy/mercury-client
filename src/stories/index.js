@@ -19,7 +19,8 @@ import {
   LinkList,
   Item,
   ItemNav,
-  Icon
+  Icon,
+  ItemData
 } from "../components";
 
 /***** Stories of Button *****/
@@ -30,11 +31,15 @@ const buttonStories = storiesOf("Elements/Button", module);
 buttonStories
   .addDecorator(withKnobs)
   .add("No props is passed", () => <Button>button</Button>)
-  .add("No children", () => (
-    <Button color="secondary" onClick={action("trigger-an-event")} />
+  .add("shape='round'", () => (
+    <Button
+      color="secondary"
+      shape="round"
+      onClick={action("trigger-an-event")}
+    />
   ))
   .add("button w. icon", () => (
-    <Button onClick={action("clicked")}>
+    <Button color="icon" onClick={action("clicked")}>
       <Icon icon="rocket" color="pink" />
     </Button>
   ))
@@ -86,7 +91,20 @@ storiesOf("Elements/Icon", module)
   .add("rocket, no color provided", () => <Icon icon="rocket" size="xlarge" />);
 
 /***** Stories of Item *****/
-/* Needs fixin
-storiesOf("Elements/Item", module).add("text", () => (
-  <Item item={item}/>
-)); */
+
+const data = {
+  itemId: 3,
+  delimiter: 30,
+  goal: 3600,
+  goalType: "days of use",
+  price: 2499,
+  auto: false,
+  completed: false,
+  createdAt: "2018-05-02T16:55:13.322Z",
+  updatedAt: "2018-05-02T16:55:13.322Z",
+  CanonicalItem: {
+    name: "Apple Mac Book Pro 13 Touchbar",
+    icon: "macbook"
+  }
+};
+storiesOf("Elements/Item", module).add("article", () => <Item item={data} />);

@@ -12,25 +12,25 @@ const ItemNav = () => (
     > */}
     <div>
       <p>namn</p>
-      <Button color="primary">
+      <Button color="primary" shape="round">
         <Icon icon="rocket" color="pink" />
       </Button>
     </div>
     <div>
       <p>pris</p>
-      <Button>
+      <Button shape="round">
         <Icon icon="rocket" color="pink" />
       </Button>
     </div>
     <div>
       <p>mål</p>
-      <Button>
+      <Button shape="round">
         <Icon icon="rocket" color="pink" />
       </Button>
     </div>
     <div>
       <p>notiser</p>
-      <Button>
+      <Button shape="round">
         <Icon icon="rocket" color="pink" />
       </Button>
     </div>
