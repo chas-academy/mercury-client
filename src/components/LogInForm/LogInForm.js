@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { requestLogin } from '../../actions/user';
 import { Input } from '../';
@@ -19,7 +20,7 @@ class LogInForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    requestLogin(this.state.formData);
+    this.props.dispatch(requestLogin(this.state.formData));
   }
 
   onEmailChange(e) {
@@ -51,9 +52,15 @@ class LogInForm extends Component {
         <button type="submit">
             skicka
         </button>
+        <br />
+        {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' }
       </form>
     );
   }
 }
 
-export default LogInForm;
+const mapStateProps = state => ({
+  authenticated: state.user.authenticated,
+});
+
+export default connect(mapStateProps)(LogInForm);
