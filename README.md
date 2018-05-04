@@ -1,33 +1,37 @@
 # Mercury's App Boilerplate
-This is the App boilerplate which will get you started. For any questions regarding the stack, please use our [#help](https://chasacademy.slack.com/messages/C61J8A678/#help) channel in Slack.
 
-Table of contents
-=================
+# Table of contents
 
 <!--ts-->
-   * [Directory Layout](#directory-layout)
-   * [Quickstart](#quickstart)
-   * [Usage](#usage)
-      * [Docker](#docker)
-      * [Bash Commands](#bash-commands)
-      * [Database](#database)
-      * [Users](#users)
-<!--te-->
+
+* [Directory Layout](#directory-layout)
+* [Quickstart](#quickstart)
+* [Usage](#usage)
+  _ [Docker](#docker)
+  _ [Bash Commands](#bash-commands)
+  _ [Database](#database)
+  _ [Users](#users)
+  <!--te-->
 
 ## Directory Layout
+
 ```bash
 ./
 ├── /public/                     # Public directory, ready to be served by a web server
 ├── /src/                        # Directory for the app code, a standard create-react-app with Redux and other goodies
-│   ├── /Assets/                 #
-│   ├── /Components/             #
+│   ├── /assets/
+│   ├── /actions/                #
+│   ├── /components/             #
+│   ├── /constants/              #
 │   ├── /Config.dist/            #
-│   ├── /Lib/                    #
-│   ├── /Redux/                  #
-│   ├── /Tests/                  #
-│   ├── /Views/                  #
+│   ├── /containers/             #
+│   ├── /reducers/               #
+│   ├── /stories/                #
+│   │── /views/                  #
 │   ├── registerServiceWorker.js #
 │   └── index.js                 #
+│   └── types.js                 #
+│   └── setupTests.js            #
 ├── .env.dist                    # Defines template for environment variables
 ├── docker-compose.yml           # Defines Docker services, networks and volumes, do not touch unless you know what you are doing
 ├── Dockerfile                   # Defines how Docker should build a custom image for the application, do not touch unless you know what you are doing
@@ -35,6 +39,7 @@ Table of contents
 ```
 
 ## Quickstart
+
 It's best if this is started from the project root instead of inside the api repo, but if for some reason you want to work on the App independently you can run the project from this location. Here's how to do that:
 
 ```
@@ -102,7 +107,7 @@ Note: To view the Docker containers, open another terminal console then enter `d
 ### Docker
 
 | Command                                | Description                                                            |
-|----------------------------------------|------------------------------------------------------------------------|
+| -------------------------------------- | ---------------------------------------------------------------------- |
 | `./bin/install`                        | Build the Docker container and start the app                           |
 | `./bin/reinstall`                      | Rebuild the Docker container with the current branch and start the app |
 | `./bin/start`                          | Start the client app service                                           |
@@ -111,24 +116,25 @@ Note: To view the Docker containers, open another terminal console then enter `d
 
 ### CSS
 
-| Command           | Description                                                         |
-|-------------------|---------------------------------------------------------------------|
-| `./bin/css/watch` | Watch and compile *.scss files on file changes (for Mac users only) |
-| `./bin/css/build` | Manually compile *.scss files                                       |
+| Command           | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
+| `./bin/css/watch` | Watch and compile \*.scss files on file changes (for Mac users only) |
+| `./bin/css/build` | Manually compile \*.scss files                                       |
 
 ## Users
 
-| Name              | Email                  | Description |
-|-------------------|------------------------|-------------|
-| Super Admin User  | `superadmin@email.com` | Has wildcard access |
-| Admin User        | `admin@email.com`      | Has wildcard access but `Admin › Users › Delete` is excluded |
-| Common User       | `user@email.com`       | Can access `My Profile`, `Admin › Dashboard`, `Users`, `Users › View, and Settings` |
-| Referrer User     | `referrer@email.com`   | When `redirect` is set without the domain, e.i. `/admin/dashboard`, user shall be redirected to internal page if no location path (referrer) found on the Sign In page |
+| Name              | Email                  | Description                                                                                                                                                                             |
+| ----------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Super Admin User  | `superadmin@email.com` | Has wildcard access                                                                                                                                                                     |
+| Admin User        | `admin@email.com`      | Has wildcard access but `Admin › Users › Delete` is excluded                                                                                                                            |
+| Common User       | `user@email.com`       | Can access `My Profile`, `Admin › Dashboard`, `Users`, `Users › View, and Settings`                                                                                                     |
+| Referrer User     | `referrer@email.com`   | When `redirect` is set without the domain, e.i. `/admin/dashboard`, user shall be redirected to internal page if no location path (referrer) found on the Sign In page                  |
 | Redirect User     | `redirect@email.com`   | When `redirect` is set with complete URL, e.i. `https://github.com/anthub-services`, user shall be redirected to external page if no location path (referrer) found on the Sign In page |
-| Blocked User      | `blocked@email.com`    | User is signed in but the account is blocked |
-| Unauthorized User | `<any invalid email>`  | Simply enter wrong `email` and/or `password` |
+| Blocked User      | `blocked@email.com`    | User is signed in but the account is blocked                                                                                                                                            |
+| Unauthorized User | `<any invalid email>`  | Simply enter wrong `email` and/or `password`                                                                                                                                            |
 
 ## Flow and ESlint
+
 First you need to install all the new dependencies by doing:
 `yarn install`
 then, while you're at it you also need to install flow globally by using
@@ -136,3 +142,20 @@ then, while you're at it you also need to install flow globally by using
 Then predd Ctrl+, (Ord cmd+, on a mac) and add this to the preferences:
 `"javascript.validate.enable": false`
 Then, you need to download and add the flow-support for VC code, and restart VS Code.
+
+# CSS/SCSS Styleguide
+
+A few rules of special importance from [AirBnb's CSS/SCSS Styleguide](https://github.com/airbnb/css#sass)
+
+* Do not use ID selectors
+* Prefer dashes over camelCasing in class names
+* Write detailed comments for code that isn't self-documenting:
+  * Uses of z-index
+  * Compatibility or browser-specific hacks
+* Do not nest selectors more than three levels deep!
+
+In `assets/styles/` there you'll find `style.scss` - (which generates `style.css`) - which is imported in the index file, so it will affect the rest of the styles.
+
+Changes to any `scss` file in `assets/styles/` will update `style.css` as you run `yarn run watch-css` or `yarn run build-css`- as long as they are included in `style.scss`.
+
+In `assets/styles/utils/variables.scss` you'll find the projects global variables, that you can use in the components `.scss` files.

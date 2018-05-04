@@ -1,3 +1,8 @@
+/***** How to use CSS Variables *****/
+/*  If you declare a CSS Variable with the selector `:root` it will be available globally. 
+/*  You'll be able to use it in every components `.scss` file
+/*  like this -->   `var(--name-of-my-style)` */
+
 /***** Colors *****/
 :root {
   --dark: #212121;
