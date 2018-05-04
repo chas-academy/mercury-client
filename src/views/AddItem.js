@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import { ItemNav } from '../components';
 import './AddItem.css';
 
 const style = {
-  fontSize: '5em',
-  textAlign: 'center'
+  fontSize: '2em',
+  textAlign: 'center',
+  marginTop: '1.6em',
 };
 
 class AddItem extends Component {
@@ -17,7 +18,7 @@ class AddItem extends Component {
       description: '',
       cost: '',
       goal: '',
-      notification: ''
+      notification: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,23 +41,23 @@ class AddItem extends Component {
   goBack(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep - 1
+    this.setState(previousState => ({
+      currentStep: previousState.currentStep - 1,
     }));
   }
 
   goNext(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep + 1
+    this.setState(previousState => ({
+      currentStep: previousState.currentStep + 1,
     }));
   }
 
   render() {
     return (
       <div>
-        <h1 style={style}>Lägg till Pryl</h1>
+        <h1 style={style}>LÄGG TILL PRYL</h1>
         <ItemNav />
         {/* <ReactCSSTransitionGroup
           transitionName="progressButtonChange"

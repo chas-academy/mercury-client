@@ -21,9 +21,7 @@ class Item extends Component<Props, State> {
     this.state = { isOpen: false };
   }
   toggleCard = () => {
-
     this.setState(prevState => ({
-
       isOpen: !prevState.isOpen
     }));
   };
@@ -39,11 +37,11 @@ class Item extends Component<Props, State> {
         </header>
         {this.state.isOpen && (
           <dl>
-            <dt>Mål:</dt>
+            <dt>Mål</dt>
             <dd>{item.goal}</dd>
-            <dt>Användningar:</dt>
+            <dt>Användningar</dt>
             <dd>{item.delimiter}</dd>
-            <dt>Inköpspris:</dt>
+            <dt>Inköpspris</dt>
             <dd>{item.price}</dd>
           </dl>
         )}

@@ -4,6 +4,7 @@
   --light: #fbfbfb;
   --primary-color: #f3af4c;
   --secondary-color: #ffa067;
+  --pink: #ff4379;
 }
 
 /***** Skin properties - how to explain it? *****/
@@ -14,7 +15,7 @@
 }
 
 :root {
-  --gradient: linear-gradient(
+  --gradient-warm: linear-gradient(
     180deg,
     var(--primary-color) 0%,
     var(--secondary-color) 100%
