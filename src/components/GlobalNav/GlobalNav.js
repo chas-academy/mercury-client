@@ -9,10 +9,10 @@ const GlobalNav = () => (
       <Icon icon="home" color="turquoise" />
     </Link>
     <Link to="/add">
-      <Icon icon="plus" color="indianred" />
+      <Icon icon="plus" color="#ff4379" />
     </Link>
     <Link to="/settings">
-      <Icon icon="cog" color="goldenrod" />
+      <Icon icon="cog" color="orange" />
     </Link>
   </nav>
 );
