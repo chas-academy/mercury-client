@@ -1,15 +1,19 @@
 input {
-    border-radius: var(--border-rounded);
-    padding: 0.5em;
-    font-weight: 400; }
-  
-  .default {
-    background: var(--light); }
-  
-  .primary {
-    background: var(--primary-color);
-    color: var(--light); }
-  
-  .secondary {
-    background: var(--secondary-color);
-    color: var(--light); }
+  padding-bottom: 0px;
+  line-height: 0px;
+  vertical-align: baseline;
+  font-weight: 400;
+  font-size: 1.5em;
+  height: 0.7em;
+  margin-left: 20px;
+  width: calc(100% - 20px);
+  border: 0;
+  border-bottom: silver 2px solid;
+  background: none;
+  outline: 0; }
+
+.big {
+  font-size: 2em;
+  height: 1em;
+  padding-top: 1em;
+  border-bottom: #757474 3px solid; }

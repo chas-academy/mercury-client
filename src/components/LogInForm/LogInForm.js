@@ -3,6 +3,7 @@ import JWT from 'jsonwebtoken';
 import Axios from 'axios';
 
 import { Input } from '../';
+import './LogInForm.css';
 
 class LogInForm extends Component {
   constructor(props) {
@@ -67,13 +68,28 @@ class LogInForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <Input type="email" placeholder="e-mail" value={this.state.formData.email} onChange={this.onEmailChange} />
-        <Input type="password" placeholder="lösenord" value={this.state.formData.password} onChange={this.onPasswordChange} />
-        <button type="submit">
-            skicka
-        </button>
-      </form>
+      <section>
+        <form onSubmit={this.onSubmit}>
+          <Input
+            type="email"
+            placeholder="e-mail"
+            value={this.state.formData.email}
+            onChange={this.onEmailChange}
+            className="big"
+            autofocus="autofocus"
+          />
+          <Input
+            type="password"
+            placeholder="lösenord"
+            value={this.state.formData.password}
+            onChange={this.onPasswordChange}
+            className="big"
+          />
+          <button type="submit">
+            Logga in
+          </button>
+        </form>
+      </section>
     );
   }
 }

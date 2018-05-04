@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { ItemNav } from '../components';
-import './AddItem.css';
 
 const style = {
   fontSize: '5em',
-  textAlign: 'center'
+  textAlign: 'center',
 };
 
 class AddItem extends Component {
@@ -17,7 +15,7 @@ class AddItem extends Component {
       description: '',
       cost: '',
       goal: '',
-      notification: ''
+      notification: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,16 +38,16 @@ class AddItem extends Component {
   goBack(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep - 1
+    this.setState(previousState => ({
+      currentStep: previousState.currentStep - 1,
     }));
   }
 
   goNext(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep + 1
+    this.setState(previousState => ({
+      currentStep: previousState.currentStep + 1,
     }));
   }
 
