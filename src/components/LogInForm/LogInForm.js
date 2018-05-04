@@ -30,6 +30,8 @@ class LogInForm extends Component {
       .then((response) => {
         console.log(response);
       });
+    // TODO: Add redux logic that handles logged-in status
+    // when a token is successfully returned
     // this.setState({
     //   key: Date.now(),
     //   formData,
