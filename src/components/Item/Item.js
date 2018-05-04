@@ -1,9 +1,9 @@
 // @flow
-
 import React, { Component } from "react";
-import "./Item.css";
-import ProgressBar from "../ProgressBar/ProgressBar";
 import type { ItemT } from "../../types";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import Icon from "../Icon/Icon";
+import "./Item.css";
 
 type Props = Object;
 
@@ -20,7 +20,6 @@ class Item extends Component<Props, State> {
 
     this.state = { isOpen: false };
   }
-
   toggleCard = () => {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen
@@ -32,7 +31,10 @@ class Item extends Component<Props, State> {
 
     return (
       <article id={item.itemId} onClick={this.toggleCard}>
-        <h2>{item.CanonicalItem.name}</h2>
+        <header>
+          <h2>{item.CanonicalItem.name}</h2>
+          <Icon icon={item.CanonicalItem.icon} />
+        </header>
         {this.state.isOpen && (
           <dl>
             <dt>Mål:</dt>
@@ -43,13 +45,11 @@ class Item extends Component<Props, State> {
             <dd>{item.price}</dd>
           </dl>
         )}
-        <p>
-          Framsteg<br />
-          <ProgressBar
-            progressBarMax={item.goal}
-            progressBarCurrent={item.delimiter}
-          />
-        </p>
+        <h3> Framsteg </h3>
+        <ProgressBar
+          progressBarMax={item.goal}
+          progressBarCurrent={item.delimiter}
+        />
       </article>
     );
   }

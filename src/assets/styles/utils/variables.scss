@@ -1,18 +1,22 @@
-/***** Color *****/
+/***** Colors *****/
 :root {
   --dark: #212121;
   --light: #fbfbfb;
-  --primary-color: #ff9b3b;
-  --secondary-color: #ffcd43;
-  --info-color: #5ac6dd;
-  --warning-color: #ee5934;
-  --success-color: #fa709a;
-  --disabled-color: #c7c7c7;
+  --primary-color: #f3af4c;
+  --secondary-color: #ffa067;
 }
 
 /***** Skin properties - how to explain it? *****/
 :root {
   --border-rounded: 8px;
-  --shadow-dark: 0px 2px 11px -6px var(--dark);
-  --shadow-primary: 0px 6px 38px -16px var(--primary-color);
+  --shadow-dark: 0px 2px 12px -6px var(--dark);
+  --shadow-primary: 0 16px 32px -16px var(--primary-color);
+}
+
+:root {
+  --gradient: linear-gradient(
+    180deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
 }
