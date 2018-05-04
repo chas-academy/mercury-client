@@ -1,25 +1,48 @@
-/* TODO: integrate with the actual database
-  This code was written in conjunction with the initial "code pruning",
-  with the intention to test how to connect the client to the API
-*/
-// @flow
-import { REQUESTING_AUTH, RECEIVED_USER, AUTH_FAILED } from './action-types';
+// TODO: Make flow-compliant
+import Axios from 'axios';
+import JWT from 'jsonwebtoken';
 
-export const requestAuth = () => ({ type: REQUESTING_AUTH });
-export const receiveUser = user => ({ type: RECEIVED_USER, payload: user });
-export const authFailed = () => ({ type: AUTH_FAILED });
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+} from '../constants';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+export const requestToken = () => ({
+  type: LOGIN_START,
+});
 
-export const requestSignIn = user => (dispatch) => {
-  dispatch(requestAuth());
+export const receiveUser = user => ({
+  type: LOGIN_SUCCESS,
+  payload: user,
+});
 
-  return fetch(`${API_BASE_URL}/fakeAuth`, {
-    method: 'post',
-    mode: 'no-cors',
-    body: user,
-  })
-    .then(res => res.json)
-    .then(json => dispatch(receiveUser(json.user)))
-    .catch(err => dispatch(authFailed()));
+export const requestFailure = () => ({
+  type: LOGIN_FAILURE,
+});
+
+const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
+
+export const requestLogin = (formData: Object) => (dispatch: Dispatch) => {
+  const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
+  dispatch(requestToken());
+
+  Axios.post(API_LOGIN_URL, { token })
+    .then((response) => {
+      console.log(response);
+      const user = {
+        name: 'If this shows up somewhere, the reducer is working!',
+      };
+
+      dispatch(receiveUser(user));
+    })
+    .catch((error) => {
+      if (error.response && error.response.data.message) {
+        console.error(error.response.data.message);
+      } else {
+        console.error(error);
+      }
+
+      dispatch(requestFailure());
+    });
 };

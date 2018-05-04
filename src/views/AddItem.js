@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { ItemNav } from '../components';
 
 const style = {
-  fontSize: '5em',
+  fontSize: '2em',
   textAlign: 'center',
+  marginTop: '1.6em',
 };
 
 class AddItem extends Component {
@@ -54,7 +56,7 @@ class AddItem extends Component {
   render() {
     return (
       <div>
-        <h1 style={style}>Lägg till Pryl</h1>
+        <h1 style={style}>LÄGG TILL PRYL</h1>
         <ItemNav />
         {/* <ReactCSSTransitionGroup
           transitionName="progressButtonChange"
