@@ -1,13 +1,16 @@
 .input {
   all: unset;
   border: 0;
-  padding: 1px 5px; }
-  .input.underlined {
-    margin: 1em;
-    border-bottom: 1px solid var(--dark); }
-  .input.classic {
-    background: var(--light);
-    border-radius: var(--border-rounded);
-    -webkit-box-shadow: 0 0 0px 1000px var(--light) inset;
-    transition: background-color 5000s ease-in-out 0s;
-    box-shadow: 0.5px 0.5px 3px 0px #585858; }
+  padding: 1px 5px;
+}
+.input.underlined {
+  margin: 1em;
+  border-bottom: 1px solid var(--dark);
+}
+.input.classic {
+  background: var(--light);
+  border-radius: var(--border-rounded);
+  -webkit-box-shadow: 0 0 0px 1000px var(--light) inset;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0.5px 0.5px 3px 0px #585858;
+}

@@ -37,11 +37,11 @@ class Item extends Component<Props, State> {
         {this.state.isOpen && (
           <dl>
             <dt>Mål</dt>
-            <dd>{item.goal} sek</dd>
+            <dd>{item.goal}</dd>
             <dt>Användningar</dt>
             <dd>{item.delimiter}</dd>
             <dt>Inköpspris</dt>
-            <dd>{item.price} sek</dd>
+            <dd>{item.price}</dd>
           </dl>
         )}
         <h3> Framsteg </h3>
