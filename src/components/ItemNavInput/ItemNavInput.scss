@@ -1,19 +1,16 @@
 input {
+    border-radius: var(--border-rounded);
     padding: 0.5em;
     font-weight: 400;
-    background: transparent;
-    box-sizing: border-box;
-    border: none;
-    width: 30em;
-    border-bottom: 1px solid gray;
-    text-align: center;
+    font-size: 1.5em;
+    height: 1em;
+    width: 100%;
 }
 
-.inputForm,
-.btnGroup {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.big {
+    background: var(--light);
+    font-size: 4em;
+    height: 2.5em;
 }
 
 .default {
