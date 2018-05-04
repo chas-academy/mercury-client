@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { requestLogin } from '../../actions/user';
-import { Input } from '../';
+import { requestLogin } from "../../actions/user";
+import { Input } from "../";
 
 class LogInForm extends Component {
   constructor(props) {
@@ -12,9 +12,9 @@ class LogInForm extends Component {
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.state = {
       formData: {
-        email: '',
-        password: '',
-      },
+        email: "",
+        password: ""
+      }
     };
   }
 
@@ -28,8 +28,8 @@ class LogInForm extends Component {
     this.setState({
       formData: {
         email: e.target.value,
-        password: this.state.formData.password,
-      },
+        password: this.state.formData.password
+      }
     });
   }
 
@@ -38,8 +38,8 @@ class LogInForm extends Component {
     this.setState({
       formData: {
         email: this.state.formData.email,
-        password: e.target.value,
-      },
+        password: e.target.value
+      }
     });
   }
 
@@ -65,7 +65,7 @@ class LogInForm extends Component {
 }
 
 const mapStateProps = state => ({
-  authenticated: state.user.authenticated,
+  authenticated: state.user.authenticated
 });
 
 export default connect(mapStateProps)(LogInForm);
