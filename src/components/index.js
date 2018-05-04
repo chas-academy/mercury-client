@@ -7,4 +7,5 @@ export { default as GlobalNav } from './GlobalNav/GlobalNav';
 export { default as ProgressBar } from './ProgressBar/ProgressBar';
 export { default as Item } from './Item/Item';
 export { default as Items } from './Items/Items';
+export { default as ItemNav } from './ItemNav/ItemNav';
 export { default as Icon } from './Icon/Icon';

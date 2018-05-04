@@ -1,6 +1,10 @@
 import React from "react";
 import { storiesOf, addDecorator } from "@storybook/react";
-import { action, decorateAction,configureActions } from "@storybook/addon-actions";
+import {
+  action,
+  decorateAction,
+  configureActions
+} from "@storybook/addon-actions";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 import { withNotes } from "@storybook/addon-notes";
 import LinkTo from "@storybook/addon-links/react";
@@ -14,6 +18,7 @@ import {
   GlobalNav,
   LinkList,
   Item,
+  ItemNav,
   Icon
 } from "../components";
 
@@ -49,13 +54,11 @@ buttonStories
     </Button>
   ));
 
-
 /***** Stories of Input *****/
 storiesOf("Elements/Input", module)
   .add("text", () => <Input type="text" />)
   .add("date", () => <Input type="date" />)
   .add("number", () => <Input type="number" />);
-
 
 /***** Stories of ProgressBar*****/
 const progressStories = storiesOf("Elements/Progress", module);
@@ -73,7 +76,6 @@ progressStories
     <ProgressBar progressBarCurrent="100" progressBarMax="100" />
   ));
 
-
 /***** Stories of Icon *****/
 storiesOf("Elements/Icon", module)
   .add("home, default size - small", () => <Icon icon="home" color="#5e515a" />)
@@ -82,7 +84,6 @@ storiesOf("Elements/Icon", module)
   ))
   .add("cog - large", () => <Icon icon="cog" color="orange" size="large" />)
   .add("rocket, no color provided", () => <Icon icon="rocket" size="xlarge" />);
-
 
 /***** Stories of Item *****/
 /* Needs fixin

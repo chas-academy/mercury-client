@@ -21,7 +21,9 @@ class Item extends Component<Props, State> {
     this.state = { isOpen: false };
   }
   toggleCard = () => {
+
     this.setState(prevState => ({
+
       isOpen: !prevState.isOpen
     }));
   };
