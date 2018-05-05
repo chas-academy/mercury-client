@@ -6,7 +6,6 @@ import Icon from "../Icon/Icon";
 import "./Item.css";
 
 type Props = Object;
-
 type State = {
   isOpen: boolean
 };

@@ -1,8 +1,15 @@
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import './PageTitle.css';
+// @flow
+import React from "react";
+import { Helmet } from "react-helmet";
+import "./PageTitle.css";
 
-const PageTitle = ({ ...props }) => {
+type Props = {
+  title?: string,
+  customTitle?: string,
+  appName?: string
+};
+
+const PageTitle = ({ ...props }: Props) => {
   let siteName = process.env.REACT_APP_SITE_NAME;
   let { title, customTitle, appName } = props;
 
