@@ -1,10 +1,6 @@
 import React from 'react';
+import { PageTitle } from '../components';
 
-const style = {
-  fontSize: '2em',
-  textAlign: 'center',
-  marginTop: '1.6em',
-};
-const Settings = () => <h1 style={style}>INSTÄLLNINGAR</h1>;
+const Settings = () => <PageTitle title="inställningar" />;
 
 export default Settings;
