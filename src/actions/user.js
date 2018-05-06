@@ -26,6 +26,11 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
   Axios.post(API_LOGIN_URL, { token })
     .then(response => {
       console.log(response);
+      const user = {
+        name: "If this shows up somewhere, the reducer is working!"
+      };
+
+      dispatch(receiveUser(user));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
