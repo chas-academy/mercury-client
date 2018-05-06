@@ -22,8 +22,8 @@ progressBarCurrent: number
       }
       max={100}
       value={
-        percent(progressBarCurrent, progressBarMax) < 2
-          ? 2
+        percent(progressBarCurrent, progressBarMax) < 3
+          ? 3
           : percent(progressBarCurrent, progressBarMax)
       }
     >
