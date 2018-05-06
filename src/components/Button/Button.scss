@@ -1,29 +1,17 @@
-// button {
-//   background: none;
-//   border: none;
-//   border-radius: 0;
-//   color: inherit;
-//   line-height: normal;
-//   overflow: visible;
-//   padding: 0;
-//   user-select: none;
-//   appearance: none;
-//   -webkit-appearance: none;
-//   -webkit-user-select: none;
-//   -moz-user-select: none;
-//   -ms-user-select: none;
-// }
-
 .button {
   all: unset;
   font: inherit;
   cursor: pointer;
   color: inherit;
   padding: 0.4em;
-  border-radius: var(--border-rounded);
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
+
+  &.box {
+    max-width: 96px;
+    border-radius: var(--border-rounded);
+  }
 
   &.round {
     border-radius: 50%;
@@ -31,17 +19,8 @@
     height: 40px;
   }
 
-  span {
+  .icon {
     margin: 0 0.1em;
-  }
-
-  &.text {
-    color: var(--primary-color);
-    background-color: var(--light);
-    &:hover,
-    &:active {
-      font-weight: bolder;
-    }
   }
 
   &.primary {
@@ -54,27 +33,24 @@
     }
   }
 
-  &.secondary {
+  &.grey {
     color: var(--light);
-    background: var(--secondary-color);
+    background: var(--grey);
     &:hover,
     &:active {
-      color: var(--secondary-color);
-      background: var(--light);
-    }
-  }
-
-  &.icon {
-    color: var(--pink);
-    &:hover,
-    &:active {
-      /*todo*/
+      color: var(--light);
+      background: var(--primary-color);
     }
   }
 
   &:disabled {
     color: var(--dark);
-    background: var(--light);
-    box-shadow: var(--light);
+    background: var(--grey);
+
+    &:hover,
+    &:active {
+      color: var(--dark);
+      background: var(--grey);
+    }
   }
 }

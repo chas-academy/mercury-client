@@ -154,8 +154,4 @@ A few rules of special importance from [AirBnb's CSS/SCSS Styleguide](https://gi
   * Compatibility or browser-specific hacks
 * Do not nest selectors more than three levels deep!
 
-In `assets/styles/` there you'll find `style.scss` - (which generates `style.css`) - which is imported in the index file, so it will affect the rest of the styles.
-
-Changes to any `scss` file in `assets/styles/` will update `style.css` as you run `yarn run watch-css` or `yarn run build-css`- as long as they are included in `style.scss`.
-
-In `assets/styles/utils/variables.scss` you'll find the projects global variables, that you can use in the components `.scss` files.
+In `src/components/App/App.scss` you'll find styles applied to `<body>` and global variables, that you can use in the components `.scss` files.

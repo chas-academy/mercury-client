@@ -6,13 +6,13 @@ import './GlobalNav.css';
 const GlobalNav = () => (
   <nav className="navbar">
     <Link to="/">
-      <Icon icon="home" color="turquoise" />
+      <Icon icon="home" />
     </Link>
     <Link to="/add">
-      <Icon icon="plus" color="#ff4379" />
+      <Icon icon="plus" />
     </Link>
     <Link to="/settings">
-      <Icon icon="cog" color="orange" />
+      <Icon icon="cog" />
     </Link>
   </nav>
 );

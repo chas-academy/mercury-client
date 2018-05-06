@@ -13,25 +13,25 @@ const ItemNav = () => (
     <div>
       <p>namn</p>
       <Button color="primary" shape="round">
-        <Icon icon="rocket" color="pink" />
+        <Icon icon="rocket" />
       </Button>
     </div>
     <div>
       <p>pris</p>
-      <Button shape="round">
-        <Icon icon="rocket" color="pink" />
+      <Button color="grey" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     <div>
       <p>mål</p>
-      <Button shape="round">
-        <Icon icon="rocket" color="pink" />
+      <Button color="grey" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     <div>
       <p>notiser</p>
-      <Button shape="round">
-        <Icon icon="rocket" color="pink" />
+      <Button color="grey" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     {/* </ReactCSSTransitionGroup> */}

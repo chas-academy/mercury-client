@@ -1,17 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
-/***** How to use CSS Variables *****/
-/*  If you declare a CSS Variable with the selector `:root` it will be available globally. 
-/*  You'll be able to use it in every components `.scss` file
-/*  like this -->   `var(--name-of-my-style)` */
-
 /***** Colors *****/
 :root {
   --dark: #212121;
   --light: #fbfbfb;
-  --primary-color: #ff9f31;
-  --secondary-color: #ffa067;
-  --pink: #ff4379;
+  --primary-color: #f2994a;
+  --secondary-color: #ff4c7f;
+  --grey: #cfc9c9;
+  --pink: #ff4c7f;
+  --ocean: turquoise;
   --yellow: #f3af4c;
   --peach: #ffa067;
   --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
@@ -27,14 +24,6 @@
 body {
   margin: 0;
   background-color: var(--light);
-  #root {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-.content {
   font-size: 16px;
   line-height: 1;
   color: var(--dark);
@@ -42,8 +31,17 @@ body {
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   background-color: var(--light);
   font-weight: 400;
+}
+
+.banner {
+  width: 100%;
+  color: var(--pink);
+  font-variant: small-caps;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1 100vh;
+  justify-content: center;
 }

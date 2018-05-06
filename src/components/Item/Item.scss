@@ -24,13 +24,12 @@
   }
 
   dl {
-    all: unset;
     display: flex;
     flex-wrap: wrap;
 
     dt,
     dd {
-      all: unset;
+      padding-top: 0.5em;
       font-variant-caps: all-petite-caps;
     }
 

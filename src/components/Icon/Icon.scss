@@ -1,7 +1,5 @@
 .icon {
-  color: inherit;
   display: inline-block;
-
   &.small {
     width: 24px;
     height: 24px;
@@ -20,5 +18,9 @@
   &.xlarge {
     width: 128px;
     height: 128px;
+  }
+
+  svg {
+    fill: currentColor;
   }
 }
