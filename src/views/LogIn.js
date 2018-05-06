@@ -3,10 +3,10 @@ import React from 'react';
 import { LogInForm, PageTitle } from '../components';
 
 const LogIn = () => (
-  <div>
+  <React.Fragment>
     <PageTitle title="logga in" />
     <LogInForm />
-  </div>
+  </React.Fragment>
 );
 
 export default LogIn;

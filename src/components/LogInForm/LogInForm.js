@@ -51,12 +51,14 @@ class LogInForm extends Component {
           placeholder="e-mail"
           value={this.state.formData.email}
           onChange={this.onEmailChange}
+          variant="underlined"
         />
         <Input
           type="password"
           placeholder="lösenord"
           value={this.state.formData.password}
           onChange={this.onPasswordChange}
+          variant="underlined"
         />
         <button type="submit">skicka</button>
         <br />

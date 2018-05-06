@@ -3,11 +3,11 @@ import { CSSTransition } from 'react-transition-group';
 import { ItemNav, ItemNavInput, PageTitle } from '../components';
 
 const AddItem = () => (
-  <div>
+  <React.Fragment>
     <PageTitle title="lägg till en pryl" />
     <ItemNav />
     <ItemNavInput />
-  </div>
+  </React.Fragment>
 );
 
 export default AddItem;

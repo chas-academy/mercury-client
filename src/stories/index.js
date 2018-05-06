@@ -8,8 +8,7 @@ import {
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
 import { withNotes } from "@storybook/addon-notes";
 import LinkTo from "@storybook/addon-links/react";
-
-import "../assets/styles/style.css";
+import "../components/App/App.css";
 
 import {
   Button,
@@ -61,25 +60,10 @@ buttonStories
 
 /***** Stories of Input *****/
 storiesOf("Elements/Input", module)
-  .add("text", () => <Input type="text" />)
+  .add("underlined text", () => <Input type="text" />)
+  .add("classic", () => <Input type="text" variant="classic" />)
   .add("date", () => <Input type="date" />)
   .add("number", () => <Input type="number" />);
-
-/***** Stories of ProgressBar*****/
-const progressStories = storiesOf("Elements/Progress", module);
-progressStories.addDecorator(withKnobs);
-
-progressStories
-  .add("0%", () => <ProgressBar progressBarCurrent="0" progressBarMax="100" />)
-  .add("30%", () => (
-    <ProgressBar progressBarCurrent="30" progressBarMax="100" />
-  ))
-  .add("60%", () => (
-    <ProgressBar progressBarCurrent="60" progressBarMax="100" />
-  ))
-  .add("100%", () => (
-    <ProgressBar progressBarCurrent="100" progressBarMax="100" />
-  ));
 
 /***** Stories of Icon *****/
 storiesOf("Elements/Icon", module)
@@ -92,10 +76,10 @@ storiesOf("Elements/Icon", module)
 
 /***** Stories of Item *****/
 
-const data = {
+const item = {
   itemId: 3,
   delimiter: 30,
-  goal: 3600,
+  goal: 100,
   goalType: "days of use",
   price: 2499,
   auto: false,
@@ -107,4 +91,19 @@ const data = {
     icon: "macbook"
   }
 };
-storiesOf("Elements/Item", module).add("article", () => <Item item={data} />);
+storiesOf("Elements/Item", module).add("article", () => <Item item={item} />);
+
+/***** Stories of ProgressBar*****/
+const progressStories = storiesOf("Elements/Progress", module);
+progressStories.addDecorator(withKnobs);
+
+progressStories
+  .add("...progress", () => (
+    <ProgressBar
+      progressBarCurrent={item.delimiter}
+      progressBarMax={item.goal}
+    />
+  ))
+  .add("100%", () => (
+    <ProgressBar className="" progressBarCurrent="100" progressBarMax="100" />
+  ));

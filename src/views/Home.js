@@ -3,10 +3,10 @@ import ItemsContainer from '../containers/ItemsContainer';
 import { PageTitle } from '../components';
 
 const Home = () => (
-  <div>
+  <React.Fragment>
     <PageTitle title="mina prylar" />
     <ItemsContainer />
-  </div>
+  </React.Fragment>
 );
 
 export default Home;

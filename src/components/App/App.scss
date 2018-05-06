@@ -1,16 +1,49 @@
-.nav-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3rem;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: space-between;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+/***** How to use CSS Variables *****/
+/*  If you declare a CSS Variable with the selector `:root` it will be available globally. 
+/*  You'll be able to use it in every components `.scss` file
+/*  like this -->   `var(--name-of-my-style)` */
+
+/***** Colors *****/
+:root {
+  --dark: #212121;
+  --light: #fbfbfb;
+  --primary-color: #ff9f31;
+  --secondary-color: #ffa067;
+  --pink: #ff4379;
+  --yellow: #f3af4c;
+  --peach: #ffa067;
+  --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
 }
 
-.nav-container > .glass-content {
-  background-color: rgba(255, 255, 255, 0.3);
+/***** Skin properties - how to explain it? *****/
+:root {
+  --border-rounded: 8px;
+  --shadow-dark: 0px 2px 12px -6px var(--dark);
+  --shadow-primary: 0 16px 32px -16px var(--primary-color);
+}
+
+body {
+  margin: 0;
+  background-color: var(--light);
+  #root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.content {
+  font-size: 16px;
+  line-height: 1;
+  color: var(--dark);
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background-color: var(--light);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 100vh;
 }

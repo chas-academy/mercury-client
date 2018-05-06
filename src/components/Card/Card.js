@@ -1,12 +1,13 @@
 // @flow
 import React from 'react';
+import './Card.css';
 
 const Card = ({
-  variant = 'circle',
+  variant = 'box',
   children,
 }: {
 variant: string,
 children: any
-}) => <div className={variant}>{children}</div>;
+}) => <div className={`card ${variant}`}>{children}</div>;
 
 export default Card;

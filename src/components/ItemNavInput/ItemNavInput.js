@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './ItemNavInput.css';
 
-const style = {
-  fontSize: '5em',
-  textAlign: 'center',
-};
-
 class ItemNavInput extends Component {
   constructor(props) {
     super(props);
@@ -63,7 +58,7 @@ class ItemNavInput extends Component {
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
             <input
-              className="big"
+              className="step big"
               type="text"
               name="description"
               placeholder="Vad har du köpt?"
@@ -76,7 +71,7 @@ class ItemNavInput extends Component {
         {this.state.currentStep === 2 && (
           <form key="2" onSubmit={this.handleSubmit}>
             <input
-              className="big"
+              className="step big"
               type="text"
               name="cost"
               placeholder="Vad kostar den?"
@@ -89,7 +84,7 @@ class ItemNavInput extends Component {
         {this.state.currentStep === 3 && (
           <form key="3" onSubmit={this.handleSubmit}>
             <input
-              className="big"
+              className="step big"
               type="text"
               name="goal"
               placeholder="Vad är ditt mål?"
@@ -102,7 +97,7 @@ class ItemNavInput extends Component {
         {this.state.currentStep === 4 && (
           <form key="4" onSubmit={this.handleSubmit}>
             <input
-              className="big"
+              className="step big"
               type="text"
               name="notifications"
               placeholder="Hur ofta vill du ha notiser?"

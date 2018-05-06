@@ -4,7 +4,7 @@ import { Icon } from '..';
 import './GlobalNav.css';
 
 const GlobalNav = () => (
-  <nav>
+  <nav className="navbar">
     <Link to="/">
       <Icon icon="home" color="turquoise" />
     </Link>
