@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import "./Button.css";
+import './Button.css';
 /* TODO: add props validation */
 
 const Button = ({
-  color = "primary",
-  shape = "",
+  color = 'primary',
+  shape = '',
   children,
   ...props
 }: {
-  color: string,
-  children: any,
-  props: {}
+color: string,
+children: any,
+props: {}
 }) => (
   <button className={`button ${color} ${shape}`} {...props}>
     {children}

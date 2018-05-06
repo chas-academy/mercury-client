@@ -1,12 +1,8 @@
-<<<<<<< 19858b01d06ed5617b9a01ec6f3321a5a95f070e
-import React, { Component } from "react";
-import { connect } from "react-redux";
-=======
 import React, { Component } from 'react';
->>>>>>> add simple error handling to login action
+import { connect } from 'react-redux';
 
-import { requestLogin } from "../../actions/user";
-import { Input } from "../";
+import { requestLogin } from '../../actions/user';
+import { Input } from '../';
 
 class LogInForm extends Component {
   constructor(props) {
@@ -16,9 +12,9 @@ class LogInForm extends Component {
     this.onPasswordChange = this.onPasswordChange.bind(this);
     this.state = {
       formData: {
-        email: "",
-        password: ""
-      }
+        email: '',
+        password: '',
+      },
     };
   }
 
@@ -32,8 +28,8 @@ class LogInForm extends Component {
     this.setState({
       formData: {
         email: e.target.value,
-        password: this.state.formData.password
-      }
+        password: this.state.formData.password,
+      },
     });
   }
 
@@ -42,34 +38,37 @@ class LogInForm extends Component {
     this.setState({
       formData: {
         email: this.state.formData.email,
-        password: e.target.value
-      }
+        password: e.target.value,
+      },
     });
   }
 
   render() {
     return (
-      <form onSubmit={this.onSubmit(this.formData)}>
+      <form onSubmit={this.onSubmit}>
         <Input
           type="email"
           placeholder="e-mail"
           value={this.state.formData.email}
+          onChange={this.onEmailChange}
           variant="underlined"
         />
         <Input
           type="password"
           placeholder="lösenord"
           value={this.state.formData.password}
+          onChange={this.onPasswordChange}
           variant="underlined"
         />
         <button type="submit">skicka</button>
+        {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad'}
       </form>
     );
   }
 }
 
 const mapStateProps = state => ({
-  authenticated: state.user.authenticated
+  authenticated: state.user.authenticated,
 });
 
 export default connect(mapStateProps)(LogInForm);

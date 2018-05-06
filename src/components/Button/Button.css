@@ -1,0 +1,40 @@
+.button {
+  all: unset;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  padding: 0.4em;
+  border-radius: var(--border-rounded);
+  box-shadow: var(--shadow-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; }
+  .button.round {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px; }
+  .button span {
+    margin: 0 0.1em; }
+  .button.text {
+    color: var(--primary-color);
+    background-color: var(--light); }
+    .button.text:hover, .button.text:active {
+      font-weight: bolder; }
+  .button.primary {
+    color: var(--light);
+    background: var(--primary-color); }
+    .button.primary:hover, .button.primary:active {
+      color: var(--primary-color);
+      background: var(--light); }
+  .button.secondary {
+    color: var(--light);
+    background: var(--secondary-color); }
+    .button.secondary:hover, .button.secondary:active {
+      color: var(--secondary-color);
+      background: var(--light); }
+  .button:disabled {
+    color: var(--dark);
+    background: var(--light);
+    box-shadow: var(--light); }
+  .button > span {
+    margin: 0 0.1em; }
