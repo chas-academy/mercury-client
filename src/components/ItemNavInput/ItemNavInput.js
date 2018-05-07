@@ -9,20 +9,19 @@ class ItemNavInput extends Component {
   constructor(props) {
     super(props);
 
+    this.handleChange = this.handleChange.bind(this);
+    this.goBack = this.goBack.bind(this);
+    this.goNext = this.goNext.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
       currentStep: 1,
       item: {
         goal: null,
         price: null,
-        userMetaId: 1,
         canonicalId: null,
       },
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.goBack = this.goBack.bind(this);
-    this.goNext = this.goNext.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -77,7 +76,6 @@ class ItemNavInput extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.dispatch(createItem(this.state.item));
-    console.log(this.state);
   }
 
   render() {
