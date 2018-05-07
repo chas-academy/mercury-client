@@ -1,0 +1,12 @@
+.input {
+  all: unset;
+  border: 0;
+  padding: 1px 5px; }
+  .input.underlined {
+    margin: 1em;
+    border-bottom: 1px solid var(--dark); }
+  .input.classic {
+    background: var(--light);
+    border-radius: var(--border-rounded);
+    box-shadow: 0.5px 0.5px 3px 0px inset #585858;
+    padding: 0.4em; }

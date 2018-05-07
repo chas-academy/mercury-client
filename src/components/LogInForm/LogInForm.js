@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 
 import { requestLogin } from '../../actions/user';
 import { Input } from '../';
+import { Icon } from '../';
+import './LogInForm.css';
 
 class LogInForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props: Props) {
+    super(props: Props);
     this.onSubmit = this.onSubmit.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
@@ -46,6 +48,10 @@ class LogInForm extends Component {
   render() {
     return (
       <section className="login">
+        <Icon
+          icon="signin"
+          size="large"
+        />
         <form onSubmit={this.onSubmit}>
           <Input
             type="email"
@@ -61,9 +67,9 @@ class LogInForm extends Component {
             onChange={this.onPasswordChange}
             variant="underlined"
           />
-          <button type="submit">skicka</button>
-          {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad'}
+          <button type="submit">Logga in</button>
         </form>
+        {/* this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' */}
       </section>
     );
   }
