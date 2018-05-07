@@ -2,5 +2,9 @@
 body {
   line-height: 1;
   font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+<<<<<<< HEAD
   color: var(--dark);
+=======
+  color: var(--pink);
+>>>>>>> less ugly, not fully finished, but good enough for now
   background-color: var(--light); }

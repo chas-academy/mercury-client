@@ -5,9 +5,11 @@ import { requestLogin } from '../../actions/user';
 import { Input } from '../';
 import './LogInForm.css';
 
+type Props = Object;
+
 class LogInForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props: Props) {
+    super(props: Props);
     this.onSubmit = this.onSubmit.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
@@ -47,10 +49,15 @@ class LogInForm extends Component {
   render() {
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
       <section className="login">
 =======
       <section>
 >>>>>>> Lots of edits of log in and css
+=======
+
+      <section className="login">
+>>>>>>> less ugly, not fully finished, but good enough for now
         <form onSubmit={this.onSubmit}>
           <Input
             type="email"
@@ -80,7 +87,13 @@ class LogInForm extends Component {
           <button type="submit">
             Logga in
           </button>
+<<<<<<< HEAD
 >>>>>>> Lots of edits of log in and css
+=======
+          <p>
+            {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' }
+          </p>
+>>>>>>> less ugly, not fully finished, but good enough for now
         </form>
       </section>
     );
