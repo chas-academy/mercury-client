@@ -1,19 +1,12 @@
-input {
-  padding-bottom: 0px;
-  line-height: 0px;
-  vertical-align: baseline;
-  font-weight: 400;
-  font-size: 1.5em;
-  height: 0.7em;
-  margin-left: 20px;
-  width: calc(100% - 20px);
+.input {
+  all: unset;
   border: 0;
-  border-bottom: silver 2px solid;
-  background: none;
-  outline: 0; }
-
-.big {
-  font-size: 2em;
-  height: 1em;
-  padding-top: 1em;
-  border-bottom: #757474 3px solid; }
+  padding: 1px 5px; }
+  .input.underlined {
+    margin: 1em;
+    border-bottom: 1px solid var(--dark); }
+  .input.classic {
+    background: var(--light);
+    border-radius: var(--border-rounded);
+    box-shadow: 0.5px 0.5px 3px 0px inset #585858;
+    padding: 0.4em; }

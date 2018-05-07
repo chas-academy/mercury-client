@@ -4,7 +4,7 @@ import { LogInForm, PageTitle } from '../components';
 
 const LogIn = () => (
   <React.Fragment>
-    <PageTitle title="logga in" />
+    <PageTitle title="&nbsp;" />
     <LogInForm />
   </React.Fragment>
 );
