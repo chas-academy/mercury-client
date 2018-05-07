@@ -7,10 +7,10 @@ import {
   REQUEST_ITEMS_FAILURE,
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
-  ADD_ITEM_FAILURE,
+  ADD_ITEM_FAILURE
 } from '../constants';
 
-import type { Dispatch } from "../types";
+import type { Dispatch } from '../types';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
@@ -18,14 +18,14 @@ export const requestItems = () => ({
   type: REQUEST_ITEMS_START
 });
 
-export const receiveItems = (items) => ({
+export const receiveItems = items => ({
   type: REQUEST_ITEMS_SUCCESS,
-  payload: items,
+  payload: items
 });
 
 export const requestItemsFailure = () => ({
-  type: REQUEST_ITEMS_FAILURE,
-})
+  type: REQUEST_ITEMS_FAILURE
+});
 
 export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   dispatch(requestItems());
@@ -34,40 +34,40 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   const userId = 1;
 
   Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
-    .then((response) => {
-      dispatch(receiveItems(response.data.data))
+    .then(response => {
+      dispatch(receiveItems(response.data.data));
     })
-    .catch((error) => {
+    .catch(error => {
       if (error.response && error.response.data.message) {
-        console.error(error.response.data.message)
+        console.error(error.response.data.message);
       } else {
-        console.error
+        console.error;
       }
 
       dispatch(requestItemsFailure());
     });
-}
+};
 
 export const addItem = () => ({
   type: ADD_ITEM_START
 });
 
 export const addItemSuccess = () => ({
-  type: ADD_ITEM_SUCCESS,
+  type: ADD_ITEM_SUCCESS
 });
 
 export const addItemFailure = () => ({
-  type: ADD_ITEM_FAILURE,
-})
+  type: ADD_ITEM_FAILURE
+});
 
 export const createItem = (item: object) => (dispatch: Dispatch) => {
   console.log('attempting to add item', item);
   dispatch(addItem());
   Axios.post(`${API_BASE_URL}/items`, item)
-  .then((response) => {
-    console.log(response)
-  })
-  .catch((error) => {
-    console.error(error)
-  })
-}
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
