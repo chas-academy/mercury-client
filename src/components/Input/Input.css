@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .input {
   all: unset;
   border: 0;
@@ -11,24 +10,3 @@
     border-radius: var(--border-rounded);
     box-shadow: 0.5px 0.5px 3px 0px inset #585858;
     padding: 0.4em; }
-=======
-input {
-  padding-bottom: 0px;
-  line-height: 0px;
-  vertical-align: baseline;
-  font-weight: 400;
-  font-size: 1.5em;
-  height: 0.7em;
-  margin-left: 20px;
-  width: calc(100% - 20px);
-  border: 0;
-  border-bottom: silver 2px solid;
-  background: none;
-  outline: 0; }
-
-.big {
-  font-size: 2em;
-  height: 1em;
-  padding-top: 1em;
-  border-bottom: #757474 3px solid; }
->>>>>>> 09cb7bc811e6563771ff894eaf20e43d7d116250
