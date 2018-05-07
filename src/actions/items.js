@@ -34,7 +34,6 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   const userId = 1;
 
   Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
-<<<<<<< HEAD
     .then((response) => {
       dispatch(receiveItems(response.data.data))
     })
@@ -49,31 +48,26 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
     });
 }
 
+export const addItem = () => ({
+  type: ADD_ITEM_START
+});
+
+export const addItemSuccess = () => ({
+  type: ADD_ITEM_SUCCESS,
+});
+
+export const addItemFailure = () => ({
+  type: ADD_ITEM_FAILURE,
+})
+
 export const createItem = (item: object) => (dispatch: Dispatch) => {
-  console.log(item);
-  // Axios.post(
-  //   `${API_BASE_URL}/items`,
-  //   item.goal,
-  //   item.price,
-  //   item.userMetaId,
-  //   item.canonicalId,
-  // )
-=======
+  console.log('attempting to add item', item);
+  dispatch(addItem());
+  Axios.post(`${API_BASE_URL}/items`, item)
   .then((response) => {
-    dispatch(receiveItems(response.data.data))
+    console.log(response)
   })
   .catch((error) => {
-    if (error.response && error.response.data.message) {
-      console.error(error.response.data.message)
-    } else {
-      console.error
-    }
-
-    dispatch(requestItemsFailure());
-  });
-}
-
-export const createItem = (query: object) => (dispatch: Dispatch) => {
-  Axios.post
->>>>>>> eb3a755dc508c5806a0aa4bb7905e592298f6fba
+    console.error(error)
+  })
 }

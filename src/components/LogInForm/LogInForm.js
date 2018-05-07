@@ -7,9 +7,11 @@ import { Input } from '../';
 class LogInForm extends Component {
   constructor(props) {
     super(props);
+    
     this.onSubmit = this.onSubmit.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
+    
     this.state = {
       formData: {
         email: '',

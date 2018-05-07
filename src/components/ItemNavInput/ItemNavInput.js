@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+
+import { createItem } from '../../actions/items';
 import './ItemNavInput.css';
 
 class ItemNavInput extends Component {
   constructor(props) {
     super(props);
 
+    this.handleChange = this.handleChange.bind(this);
+    this.goBack = this.goBack.bind(this);
+    this.goNext = this.goNext.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
       currentStep: 1,
       item: {
         goal: null,
         price: null,
-        userMetaId: 1,
         canonicalId: null,
       }
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.goBack = this.goBack.bind(this);
-    this.goNext = this.goNext.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -28,15 +30,15 @@ class ItemNavInput extends Component {
         item: {
           goal: this.state.item.goal,
           price: this.state.item.price,
-          canonicalId: e.target.value 
+          canonicalId: e.target.value
         }
       });
     } else if (e.target.name === 'price') {
       this.setState({
         item: {
-          goal: this.state.item.goal,          
+          goal: this.state.item.goal,
           price: e.target.value,
-          canonicalId: this.state.item.canonicalId 
+          canonicalId: this.state.item.canonicalId
         }
       });
     } else if (e.target.name === 'goal') {
@@ -44,7 +46,7 @@ class ItemNavInput extends Component {
         item: {
           goal: e.target.value,
           price: this.state.item.price,
-          canonicalId: this.state.item.canonicalId 
+          canonicalId: this.state.item.canonicalId
         }
       });
     } else if (e.target.name === 'notifications') {
@@ -73,7 +75,7 @@ class ItemNavInput extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.props.dispatch(createItem(this.state.item));
   }
 
   render() {
@@ -148,11 +150,11 @@ class ItemNavInput extends Component {
         <div className="btnGroup">
           {this.state.currentStep > 1 ? <button onClick={this.goBack}>&#8249;</button> : ''}
           {this.state.currentStep < 4 ? <button onClick={this.goNext}>&#8250;</button> : <button onClick={this.handleSubmit} type="submit">Spara</button>}
-          
+
         </div>
       </div>
     );
   }
 }
 
-export default ItemNavInput;
+export default connect (null)(ItemNavInput);
