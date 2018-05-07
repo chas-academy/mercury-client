@@ -34,6 +34,7 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   const userId = 1;
 
   Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
+<<<<<<< HEAD
     .then((response) => {
       dispatch(receiveItems(response.data.data))
     })
@@ -57,4 +58,22 @@ export const createItem = (item: object) => (dispatch: Dispatch) => {
   //   item.userMetaId,
   //   item.canonicalId,
   // )
+=======
+  .then((response) => {
+    dispatch(receiveItems(response.data.data))
+  })
+  .catch((error) => {
+    if (error.response && error.response.data.message) {
+      console.error(error.response.data.message)
+    } else {
+      console.error
+    }
+
+    dispatch(requestItemsFailure());
+  });
+}
+
+export const createItem = (query: object) => (dispatch: Dispatch) => {
+  Axios.post
+>>>>>>> eb3a755dc508c5806a0aa4bb7905e592298f6fba
 }
