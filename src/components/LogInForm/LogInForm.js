@@ -7,7 +7,6 @@ import { Input, Button } from '../';
 class LogInForm extends Component {
   constructor(props: Props) {
     super((props: Props));
-
     this.onSubmit = this.onSubmit.bind(this);
     this.onLogout = this.onLogout.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
@@ -71,7 +70,6 @@ class LogInForm extends Component {
           />
           <button type="submit">Logga in</button>
         </form>
-        {/* this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' */}
         <Button onClick={this.onLogout}>Logout</Button>
       </section>
     );
