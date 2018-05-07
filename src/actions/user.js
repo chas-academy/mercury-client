@@ -1,14 +1,16 @@
 // TODO: Make flow-compliant
-import Axios from "axios";
-import JWT from "jsonwebtoken";
-import Store from "store";
+import Axios from 'axios';
+import JWT from 'jsonwebtoken';
+import Store from 'store';
 
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT
-} from "../constants";
+  LOGOUT_START,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE
+} from '../constants';
 
 export const requestToken = () => ({
   type: LOGIN_START
@@ -23,8 +25,16 @@ export const requestFailure = () => ({
   type: LOGIN_FAILURE
 });
 
-export const logout = () => ({
-  type: LOGOUT
+export const requestTokenLogout = () => ({
+  type: LOGOUT_START
+});
+
+export const removeUser = () => ({
+  type: LOGOUT_SUCCESS
+});
+
+export const requestFailureLogout = () => ({
+  type: LOGOUT_FAILURE
 });
 
 const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
@@ -38,11 +48,13 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
     .then(response => {
       const { token } = response.data;
       storeToken({ token }); /* Set token in local storage using 'store' */
-      const user = {
-        name: "If this shows up somewhere, the reducer is working!"
-      };
 
-      dispatch(receiveUser(user));
+      const decodedToken = JWT.decode(
+        response.data.token,
+        process.env.REACT_APP_API_JWT_SECRET
+      );
+
+      dispatch(receiveUser(decodedToken));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
@@ -55,8 +67,24 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
 };
 
 export const requestLogout = () => (dispatch: Dispatch) => {
-  dispatch(logout());
-  deleteToken("token");
+  const token = getToken();
+  dispatch(requestTokenLogout());
+  Axios({
+    method: 'post',
+    url: `${API_LOGOUT_URL}`,
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(
+      response => dispatch(removeUser(response.data)) && deleteToken('token')
+    )
+    .catch(error => {
+      if (error.response && error.response.data.message) {
+        console.error(error.response.data.message);
+      } else {
+        console.error(error);
+      }
+      dispatch(requestFailureLogout());
+    });
 };
 
 /*** Manage token in local storage ***/
@@ -66,9 +94,9 @@ export const storeToken = data => {
   }
 };
 
-export const getToken = () => Store.get("token");
+export const getToken = () => Store.get('token');
 
-export const deleteToken = () => Store.remove("token");
+export const deleteToken = () => Store.remove('token');
 
 export function decodeToken() {
   if (getToken()) {
