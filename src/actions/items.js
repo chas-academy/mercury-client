@@ -23,22 +23,30 @@ export const receiveItems = (items) => ({
   payload: items,
 });
 
-// Temporary userId for testing purposes
-// should be replaced by the id of the current logged in user
-const userId = 1;
+export const requestItemsFailure = () => ({
+  type: REQUEST_ITEMS_FAILURE,
+})
 
-export const fetchData = (query: string) => (dispatch: Dispatch) => {
+export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   dispatch(requestItems());
-  fetch(`${API_BASE_URL}/users/1/${query}`)
-    .then(res => res.json())
-    .then(json => dispatch(receiveItems(json.data)))
-    .catch(error =>
-      console.log(
-        "An error occured while trying to fetch items from the server",
-        error
-      )
-    );
-};
+  // Temporary userId for testing purposes
+  // should be replaced by the id of the current logged in user
+  const userId = 1;
+
+  Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
+  .then((response) => {
+    dispatch(receiveItems(response.data.data))
+  })
+  .catch((error) => {
+    if (error.response && error.response.data.message) {
+      console.error(error.response.data.message)
+    } else {
+      console.error
+    }
+
+    dispatch(requestItemsFailure());
+  });
+}
 
 export const createItem = (query: object) => (dispatch: Dispatch) => {
   Axios.post
