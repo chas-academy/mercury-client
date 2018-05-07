@@ -6,7 +6,6 @@ import Icon from "../Icon/Icon";
 import "./Item.css";
 
 type Props = Object;
-
 type State = {
   isOpen: boolean
 };
@@ -21,9 +20,7 @@ class Item extends Component<Props, State> {
     this.state = { isOpen: false };
   }
   toggleCard = () => {
-
     this.setState(prevState => ({
-
       isOpen: !prevState.isOpen
     }));
   };
@@ -32,18 +29,18 @@ class Item extends Component<Props, State> {
     const { item } = this.props;
 
     return (
-      <article id={item.itemId} onClick={this.toggleCard}>
+      <article className="item" onClick={this.toggleCard}>
         <header>
           <h2>{item.CanonicalItem.name}</h2>
           <Icon icon={item.CanonicalItem.icon} />
         </header>
         {this.state.isOpen && (
           <dl>
-            <dt>Mål:</dt>
+            <dt>Mål</dt>
             <dd>{item.goal}</dd>
-            <dt>Användningar:</dt>
+            <dt>Användningar</dt>
             <dd>{item.delimiter}</dd>
-            <dt>Inköpspris:</dt>
+            <dt>Inköpspris</dt>
             <dd>{item.price}</dd>
           </dl>
         )}

@@ -1,4 +1,9 @@
-.list {
+.items {
+  flex: 0 1 300px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-around;
+  margin-bottom: 100px;
+  max-width: 720px;
 }

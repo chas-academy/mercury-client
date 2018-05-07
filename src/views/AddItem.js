@@ -1,18 +1,13 @@
 import React from 'react';
-import { ItemNav } from '../components';
-import { ItemNavInput } from '../components';
-
-const style = {
-  fontSize: '5em',
-  textAlign: 'center'
-};
+import { CSSTransition } from 'react-transition-group';
+import { ItemNav, ItemNavInput, PageTitle } from '../components';
 
 const AddItem = () => (
-  <div>
-    <h1 style={style}>Lägg till Pryl</h1>
+  <React.Fragment>
+    <PageTitle title="lägg till en pryl" />
     <ItemNav />
     <ItemNavInput />
-  </div>
+  </React.Fragment>
 );
 
 export default AddItem;

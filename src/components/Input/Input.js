@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 
 import './Input.css';
 
-const Input = ({ color = 'light', ...props }) => (
-  <input className={`${color}`} {...props} />
+const Input = ({ variant = 'underlined', ...props }: { variant: string }) => (
+  <input className={`input ${variant}`} {...props} />
 );
 
 export default Input;

@@ -4,15 +4,15 @@ import { Icon } from '..';
 import './GlobalNav.css';
 
 const GlobalNav = () => (
-  <nav>
+  <nav className="navbar">
     <Link to="/">
-      <Icon icon="home" color="turquoise" />
+      <Icon icon="home" />
     </Link>
     <Link to="/add">
-      <Icon icon="plus" color="indianred" />
+      <Icon icon="plus" />
     </Link>
     <Link to="/settings">
-      <Icon icon="cog" color="goldenrod" />
+      <Icon icon="cog" />
     </Link>
   </nav>
 );

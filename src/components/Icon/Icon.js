@@ -1,10 +1,10 @@
 import React from 'react';
 import './Icon.css';
 
-const Icon = ({ icon, color = 'white', size = 'small' }) => (
+const Icon = ({ icon, size = 'small' }) => (
   <span className={`icon ${size}`}>
     <svg viewBox={`0 0 ${ICONS[icon].width} ${ICONS[icon].height}`}>
-      <g fill={color}>
+      <g>
         <path d={ICONS[icon].path} width="100%" height="100%" />
       </g>
     </svg>

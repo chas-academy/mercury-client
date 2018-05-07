@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import { Icon, Button } from '..';
 import './ItemNav.css';
 
@@ -12,26 +12,26 @@ const ItemNav = () => (
     > */}
     <div>
       <p>namn</p>
-      <Button color="primary">
-        <Icon icon="rocket" color="pink" />
+      <Button color="primary" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     <div>
       <p>pris</p>
-      <Button>
-        <Icon icon="rocket" color="pink" />
+      <Button color="grey" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     <div>
       <p>mål</p>
-      <Button>
-        <Icon icon="rocket" color="pink" />
+      <Button color="grey" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     <div>
       <p>notiser</p>
-      <Button>
-        <Icon icon="rocket" color="pink" />
+      <Button color="grey" shape="round">
+        <Icon icon="rocket" />
       </Button>
     </div>
     {/* </ReactCSSTransitionGroup> */}
