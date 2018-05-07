@@ -2,6 +2,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT,
 } from '../constants';
 
 const defaultState = {
@@ -21,12 +22,19 @@ const user = (state = defaultState, action) => {
       return {
         ...state,
         fetchingUser: false,
+        authenticated: true,
         user: action.payload,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         fetchingUser: false,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        authenticated: false,
+        user: {},
       };
     default:
       return state;
