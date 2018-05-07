@@ -6,7 +6,6 @@ import Icon from "../Icon/Icon";
 import "./Item.css";
 
 type Props = Object;
-
 type State = {
   isOpen: boolean
 };
@@ -30,7 +29,7 @@ class Item extends Component<Props, State> {
     const { item } = this.props;
 
     return (
-      <article id={item.itemId} onClick={this.toggleCard}>
+      <article className="item" onClick={this.toggleCard}>
         <header>
           <h2>{item.CanonicalItem.name}</h2>
           <Icon icon={item.CanonicalItem.icon} />

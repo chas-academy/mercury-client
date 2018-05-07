@@ -1,10 +1,16 @@
 import React from 'react';
+import { PageTitle, Card } from '../components';
 
-const style = {
-  fontSize: '2em',
-  textAlign: 'center',
-  marginTop: '1.6em',
-};
-const Settings = () => <h1 style={style}>INSTÄLLNINGAR</h1>;
-
+const Settings = () => (
+  <React.Fragment>
+    <PageTitle title="inställningar" />
+    <Card variant="circle">
+      <h4>h4!</h4>
+    </Card>
+    <Card>
+      <h2>boxy</h2>
+      <h4>h4 in Card with class box & card</h4>
+    </Card>
+  </React.Fragment>
+);
 export default Settings;

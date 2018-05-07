@@ -1,5 +1,11 @@
 // @flow
 
+export type CanonicalItemT = {
+  name: string,
+  id: number,
+  icon: string
+};
+
 export type ItemT = {
   itemId: number,
   CanonicalItem: Object,
@@ -9,7 +15,8 @@ export type ItemT = {
   createdAt: Date,
   updatedAt: Date,
   auto: boolean,
-  completed: boolean
+  completed: boolean,
+  CanonicalItem: CanonicalItemT
 };
 
 /* TODO: Update types */

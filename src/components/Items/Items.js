@@ -6,7 +6,9 @@ import "./Items.css";
 import type { ItemT } from "../../types";
 
 const Items = ({ items }: { items: Array<ItemT> }) => (
-  <section>{items.map(item => <Item key={item.itemId} item={item} />)}</section>
+  <section className="items">
+    {items.map(item => <Item key={item.itemId} item={item} />)}
+  </section>
 );
 
 export default Items;

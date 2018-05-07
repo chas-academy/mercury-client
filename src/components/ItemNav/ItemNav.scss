@@ -1,39 +1,33 @@
 .navSteps {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
 }
 
-h2 {
-    font-size: 300%;
-    color: white;
-    font-weight: 1200;
-    margin-bottom: 1rem;
-}
-
-.button {
-    width: 100%;
-    border-radius: 50%;
-}
-
+// h2 {
+//   font-size: 300%;
+//   color: white;
+//   font-weight: 1200;
+//   margin-bottom: 1rem;
+// }
 
 /* CSS for transitions with ReactCSSTransitionGroup */
 
 .progressButtonChange-enter {
-    opacity: 0;
+  opacity: 0;
 }
 
 .progressButtonChange-active {
-    opacity: 1;
-    transition: opacity 400ms ease-out;
+  opacity: 1;
+  transition: opacity 400ms ease-out;
 }
 
 .progressButtonChange-leave {
-    opacity: 1;
+  opacity: 1;
 }
 
 .progressButtonChange-leave-active {
-    opacity: 0;
-    transition: opacity 400ms ease-out;
+  opacity: 0;
+  transition: opacity 400ms ease-out;
 }

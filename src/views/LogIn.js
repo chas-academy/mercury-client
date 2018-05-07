@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { LogInForm } from '../components';
+import { LogInForm, PageTitle } from '../components';
 
 const LogIn = () => (
-  <div>
-    <p>Här testar vi inloggningen</p>
+  <React.Fragment>
+    <PageTitle title="logga in" />
     <LogInForm />
-  </div>
+  </React.Fragment>
 );
 
 export default LogIn;
