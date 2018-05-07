@@ -5,9 +5,11 @@ import { requestLogin } from '../../actions/user';
 import { Input } from '../';
 import './LogInForm.css';
 
+type Props = Object;
+
 class LogInForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props: Props) {
+    super(props: Props);
     this.onSubmit = this.onSubmit.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
@@ -48,7 +50,7 @@ class LogInForm extends Component {
   render() {
     return (
 
-      <section>
+      <section className="login">
         <form onSubmit={this.onSubmit}>
           <Input
             type="email"
@@ -68,9 +70,9 @@ class LogInForm extends Component {
           <button type="submit">
             Logga in
           </button>
-      <p>
-              {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' }
-      </p>
+          <p>
+            {this.props.authenticated ? 'du är inloggad' : 'du är inte inloggad' }
+          </p>
         </form>
       </section>
 
