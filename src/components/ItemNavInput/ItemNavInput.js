@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Input } from '../';
 import './ItemNavInput.css';
 
 class ItemNavInput extends Component {
@@ -11,7 +12,7 @@ class ItemNavInput extends Component {
       description: '',
       cost: '',
       goal: '',
-      notification: '',
+      notification: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,22 +35,22 @@ class ItemNavInput extends Component {
   goBack(event) {
     event.preventDefault();
 
-    this.setState(previousState => ({
-      currentStep: previousState.currentStep - 1,
+    this.setState((previousState) => ({
+      currentStep: previousState.currentStep - 1
     }));
   }
 
   goNext(event) {
     event.preventDefault();
 
-    this.setState(previousState => ({
-      currentStep: previousState.currentStep + 1,
+    this.setState((previousState) => ({
+      currentStep: previousState.currentStep + 1
     }));
   }
 
   render() {
     return (
-      <div>
+      <div className="formContainer">
         {/* <ReactCSSTransitionGroup
           transitionName="progressButtonChange"
           transitionEnterTimeout={400}
@@ -57,52 +58,52 @@ class ItemNavInput extends Component {
         > */}
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
-            <input
-              className="step big"
+            <Input
               type="text"
               name="description"
               placeholder="Vad har du köpt?"
               value={this.state.description}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
 
         {this.state.currentStep === 2 && (
           <form key="2" onSubmit={this.handleSubmit}>
-            <input
-              className="step big"
+            <Input
               type="text"
               name="cost"
               placeholder="Vad kostar den?"
               value={this.state.cost}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
 
         {this.state.currentStep === 3 && (
           <form key="3" onSubmit={this.handleSubmit}>
-            <input
-              className="step big"
+            <Input
               type="text"
               name="goal"
               placeholder="Vad är ditt mål?"
               value={this.state.goal}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
 
         {this.state.currentStep === 4 && (
           <form key="4" onSubmit={this.handleSubmit}>
-            <input
-              className="step big"
+            <Input
               type="text"
               name="notifications"
               placeholder="Hur ofta vill du ha notiser?"
               value={this.state.notification}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
