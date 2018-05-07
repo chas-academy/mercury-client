@@ -1,7 +1,0 @@
-// @flow
-export const REQUESTING_AUTH = 'REQUESTING_AUTH';
-export const RECEIVED_USER = 'RECEIVED_USER';
-export const AUTH_FAILED = 'AUTH_FAILED';
-export const REQUESTING_DATA = 'REQUESTING_DATA';
-export const REQUEST_SUCCEDED = 'REQUEST_SUCCEDED';
-export const RECEIVED_DATA = 'RECEIVED_DATA';

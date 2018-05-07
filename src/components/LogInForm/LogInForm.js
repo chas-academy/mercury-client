@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { requestLogin, requestLogout } from '../../actions/user';
-import { Input, Button } from '../';
+import { Input, Button, Icon } from '../';
 
 class LogInForm extends Component {
   constructor(props: Props) {
