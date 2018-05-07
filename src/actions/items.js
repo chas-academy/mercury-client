@@ -34,20 +34,27 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   const userId = 1;
 
   Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
-  .then((response) => {
-    dispatch(receiveItems(response.data.data))
-  })
-  .catch((error) => {
-    if (error.response && error.response.data.message) {
-      console.error(error.response.data.message)
-    } else {
-      console.error
-    }
+    .then((response) => {
+      dispatch(receiveItems(response.data.data))
+    })
+    .catch((error) => {
+      if (error.response && error.response.data.message) {
+        console.error(error.response.data.message)
+      } else {
+        console.error
+      }
 
-    dispatch(requestItemsFailure());
-  });
+      dispatch(requestItemsFailure());
+    });
 }
 
-export const createItem = (query: object) => (dispatch: Dispatch) => {
-  Axios.post
+export const createItem = (item: object) => (dispatch: Dispatch) => {
+  console.log(item);
+  // Axios.post(
+  //   `${API_BASE_URL}/items`,
+  //   item.goal,
+  //   item.price,
+  //   item.userMetaId,
+  //   item.canonicalId,
+  // )
 }
