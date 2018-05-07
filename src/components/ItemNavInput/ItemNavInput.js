@@ -9,19 +9,20 @@ class ItemNavInput extends Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.goBack = this.goBack.bind(this);
-    this.goNext = this.goNext.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     this.state = {
       currentStep: 1,
       item: {
         goal: null,
         price: null,
+        userMetaId: 1,
         canonicalId: null,
-      }
+      },
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.goBack = this.goBack.bind(this);
+    this.goNext = this.goNext.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = (e) => {
@@ -30,24 +31,24 @@ class ItemNavInput extends Component {
         item: {
           goal: this.state.item.goal,
           price: this.state.item.price,
-          canonicalId: e.target.value
-        }
+          canonicalId: e.target.value,
+        },
       });
     } else if (e.target.name === 'price') {
       this.setState({
         item: {
           goal: this.state.item.goal,
           price: e.target.value,
-          canonicalId: this.state.item.canonicalId
-        }
+          canonicalId: this.state.item.canonicalId,
+        },
       });
     } else if (e.target.name === 'goal') {
       this.setState({
         item: {
           goal: e.target.value,
           price: this.state.item.price,
-          canonicalId: this.state.item.canonicalId
-        }
+          canonicalId: this.state.item.canonicalId,
+        },
       });
     } else if (e.target.name === 'notifications') {
       this.setState({ notification: e.target.value });
@@ -76,6 +77,7 @@ class ItemNavInput extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.dispatch(createItem(this.state.item));
+    console.log(this.state);
   }
 
   render() {
@@ -88,9 +90,7 @@ class ItemNavInput extends Component {
         > */}
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
-            <label for="canonical">
-              Vad har du köpt?
-          </label>
+            <label htmlFor="canonical">Vad har du köpt?</label>
             <input
               className="step big"
               name="canonical"
@@ -103,9 +103,7 @@ class ItemNavInput extends Component {
 
         {this.state.currentStep === 2 && (
           <form key="2" onSubmit={this.handleSubmit}>
-            <label for="price">
-              Vad kostade den?
-          </label>
+            <label htmlFor="price">Vad kostade den?</label>
             <input
               className="step big"
               name="price"
@@ -118,9 +116,7 @@ class ItemNavInput extends Component {
 
         {this.state.currentStep === 3 && (
           <form key="3" onSubmit={this.handleSubmit}>
-            <label for="goal">
-              Vad är ditt mål?
-          </label>
+            <label htmlFor="goal">Vad är ditt mål?</label>
             <input
               className="step big"
               name="goal"
@@ -133,9 +129,9 @@ class ItemNavInput extends Component {
 
         {this.state.currentStep === 4 && (
           <form key="4" onSubmit={this.handleSubmit}>
-            <label for="notifications">
+            <label htmlFor="notifications">
               Hur ofta vill du ha notiser? (detta finns inte än)
-          </label>
+            </label>
             <input
               disabled="true"
               className="step big"
@@ -148,13 +144,22 @@ class ItemNavInput extends Component {
         )}
         {/* </ReactCSSTransitionGroup> */}
         <div className="btnGroup">
-          {this.state.currentStep > 1 ? <button onClick={this.goBack}>&#8249;</button> : ''}
-          {this.state.currentStep < 4 ? <button onClick={this.goNext}>&#8250;</button> : <button onClick={this.handleSubmit} type="submit">Spara</button>}
-
+          {this.state.currentStep > 1 ? (
+            <button onClick={this.goBack}>&#8249;</button>
+          ) : (
+            ''
+          )}
+          {this.state.currentStep < 4 ? (
+            <button onClick={this.goNext}>&#8250;</button>
+          ) : (
+            <button onClick={this.handleSubmit} type="submit">
+              Spara
+            </button>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default connect (null)(ItemNavInput);
+export default connect(null)(ItemNavInput);
