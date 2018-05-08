@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { Input } from '../';
+import { Input, Button } from '../';
 
 import { createItem } from '../../actions/items';
 import './ItemNavInput.css';
@@ -152,16 +152,16 @@ class ItemNavInput extends Component {
         {/* </ReactCSSTransitionGroup> */}
         <div className="btnGroup">
           {this.state.currentStep > 1 ? (
-            <button onClick={this.goBack}>&#8249;</button>
+            <Button onClick={this.goBack}>&#8249;</Button>
           ) : (
             ''
           )}
           {this.state.currentStep < 4 ? (
-            <button onClick={this.goNext}>&#8250;</button>
+            <Button onClick={this.goNext}>&#8250;</Button>
           ) : (
-            <button onClick={this.handleSubmit} type="submit">
+            <Button onClick={this.handleSubmit} type="submit">
               Spara
-            </button>
+            </Button>
           )}
         </div>
       </div>
