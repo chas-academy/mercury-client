@@ -1,8 +1,9 @@
 .navSteps {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    padding-top: 2em;
 }
 
 // h2 {
@@ -15,19 +16,19 @@
 /* CSS for transitions with ReactCSSTransitionGroup */
 
 .progressButtonChange-enter {
-  opacity: 0;
+    opacity: 0;
 }
 
 .progressButtonChange-active {
-  opacity: 1;
-  transition: opacity 400ms ease-out;
+    opacity: 1;
+    transition: opacity 400ms ease-out;
 }
 
 .progressButtonChange-leave {
-  opacity: 1;
+    opacity: 1;
 }
 
 .progressButtonChange-leave-active {
-  opacity: 0;
-  transition: opacity 400ms ease-out;
+    opacity: 0;
+    transition: opacity 400ms ease-out;
 }

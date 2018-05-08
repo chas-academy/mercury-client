@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import { Input, Button } from '../';
 
 import { createItem } from '../../actions/items';
 import './ItemNavInput.css';
@@ -8,6 +9,14 @@ import './ItemNavInput.css';
 class ItemNavInput extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      currentStep: 1,
+      description: '',
+      cost: '',
+      goal: '',
+      notification: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.goBack = this.goBack.bind(this);
@@ -57,8 +66,8 @@ class ItemNavInput extends Component {
   goBack(event) {
     event.preventDefault();
     if (this.state.currentStep > 1) {
-      this.setState(previousState => ({
-        currentStep: previousState.currentStep - 1,
+      this.setState((previousState) => ({
+        currentStep: previousState.currentStep - 1
       }));
     }
   }
@@ -67,8 +76,8 @@ class ItemNavInput extends Component {
     event.preventDefault();
 
     if (this.state.currentStep < 4) {
-      this.setState(previousState => ({
-        currentStep: previousState.currentStep + 1,
+      this.setState((previousState) => ({
+        currentStep: previousState.currentStep + 1
       }));
     }
   }
@@ -80,7 +89,7 @@ class ItemNavInput extends Component {
 
   render() {
     return (
-      <div>
+      <div className="formContainer">
         {/* <ReactCSSTransitionGroup
           transitionName="progressButtonChange"
           transitionEnterTimeout={400}
@@ -88,39 +97,39 @@ class ItemNavInput extends Component {
         > */}
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
-            <label htmlFor="canonical">Vad har du köpt?</label>
-            <input
-              className="step big"
+            <label for="canonical">Vad har du köpt?</label>
+            <Input
               name="canonical"
               placeholder="(canonicalId)"
               value={this.state.item.canonicalId}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
 
         {this.state.currentStep === 2 && (
           <form key="2" onSubmit={this.handleSubmit}>
-            <label htmlFor="price">Vad kostade den?</label>
-            <input
-              className="step big"
+            <label for="price">Vad kostade den?</label>
+            <Input
               name="price"
               placeholder="(price)"
               value={this.state.item.price}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
 
         {this.state.currentStep === 3 && (
           <form key="3" onSubmit={this.handleSubmit}>
-            <label htmlFor="goal">Vad är ditt mål?</label>
-            <input
-              className="step big"
+            <label for="goal">Vad är ditt mål?</label>
+            <Input
               name="goal"
               placeholder="(goal)"
               value={this.state.item.goal}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
@@ -132,18 +141,18 @@ class ItemNavInput extends Component {
             </label>
             <input
               disabled="true"
-              className="step big"
               name="notifications"
               placeholder="null"
               value={this.state.notification}
               onChange={this.handleChange}
+              variant="underlined"
             />
           </form>
         )}
         {/* </ReactCSSTransitionGroup> */}
         <div className="btnGroup">
           {this.state.currentStep > 1 ? (
-            <button onClick={this.goBack}>&#8249;</button>
+            <Button onClick={this.goBack}>&#8249;</Button>
           ) : (
             ''
           )}
