@@ -7,7 +7,8 @@ import {
   REQUEST_ITEMS_FAILURE,
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
-  ADD_ITEM_FAILURE
+  ADD_ITEM_FAILURE,
+  NOTIFY
 } from '../constants';
 
 import type { Dispatch } from '../types';
@@ -27,6 +28,11 @@ export const requestItemsFailure = () => ({
   type: REQUEST_ITEMS_FAILURE
 });
 
+export const notifySuccess = message => ({
+  type: NOTIFY,
+  payload: message
+});
+
 export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   dispatch(requestItems());
   // Temporary userId for testing purposes
@@ -36,6 +42,11 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
     .then(response => {
       dispatch(receiveItems(response.data.data));
+      const message = {
+        type: 'success',
+        body: 'test'
+      }
+      dispatch(notifySuccess(message));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {

@@ -8,6 +8,7 @@ import {
 const defaultState = {
   isFetching: false,
   allItems: [],
+  notification: {}
 };
 
 const items = (state = defaultState, action) => {
