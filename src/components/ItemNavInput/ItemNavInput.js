@@ -28,8 +28,8 @@ class ItemNavInput extends Component {
       item: {
         goal: null,
         price: null,
-        canonicalId: null,
-      },
+        canonicalId: null
+      }
     };
   }
 
@@ -39,24 +39,24 @@ class ItemNavInput extends Component {
         item: {
           goal: this.state.item.goal,
           price: this.state.item.price,
-          canonicalId: e.target.value,
-        },
+          canonicalId: e.target.value
+        }
       });
     } else if (e.target.name === 'price') {
       this.setState({
         item: {
           goal: this.state.item.goal,
           price: e.target.value,
-          canonicalId: this.state.item.canonicalId,
-        },
+          canonicalId: this.state.item.canonicalId
+        }
       });
     } else if (e.target.name === 'goal') {
       this.setState({
         item: {
           goal: e.target.value,
           price: this.state.item.price,
-          canonicalId: this.state.item.canonicalId,
-        },
+          canonicalId: this.state.item.canonicalId
+        }
       });
     } else if (e.target.name === 'notifications') {
       this.setState({ notification: e.target.value });
@@ -139,7 +139,7 @@ class ItemNavInput extends Component {
             <label htmlFor="notifications">
               Hur ofta vill du ha notiser? (detta finns inte än)
             </label>
-            <input
+            <Input
               disabled="true"
               name="notifications"
               placeholder="null"
@@ -157,11 +157,11 @@ class ItemNavInput extends Component {
             ''
           )}
           {this.state.currentStep < 4 ? (
-            <button onClick={this.goNext}>&#8250;</button>
+            <Button onClick={this.goNext}>&#8250;</Button>
           ) : (
-            <button onClick={this.handleSubmit} type="submit">
+            <Button onClick={this.handleSubmit} type="submit">
               Spara
-            </button>
+            </Button>
           )}
         </div>
       </div>
