@@ -9,7 +9,6 @@ import './App.css';
 
 const App = () => (
   <React.Fragment>
-    <header className="banner">worth it</header>
     <main className="content">
       <Switch>
         <Route exact path="/" component={Home} />
