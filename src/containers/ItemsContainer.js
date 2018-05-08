@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchData } from '../actions/items';
+import { fetchItems } from '../actions/items';
 import { Items } from '../components';
 
 class ItemsContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchData('items'));
+    this.props.dispatch(fetchItems('items'));
   }
 
   render() {

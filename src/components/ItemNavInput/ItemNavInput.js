@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { Input } from '../';
+
+import { createItem } from '../../actions/items';
 import './ItemNavInput.css';
 
 class ItemNavInput extends Component {
@@ -18,34 +21,70 @@ class ItemNavInput extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.goBack = this.goBack.bind(this);
     this.goNext = this.goNext.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      currentStep: 1,
+      item: {
+        goal: null,
+        price: null,
+        canonicalId: null
+      }
+    };
   }
 
-  handleChange = (event) => {
-    if (event.target.name === 'description') {
-      this.setState({ description: event.target.value });
-    } else if (event.target.name === 'cost') {
-      this.setState({ cost: event.target.value });
-    } else if (event.target.name === 'goal') {
-      this.setState({ goal: event.target.value });
-    } else if (event.target.name === 'notifications') {
-      this.setState({ notification: event.target.value });
+  handleChange = (e) => {
+    if (e.target.name === 'canonical') {
+      this.setState({
+        item: {
+          goal: this.state.item.goal,
+          price: this.state.item.price,
+          canonicalId: e.target.value
+        }
+      });
+    } else if (e.target.name === 'price') {
+      this.setState({
+        item: {
+          goal: this.state.item.goal,
+          price: e.target.value,
+          canonicalId: this.state.item.canonicalId
+        }
+      });
+    } else if (e.target.name === 'goal') {
+      this.setState({
+        item: {
+          goal: e.target.value,
+          price: this.state.item.price,
+          canonicalId: this.state.item.canonicalId
+        }
+      });
+    } else if (e.target.name === 'notifications') {
+      this.setState({ notification: e.target.value });
     }
   };
 
   goBack(event) {
     event.preventDefault();
-
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep - 1
-    }));
+    if (this.state.currentStep > 1) {
+      this.setState((previousState) => ({
+        currentStep: previousState.currentStep - 1
+      }));
+    }
   }
 
   goNext(event) {
     event.preventDefault();
 
-    this.setState((previousState) => ({
-      currentStep: previousState.currentStep + 1
-    }));
+    if (this.state.currentStep < 4) {
+      this.setState((previousState) => ({
+        currentStep: previousState.currentStep + 1
+      }));
+    }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.dispatch(createItem(this.state.item));
   }
 
   render() {
@@ -58,11 +97,11 @@ class ItemNavInput extends Component {
         > */}
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
+            <label for="canonical">Vad har du köpt?</label>
             <Input
-              type="text"
-              name="description"
-              placeholder="Vad har du köpt?"
-              value={this.state.description}
+              name="canonical"
+              placeholder="(canonicalId)"
+              value={this.state.item.canonicalId}
               onChange={this.handleChange}
               variant="underlined"
             />
@@ -71,11 +110,11 @@ class ItemNavInput extends Component {
 
         {this.state.currentStep === 2 && (
           <form key="2" onSubmit={this.handleSubmit}>
+            <label for="price">Vad kostade den?</label>
             <Input
-              type="text"
-              name="cost"
-              placeholder="Vad kostar den?"
-              value={this.state.cost}
+              name="price"
+              placeholder="(price)"
+              value={this.state.item.price}
               onChange={this.handleChange}
               variant="underlined"
             />
@@ -84,11 +123,11 @@ class ItemNavInput extends Component {
 
         {this.state.currentStep === 3 && (
           <form key="3" onSubmit={this.handleSubmit}>
+            <label for="goal">Vad är ditt mål?</label>
             <Input
-              type="text"
               name="goal"
-              placeholder="Vad är ditt mål?"
-              value={this.state.goal}
+              placeholder="(goal)"
+              value={this.state.item.goal}
               onChange={this.handleChange}
               variant="underlined"
             />
@@ -97,10 +136,13 @@ class ItemNavInput extends Component {
 
         {this.state.currentStep === 4 && (
           <form key="4" onSubmit={this.handleSubmit}>
+            <label for="notifications">
+              Hur ofta vill du ha notiser? (detta finns inte än)
+            </label>
             <Input
-              type="text"
+              disabled="true"
               name="notifications"
-              placeholder="Hur ofta vill du ha notiser?"
+              placeholder="null"
               value={this.state.notification}
               onChange={this.handleChange}
               variant="underlined"
@@ -109,12 +151,22 @@ class ItemNavInput extends Component {
         )}
         {/* </ReactCSSTransitionGroup> */}
         <div className="btnGroup">
-          <button onClick={this.goBack}>Back</button>
-          <button onClick={this.goNext}>Next</button>
+          {this.state.currentStep > 1 ? (
+            <button onClick={this.goBack}>&#8249;</button>
+          ) : (
+            ''
+          )}
+          {this.state.currentStep < 4 ? (
+            <button onClick={this.goNext}>&#8250;</button>
+          ) : (
+            <button onClick={this.handleSubmit} type="submit">
+              Spara
+            </button>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default ItemNavInput;
+export default connect(null)(ItemNavInput);

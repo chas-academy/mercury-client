@@ -1,5 +1,9 @@
 // @flow
-import { REQUESTING_DATA, RECEIVED_DATA } from '../actions/action-types';
+import {
+  REQUEST_ITEMS_START,
+  REQUEST_ITEMS_SUCCESS,
+  REQUEST_ITEMS_FAILURE,
+} from '../constants';
 
 const defaultState = {
   isFetching: false,
@@ -8,12 +12,12 @@ const defaultState = {
 
 const items = (state = defaultState, action) => {
   switch (action.type) {
-    case REQUESTING_DATA:
+    case REQUEST_ITEMS_START:
       return {
         ...state,
         isFetching: true,
       };
-    case RECEIVED_DATA:
+    case REQUEST_ITEMS_SUCCESS:
       return {
         ...state,
         isFetching: false,

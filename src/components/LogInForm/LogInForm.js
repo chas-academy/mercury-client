@@ -9,9 +9,11 @@ import './LogInForm.css';
 class LogInForm extends Component {
   constructor(props: Props) {
     super(props: Props);
+    
     this.onSubmit = this.onSubmit.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
+    
     this.state = {
       formData: {
         email: '',
