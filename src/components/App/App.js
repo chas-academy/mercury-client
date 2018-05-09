@@ -7,24 +7,34 @@ import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
 import { GlobalNav, Notifications } from '../';
 import './App.css';
 
-const App = () => (
-  <React.Fragment>
-    <header className="banner">worth it</header>
-    <main className="content">
-    <Notifications />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/add" component={AddItem} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/login" component={LogIn} />
-        <Route path="/*" component={PageNotFound} />
-      </Switch>
-    </main>
-    <GlobalNav />
-  </React.Fragment>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <header className="banner">worth it</header>
+        <main className="content">
+          <Notifications data={this.props.notification} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/add" component={AddItem} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/login" component={LogIn} />
+            <Route path="/*" component={PageNotFound} />
+          </Switch>
+        </main>
+        <GlobalNav />
+      </React.Fragment>
+    )
+  }
+
+};
 
 const mapStateProps = state => ({
+  notification: state.notification,
   authenticated: state.user.authenticated
 });
 

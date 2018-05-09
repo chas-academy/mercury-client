@@ -1,24 +1,23 @@
 import React from 'react';
-import {connect} from 'react-redux';
 
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 class Notifications extends React.Component {
-	createNotification = (type, body) => {
+	createNotification = (type) => {
 		return () => {
 			switch (type) {
 				case 'info':
-					NotificationManager.info(body);
+					NotificationManager.info('Info message');
 					break;
 				case 'success':
-					NotificationManager.success('Success message', body);
+					NotificationManager.success('Success message', '???');
 					break;
 				case 'warning':
-					NotificationManager.warning('Warning message', body, 3000);
+					NotificationManager.warning('Warning message', '???', 3000);
 					break;
 				case 'error':
-					NotificationManager.error('Error message', body, 5000, () => {
+					NotificationManager.error('Error message', '???', 5000, () => {
 						alert('callback');
 					});
 					break;
@@ -26,17 +25,34 @@ class Notifications extends React.Component {
 		};
 	};
 
+	componentDidUpdate() {
+		console.log(this.props)
+		this.createNotification('info')
+	}
+
 	render() {
 		return (
 			<div>
-				<NotificationContainer />
-			</div>
+			<button className='btn btn-info'
+			  onClick={this.createNotification('info')}>Info
+			</button>
+			<hr/>
+			<button className='btn btn-success'
+			  onClick={this.createNotification('success')}>Success
+			</button>
+			<hr/>
+			<button className='btn btn-warning'
+			  onClick={this.createNotification('warning')}>Warning
+			</button>
+			<hr/>
+			<button className='btn btn-danger'
+			  onClick={this.createNotification('error')}>Error
+			</button>
+	
+			<NotificationContainer/>
+		  </div>
 		);
 	}
 }
 
-const mapStateProps = state => ({
-	notification: state.notification
-});
-
-export default connect(mapStateProps)(Notifications);
+export default Notifications;
