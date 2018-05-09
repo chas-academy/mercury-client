@@ -12,4 +12,4 @@ export { default as ItemNavInput } from './ItemNavInput/ItemNavInput';
 export { default as Icon } from './Icon/Icon';
 export { default as LogInForm } from './LogInForm/LogInForm';
 export { default as PageTitle } from './PageTitle/PageTitle';
-export { default as Notifications } from './Notifications/Notifications';
+export {default as NotficationComponent} from './NotificationComponent/NotificationComponent';
