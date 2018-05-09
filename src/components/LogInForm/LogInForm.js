@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { requestLogin, requestLogout } from '../../actions/user';
-import { Input, Button, Icon } from '../';
+import { Input, Button, Icon, LineButton } from '../';
+import './LogInForm.css';
 
 class LogInForm extends Component {
   constructor(props: Props) {
@@ -68,7 +69,7 @@ class LogInForm extends Component {
             onChange={this.onPasswordChange}
             variant="underlined"
           />
-          <button type="submit">Logga in</button>
+          <LineButton type="submit">Logga in</LineButton>
         </form>
         <Button onClick={this.onLogout}>Logout</Button>
       </section>
