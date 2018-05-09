@@ -39,7 +39,9 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
       dispatch(receiveItems(response.data.data));
       const notification = {
         title: 'Success!',
-        message: 'Successfully fetched items!'
+        message: 'Successfully fetched items!',
+        autoDismiss: 0,
+        position: 'tc'
       }
       dispatch(Notifications.success(notification));
     })
