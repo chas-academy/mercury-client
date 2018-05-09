@@ -13,3 +13,5 @@ export { default as Icon } from './Icon/Icon';
 export { default as LogInForm } from './LogInForm/LogInForm';
 export { default as PageTitle } from './PageTitle/PageTitle';
 export {default as NotficationComponent} from './NotificationComponent/NotificationComponent';
+export { default as Loader } from './Loader/Loader';
+export { default as LineButton } from './LineButton/LineButton';

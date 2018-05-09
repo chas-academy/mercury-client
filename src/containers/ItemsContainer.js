@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchItems } from '../actions/items';
-import { Items } from '../components';
+import { Items, Loader } from '../components';
 
 class ItemsContainer extends Component {
   componentDidMount() {
@@ -14,7 +14,7 @@ class ItemsContainer extends Component {
       items: { isFetching, allItems },
     } = this.props;
 
-    return isFetching ? <p>Loading...</p> : <Items items={allItems} />;
+    return isFetching ? <Loader /> : <Items items={allItems} />;
   }
 }
 

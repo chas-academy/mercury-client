@@ -1,0 +1,13 @@
+.lineButton {
+  all: unset;
+  border: 0;
+  padding: 1px 1px 1px 2em;
+  margin: 1em;
+  font-size: 2em;
+  text-align: left;
+  border-bottom: 2px solid orange;
+    &:hover {
+      border-bottom: 3px solid orangered;
+      margin-bottom: calc(1em - 1px);
+    }
+  }
