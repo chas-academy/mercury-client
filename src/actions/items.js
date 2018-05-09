@@ -1,5 +1,6 @@
 // @flow
 import Axios from 'axios';
+import Notifications from 'react-notification-system-redux';
 
 import {
   REQUEST_ITEMS_START,
@@ -7,7 +8,7 @@ import {
   REQUEST_ITEMS_FAILURE,
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
-  ADD_ITEM_FAILURE
+  ADD_ITEM_FAILURE,
 } from '../constants';
 
 import type { Dispatch } from '../types';
@@ -36,12 +37,20 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
   Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
     .then(response => {
       dispatch(receiveItems(response.data.data));
+      const notification = {
+        title: 'Success!',
+        message: 'Successfully fetched items!',
+        autoDismiss: 0,
+        position: 'tc'
+      }
+      dispatch(Notifications.success(notification));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
+        dispatch(Notifications.error(error.response.data.message));
         console.error(error.response.data.message);
       } else {
-        console.error;
+        dispatch(Notifications.error(error));
       }
 
       dispatch(requestItemsFailure());

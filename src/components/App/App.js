@@ -1,10 +1,9 @@
 // @flow
 import React from 'react';
-import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
-import { GlobalNav } from '../';
+import { GlobalNav, NotficationComponent } from '../';
 import './App.css';
 
 const App = () => (
@@ -22,8 +21,4 @@ const App = () => (
   </React.Fragment>
 );
 
-const mapStateProps = state => ({
-  authenticated: state.user.authenticated,
-});
-
-export default connect(mapStateProps)(App);
+export default App;
