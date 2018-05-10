@@ -8,7 +8,7 @@ import {
   REQUEST_ITEMS_FAILURE,
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
-  ADD_ITEM_FAILURE,
+  ADD_ITEM_FAILURE
 } from '../constants';
 
 import type { Dispatch } from '../types';
@@ -40,9 +40,8 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
       const notification = {
         title: 'Success!',
         message: 'Successfully fetched items!',
-        autoDismiss: 0,
         position: 'tc'
-      }
+      };
       dispatch(Notifications.success(notification));
     })
     .catch(error => {

@@ -3,6 +3,7 @@ import JWT from 'jsonwebtoken';
 import Axios from '../auth/axios';
 import AxiosAuthBearer from '../auth/axios';
 import * as Auth from '../auth/localStorage';
+import Notifications from 'react-notification-system-redux';
 
 import {
   LOGIN_START,
@@ -28,6 +29,12 @@ export const authFailure = () => ({ type: AUTH_FAILURE });
 
 const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
 
+const notification = (title, message) => ({
+  title: `${title}`,
+  message: `${message}`,
+  position: 'tc'
+});
+
 export const requestLogin = formData => (dispatch: Dispatch) => {
   const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
   dispatch(requestToken());
@@ -38,8 +45,14 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       Auth.storeToken({ token }); /* Set token in local storage using 'store' */
       const decodedUser = Auth.decodeUser();
       // console.log(decodedUser);
-
+      // dispatch(Notifications.success(notification));
+      console.log(decodedUser);
       dispatch(receiveUser(decodedUser));
+      dispatch(
+        Notifications.success(
+          notification(`Welcome, ${decodedUser.firstName}!`, `Let's get rich!`)
+        )
+      );
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
@@ -59,6 +72,7 @@ export const authorizeToken = () => (dispatch: Dispatch) => {
   AxiosAuthBearer.get('/verify-token')
     .then(response => {
       const decodedUser = Auth.decodeUser();
+      console.log(decodedUser);
       dispatch(authSuccess(decodedUser));
     })
     .catch(error => {
