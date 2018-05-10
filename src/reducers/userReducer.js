@@ -5,6 +5,9 @@ import {
   LOGOUT_START,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE,
 } from '../constants';
 
 const defaultState = {
@@ -17,6 +20,7 @@ const user = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN_START:
     case LOGOUT_START:
+    case AUTH_START:
       return {
         ...state,
         fetchingUser: true,
@@ -28,6 +32,7 @@ const user = (state = defaultState, action) => {
         authenticated: true,
         data: action.payload,
       };
+    case AUTH_SUCCESS:
     case LOGIN_FAILURE:
     case LOGOUT_FAILURE:
       return {
@@ -35,6 +40,7 @@ const user = (state = defaultState, action) => {
         fetchingUser: false,
       };
     case LOGOUT_SUCCESS:
+    case AUTH_FAILURE:
       return {
         ...state,
         fetchingUser: false,
