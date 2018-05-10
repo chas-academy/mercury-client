@@ -7,7 +7,7 @@ import {
 
 const defaultState = {
   isFetching: false,
-  allItems: []
+  allItems: [],
 };
 
 const items = (state = defaultState, action) => {
@@ -23,7 +23,7 @@ const items = (state = defaultState, action) => {
         isFetching: false,
         allItems: action.payload,
       };
-      case REQUEST_ITEMS_FAILURE:
+    case REQUEST_ITEMS_FAILURE:
       return {
         ...state,
         isFetching: false,
