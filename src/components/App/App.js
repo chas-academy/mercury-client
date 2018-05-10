@@ -14,7 +14,7 @@ class App extends Component {
     console.log(this.props);
     this.props.dispatch(authorizeToken());
   }
-  
+
   render() {
     const { fetchingUser } = this.props;
     return fetchingUser ? (
@@ -22,6 +22,7 @@ class App extends Component {
     ) : (
       <React.Fragment>
         <main className="content">
+          <NotificationComponent />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/add" component={AddItem} />

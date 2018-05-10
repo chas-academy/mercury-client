@@ -26,13 +26,13 @@ const user = (state = defaultState, action) => {
         fetchingUser: true,
       };
     case LOGIN_SUCCESS:
+    case AUTH_SUCCESS:
       return {
         ...state,
         fetchingUser: false,
         authenticated: true,
         data: action.payload,
       };
-    case AUTH_SUCCESS:
     case LOGIN_FAILURE:
     case LOGOUT_FAILURE:
       return {

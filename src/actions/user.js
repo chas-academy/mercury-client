@@ -1,7 +1,9 @@
 // TODO: Make flow-compliant
 import JWT from 'jsonwebtoken';
-import * as Auth from '../auth/localStorage';
 import Axios from '../auth/axios';
+import AxiosAuthBearer from '../auth/axios';
+import * as Auth from '../auth/localStorage';
+import Notifications from 'react-notification-system-redux';
 
 import {
   LOGIN_START,
@@ -22,12 +24,16 @@ export const requestTokenLogout = () => ({ type: LOGOUT_START });
 export const removeUser = () => ({ type: LOGOUT_SUCCESS });
 export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
 export const authStart = () => ({ type: AUTH_START });
-export const authSuccess = () => ({ type: AUTH_SUCCESS });
+export const authSuccess = user => ({ type: AUTH_SUCCESS, payload: user });
 export const authFailure = () => ({ type: AUTH_FAILURE });
 
 const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
-const API_LOGOUT_URL = process.env.REACT_APP_API_SIGN_OUT_URL;
-const API_VERIFY_TOKEN_URL = process.env.REACT_APP_API_VERIFY_TOKEN_URL;
+
+const notification = (title, message) => ({
+  title: `${title}`,
+  message: `${message}`,
+  position: 'tc'
+});
 
 export const requestLogin = formData => (dispatch: Dispatch) => {
   const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
@@ -39,8 +45,14 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       Auth.storeToken({ token }); /* Set token in local storage using 'store' */
       const decodedUser = Auth.decodeUser();
       // console.log(decodedUser);
-
+      // dispatch(Notifications.success(notification));
+      console.log(decodedUser);
       dispatch(receiveUser(decodedUser));
+      dispatch(
+        Notifications.success(
+          notification(`Welcome, ${decodedUser.firstName}!`, `Let's get rich!`)
+        )
+      );
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
@@ -57,22 +69,15 @@ export const authorizeToken = () => (dispatch: Dispatch) => {
 
   if (!Auth.getToken()) return dispatch(authFailure());
 
-  const token = Auth.getToken();
-  //const data = Auth.getTokenData('userId');
-  //console.log(data);
-  Axios({
-    method: 'get',
-    url: `${API_VERIFY_TOKEN_URL}`,
-    headers: { Authorization: `Bearer ${token}` }
-  })
+  AxiosAuthBearer.get('/verify-token')
     .then(response => {
-      dispatch(authSuccess());
       const decodedUser = Auth.decodeUser();
-      dispatch(receiveUser(decodedUser));
+      console.log(decodedUser);
+      dispatch(authSuccess(decodedUser));
     })
     .catch(error => {
       Auth.deleteToken();
-      // console.log(error);
+      console.log(error);
       dispatch(authFailure);
     });
 };
@@ -80,11 +85,7 @@ export const authorizeToken = () => (dispatch: Dispatch) => {
 export const requestLogout = () => (dispatch: Dispatch) => {
   const token = Auth.getToken();
   dispatch(requestTokenLogout());
-  Axios({
-    method: 'post',
-    url: `${API_LOGOUT_URL}`,
-    headers: { Authorization: `Bearer ${token}` }
-  })
+  AxiosAuthBearer.post('/sign-out')
     .then(
       response =>
         dispatch(removeUser(response.data)) && Auth.deleteToken('token')
