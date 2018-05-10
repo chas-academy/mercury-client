@@ -17,7 +17,7 @@ import {
   LinkList,
   Items,
   Item,
-  ItemNav,
+  StepBar,
   Icon,
   ItemData
 } from "../components";

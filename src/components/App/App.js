@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
-import { GlobalNav, Loader } from '../';
+import { GlobalNav, Loader, NotificationComponent } from '../';
 import './App.css';
 import { authorizeToken } from '../../actions/user';
 
@@ -14,7 +14,7 @@ class App extends Component {
     console.log(this.props);
     this.props.dispatch(authorizeToken());
   }
-
+  
   render() {
     const { fetchingUser } = this.props;
     return fetchingUser ? (
