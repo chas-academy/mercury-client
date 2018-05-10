@@ -34,6 +34,12 @@ export const authFailure = () => ({ type: AUTH_FAILURE });
 
 const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
 
+const notification = (title, message) => ({
+  title: `${title}`,
+  message: `${message}`,
+  position: 'tc'
+});
+
 export const requestLogin = formData => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
 
@@ -48,7 +54,6 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
         token
       }); /* Set token in local storage using 'store' dependency */
       const decodedUser = Auth.decodeUser();
-
       dispatch(receiveUser(decodedUser));
       dispatch(
         Notifications.success(
@@ -79,6 +84,7 @@ export const authorizeToken = () => (dispatch: Dispatch) => {
   AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL)
     .then(response => {
       const decodedUser = Auth.decodeUser();
+      console.log(decodedUser);
       dispatch(authSuccess(decodedUser));
       dispatch(
         Notifications.success(
