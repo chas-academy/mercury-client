@@ -1,7 +1,7 @@
 // TODO: Make flow-compliant
-import Axios from 'axios';
 import JWT from 'jsonwebtoken';
-import Store from 'store';
+import * as Auth from '../auth/localStorage';
+import Axios from '../auth/axios';
 
 import {
   LOGIN_START,
@@ -9,36 +9,25 @@ import {
   LOGIN_FAILURE,
   LOGOUT_START,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE
 } from '../constants';
 
-export const requestToken = () => ({
-  type: LOGIN_START
-});
-
-export const receiveUser = user => ({
-  type: LOGIN_SUCCESS,
-  payload: user
-});
-
-export const requestFailure = () => ({
-  type: LOGIN_FAILURE
-});
-
-export const requestTokenLogout = () => ({
-  type: LOGOUT_START
-});
-
-export const removeUser = () => ({
-  type: LOGOUT_SUCCESS
-});
-
-export const requestFailureLogout = () => ({
-  type: LOGOUT_FAILURE
-});
+export const requestToken = () => ({ type: LOGIN_START });
+export const receiveUser = user => ({ type: LOGIN_SUCCESS, payload: user });
+export const requestFailure = () => ({ type: LOGIN_FAILURE });
+export const requestTokenLogout = () => ({ type: LOGOUT_START });
+export const removeUser = () => ({ type: LOGOUT_SUCCESS });
+export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
+export const authStart = () => ({ type: AUTH_START });
+export const authSuccess = () => ({ type: AUTH_SUCCESS });
+export const authFailure = () => ({ type: AUTH_FAILURE });
 
 const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
 const API_LOGOUT_URL = process.env.REACT_APP_API_SIGN_OUT_URL;
+const API_VERIFY_TOKEN_URL = process.env.REACT_APP_API_VERIFY_TOKEN_URL;
 
 export const requestLogin = formData => (dispatch: Dispatch) => {
   const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
@@ -47,14 +36,11 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
   Axios.post(API_LOGIN_URL, { token })
     .then(response => {
       const { token } = response.data;
-      storeToken({ token }); /* Set token in local storage using 'store' */
+      Auth.storeToken({ token }); /* Set token in local storage using 'store' */
+      const decodedUser = Auth.decodeUser();
+      // console.log(decodedUser);
 
-      const decodedToken = JWT.decode(
-        response.data.token,
-        process.env.REACT_APP_API_JWT_SECRET
-      );
-
-      dispatch(receiveUser(decodedToken));
+      dispatch(receiveUser(decodedUser));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
@@ -66,8 +52,33 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
     });
 };
 
+export const authorizeToken = () => (dispatch: Dispatch) => {
+  dispatch(authStart());
+
+  if (!Auth.getToken()) return dispatch(authFailure());
+
+  const token = Auth.getToken();
+  //const data = Auth.getTokenData('userId');
+  //console.log(data);
+  Axios({
+    method: 'get',
+    url: `${API_VERIFY_TOKEN_URL}`,
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(response => {
+      dispatch(authSuccess());
+      const decodedUser = Auth.decodeUser();
+      dispatch(receiveUser(decodedUser));
+    })
+    .catch(error => {
+      Auth.deleteToken();
+      // console.log(error);
+      dispatch(authFailure);
+    });
+};
+
 export const requestLogout = () => (dispatch: Dispatch) => {
-  const token = getToken();
+  const token = Auth.getToken();
   dispatch(requestTokenLogout());
   Axios({
     method: 'post',
@@ -75,7 +86,8 @@ export const requestLogout = () => (dispatch: Dispatch) => {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(
-      response => dispatch(removeUser(response.data)) && deleteToken('token')
+      response =>
+        dispatch(removeUser(response.data)) && Auth.deleteToken('token')
     )
     .catch(error => {
       if (error.response && error.response.data.message) {
@@ -86,35 +98,3 @@ export const requestLogout = () => (dispatch: Dispatch) => {
       dispatch(requestFailureLogout());
     });
 };
-
-/*** Manage token in local storage ***/
-export const storeToken = data => {
-  for (const key in data) {
-    Store.set(key, data[key]);
-  }
-};
-
-export const getToken = () => Store.get('token');
-
-export const deleteToken = () => Store.remove('token');
-
-export function decodeToken() {
-  if (getToken()) {
-    return JWT.verify(
-      getToken(),
-      process.env.REACT_APP_API_JWT_SECRET,
-      function(errors, decoded) {
-        if (errors) {
-          deleteToken();
-          return false;
-        }
-
-        return decoded;
-      }
-    );
-  }
-}
-
-export function getTokenData(data) {
-  return decodeToken() && decodeToken()[data] ? decodeToken()[data] : null;
-}

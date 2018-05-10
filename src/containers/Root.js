@@ -10,7 +10,7 @@ import { App } from '../components';
 import {
   loadStateFromLocalStorage,
   saveStateToLocalStorage,
-} from './localStorage';
+} from '../auth/localStorage';
 
 /* 1. In `./localStorage` you'll find notes on how persistedState gets its value */
 /* 2. Function that listens on changes of the store's state. When something  */
@@ -22,10 +22,11 @@ const enhancer = composeWithDevTools(applyMiddleware(...middleware));
 
 const persistedState = loadStateFromLocalStorage(); /* 1 */
 
-const store = createStore(rootReducer, persistedState, enhancer);
+const store = createStore(rootReducer, enhancer);
 
 store.subscribe(() => {
-  saveStateToLocalStorage(store.getState());
+  // saveStateToLocalStorage(store.getState());
+  console.log(store.getState());
 }); /* 2 */
 
 const Root = () => (

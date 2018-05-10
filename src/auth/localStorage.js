@@ -1,4 +1,40 @@
 import Store from 'store';
+import JWT from 'jsonwebtoken';
+
+export const storeToken = (data) => {
+  for (const key in data) {
+    Store.set(key, data[key]);
+  }
+};
+
+export const getToken = () => Store.get('token');
+
+export const deleteToken = () => Store.remove('token');
+
+export function decodeToken() {
+  const token = getToken();
+  if (token) {
+    return JWT.verify(
+      token,
+      process.env.REACT_APP_API_JWT_SECRET,
+      (errors, decodedToken) => {
+        if (errors) {
+          deleteToken();
+          return false;
+        }
+        // console.log(decodedToken);
+        return decodedToken;
+      },
+    );
+  }
+}
+
+export const getTokenData = data =>
+  (decodeToken() && decodeToken()[data] ? decodeToken()[data] : null);
+
+export const decodeUser = () =>
+  decodeToken(getToken(), process.env.REACT_APP_API_JWT_SECRET);
+
 /* 1a This function is invoked by the subscriber function in `Root.js` */
 /*    It recieves the current state tree and assign savedState */
 /*    a stringified JSON version of the state as its value */
