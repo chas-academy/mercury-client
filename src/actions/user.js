@@ -25,6 +25,14 @@ const notification = (title, message) => ({
   message: `${message}`,
   position: 'tc'
 });
+export const requestTokenLogout = () => ({ type: LOGOUT_START });
+export const removeUser = () => ({ type: LOGOUT_SUCCESS });
+export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
+export const authStart = () => ({ type: AUTH_START });
+export const authSuccess = user => ({ type: AUTH_SUCCESS, payload: user });
+export const authFailure = () => ({ type: AUTH_FAILURE });
+
+const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
 
 export const requestLogin = formData => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
