@@ -111,7 +111,7 @@ class AddItemWizard extends Component {
               />
               {/* <Input
                 name="canonical"
-                placeholder="(canonicalId)"
+                placeholder=""
                 value={this.state.item.canonicalId}
                 onChange={this.handleChange}
                 variant="underlined"
@@ -125,10 +125,11 @@ class AddItemWizard extends Component {
             <label htmlFor="price">Vad kostade den?
               <Input
                 name="price"
-                placeholder="(price)"
+                placeholder=""
                 value={this.state.item.price}
                 onChange={this.handleChange}
                 variant="underlined"
+                unit="kr"
               />
             </label>
           </form>
@@ -139,10 +140,11 @@ class AddItemWizard extends Component {
             <label htmlFor="goal">Vad är ditt mål?
               <Input
                 name="goal"
-                placeholder="(goal)"
+                placeholder=""
                 value={this.state.item.goal}
                 onChange={this.handleChange}
                 variant="underlined"
+                unit="ggr"
               />
             </label>
           </form>
@@ -151,7 +153,7 @@ class AddItemWizard extends Component {
         {this.state.currentStep === 4 && (
           <form key="4" onSubmit={this.handleSubmit}>
             <label htmlFor="notifications">
-              Hur ofta vill du ha notiser? (detta finns inte än)
+              Hur ofta vill du ha notiser?
               <Input
                 disabled="true"
                 name="notifications"
@@ -167,8 +169,8 @@ class AddItemWizard extends Component {
           {this.state.currentStep > 1 ? (
             <LineButton onClick={this.goBack}>Tillbaka</LineButton>
           ) : (
-              <LineButton onClick={this.goBack} disabled>Tillbaka</LineButton>
-            )}
+            <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
+          )}
           {this.state.currentStep < 4 ? (
             <LineButton onClick={this.goNext}>Nästa</LineButton>
           ) : (
