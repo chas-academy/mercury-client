@@ -1,5 +1,5 @@
 import React from 'react';
-import { StepBar, AddItemWizard, PageTitle } from '../components';
+import { AddItemWizard, PageTitle } from '../components';
 
 const AddItem = () => (
   <React.Fragment>
