@@ -11,13 +11,22 @@ class ItemsContainer extends Component {
 
   render() {
     const {
-      items: { isFetching, allItems },
+      user: { authenticated, data }
+    } = this.props;
+    const {
+      items: { isFetching, allItems }
     } = this.props;
 
-    return isFetching ? <Loader /> : <Items items={allItems} />;
+    return isFetching ? (
+      <Loader />
+    ) : (
+      <React.Fragment>
+        <Items items={allItems} />
+      </React.Fragment>
+    );
   }
 }
 
-const mapStateToProps = ({ items }) => ({ items });
+const mapStateToProps = ({ items, user }) => ({ items, user });
 
 export default withRouter(connect(mapStateToProps)(ItemsContainer));

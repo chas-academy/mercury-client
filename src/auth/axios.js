@@ -1,10 +1,11 @@
 import Axios from 'axios';
-import { getToken } from './localStorage';
 
-const AxiosAuthBearer = Axios.create({
+let AxiosCustom = Axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
-  withCredentials: true,
-  headers: { Authorization: `Bearer ${getToken()}` },
+  withCredentials: true
 });
 
-export default AxiosAuthBearer;
+AxiosCustom.defaults.headers.post['Content-Type'] =
+  'application/x-www-form-urlencoded';
+
+export default AxiosCustom;

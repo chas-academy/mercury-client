@@ -7,13 +7,12 @@ import {
   LOGOUT_FAILURE,
   AUTH_START,
   AUTH_SUCCESS,
-  AUTH_FAILURE,
+  AUTH_FAILURE
 } from '../constants';
 
 const defaultState = {
   fetchingUser: false,
-  authenticated: false,
-  data: {},
+  authenticated: false
 };
 
 const user = (state = defaultState, action) => {
@@ -23,7 +22,7 @@ const user = (state = defaultState, action) => {
     case AUTH_START:
       return {
         ...state,
-        fetchingUser: true,
+        fetchingUser: true
       };
     case LOGIN_SUCCESS:
     case AUTH_SUCCESS:
@@ -32,12 +31,13 @@ const user = (state = defaultState, action) => {
         fetchingUser: false,
         authenticated: true,
         data: action.payload,
+        userId: action.payload.userId
       };
     case LOGIN_FAILURE:
     case LOGOUT_FAILURE:
       return {
         ...state,
-        fetchingUser: false,
+        fetchingUser: false
       };
     case LOGOUT_SUCCESS:
     case AUTH_FAILURE:
@@ -46,6 +46,7 @@ const user = (state = defaultState, action) => {
         fetchingUser: false,
         authenticated: false,
         data: {},
+        userId: null
       };
     default:
       return state;
