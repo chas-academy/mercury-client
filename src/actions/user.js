@@ -1,7 +1,7 @@
 // TODO: Make flow-compliant
 import JWT from 'jsonwebtoken';
 import Axios from '../auth/axios';
-import AxiosAuthBearer from '../auth/axios';
+import AxiosCustom from '../auth/axios';
 import * as Auth from '../auth/localStorage';
 import Notifications from 'react-notification-system-redux';
 
@@ -36,6 +36,7 @@ const notification = (title, message) => ({
 });
 
 export const requestLogin = formData => (dispatch: Dispatch) => {
+  if (Auth.isSignedIn()) return;
   const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
   dispatch(requestToken());
 
@@ -44,9 +45,7 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       const { token } = response.data;
       Auth.storeToken({ token }); /* Set token in local storage using 'store' */
       const decodedUser = Auth.decodeUser();
-      // console.log(decodedUser);
-      // dispatch(Notifications.success(notification));
-      console.log(decodedUser);
+
       dispatch(receiveUser(decodedUser));
       dispatch(
         Notifications.success(
@@ -65,27 +64,25 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
 };
 
 export const authorizeToken = () => (dispatch: Dispatch) => {
+  if (!Auth.isSignedIn()) return;
   dispatch(authStart());
 
-  if (!Auth.getToken()) return dispatch(authFailure());
-
-  AxiosAuthBearer.get('/verify-token')
+  AxiosCustom.get('/verify-token')
     .then(response => {
       const decodedUser = Auth.decodeUser();
-      console.log(decodedUser);
       dispatch(authSuccess(decodedUser));
     })
     .catch(error => {
       Auth.deleteToken();
       console.log(error);
-      dispatch(authFailure);
+      dispatch(authFailure());
     });
 };
 
 export const requestLogout = () => (dispatch: Dispatch) => {
-  const token = Auth.getToken();
+  if (!Auth.isSignedIn()) return;
   dispatch(requestTokenLogout());
-  AxiosAuthBearer.post('/sign-out')
+  AxiosCustom.post('/sign-out')
     .then(
       response =>
         dispatch(removeUser(response.data)) && Auth.deleteToken('token')

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
 import { GlobalNav, Loader, NotificationComponent } from '../';
-import './App.css';
 import { authorizeToken } from '../../actions/user';
+import './App.css';
 
 const mapStateToProps = ({ user }) => ({ user });
 
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   render() {
-    const { fetchingUser } = this.props;
+    const { fetchingUser, authenticated } = this.props.user;
     return fetchingUser ? (
       <Loader />
     ) : (
