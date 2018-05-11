@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button } from '..';
+import { Icon } from '..';
 import './StepBar.css';
 
 function stepClass(step, currentstep) {

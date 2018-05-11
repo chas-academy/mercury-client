@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, LineButton, StepBar } from '../';
+import AgAutocomplete from 'react-algoliasearch';
 
 import { createItem } from '../../actions/items';
 import './AddItemWizard.css';
@@ -17,6 +18,7 @@ class AddItemWizard extends Component {
       notification: '',
     };
 
+    this.handleCanonicalChange = this.handleCanonicalChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.goBack = this.goBack.bind(this);
     this.goNext = this.goNext.bind(this);
@@ -32,16 +34,21 @@ class AddItemWizard extends Component {
     };
   }
 
+  handleCanonicalChange = (e) => {
+    const id = e._args[0].canonicalId;
+
+    this.setState({
+      item: {
+        goal: this.state.item.goal,
+        price: this.state.item.price,
+        canonicalId: id
+      }
+    });
+    
+  }
+
   handleChange = (e) => {
-    if (e.target.name === 'canonical') {
-      this.setState({
-        item: {
-          goal: this.state.item.goal,
-          price: this.state.item.price,
-          canonicalId: e.target.value,
-        },
-      });
-    } else if (e.target.name === 'price') {
+    if (e.target.name === 'price') {
       this.setState({
         item: {
           goal: this.state.item.goal,
@@ -93,13 +100,22 @@ class AddItemWizard extends Component {
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
             <label htmlFor="canonical">Vad har du köpt?
-              <Input
+            <AgAutocomplete
+                apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
+                appId={'O1ZPQGWGG4'}
+                displayKey="name"
+                indices={[{ index: 'canonical_items' }]}
+                inputId="input-search"
+                placeholder="Search..."
+                selected={this.handleCanonicalChange}
+              />
+              {/* <Input
                 name="canonical"
                 placeholder="(canonicalId)"
                 value={this.state.item.canonicalId}
                 onChange={this.handleChange}
                 variant="underlined"
-              />
+              /> */}
             </label>
           </form>
         )}
@@ -151,15 +167,15 @@ class AddItemWizard extends Component {
           {this.state.currentStep > 1 ? (
             <LineButton onClick={this.goBack}>Tillbaka</LineButton>
           ) : (
-            <LineButton onClick={this.goBack} disabled>Tillbaka</LineButton>
-          )}
+              <LineButton onClick={this.goBack} disabled>Tillbaka</LineButton>
+            )}
           {this.state.currentStep < 4 ? (
             <LineButton onClick={this.goNext}>Nästa</LineButton>
           ) : (
-            <LineButton onClick={this.handleSubmit} type="submit">
-              Spara
+              <LineButton onClick={this.handleSubmit} type="submit">
+                Spara
             </LineButton>
-          )}
+            )}
         </div>
       </div>
     );
