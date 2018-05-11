@@ -28,24 +28,21 @@ class Item extends Component<Props, State> {
   render() {
     const { item } = this.props;
     return (
-      <article
-        className={'item' + (this.state.isOpen ? ' expanded' : '')}
-        onClick={this.toggleCard}
-      >
+      <article className="item" onClick={this.toggleCard}>
         <header>
           <h2>{item.CanonicalItem.name}</h2>
           <Icon icon={item.CanonicalItem.icon} />
         </header>
-        {this.state.isOpen && (
-          <dl>
-            <dt>Mål</dt>
-            <dd>{item.goal}</dd>
-            <dt>Användningar</dt>
-            <dd>{item.delimiter}</dd>
-            <dt>Inköpspris</dt>
-            <dd>{item.price}</dd>
-          </dl>
-        )}
+
+        <dl className={!this.state.isOpen ? 'collapsed' : ''}>
+          <dt>Mål</dt>
+          <dd>{item.goal}</dd>
+          <dt>Användningar</dt>
+          <dd>{item.delimiter}</dd>
+          <dt>Inköpspris</dt>
+          <dd>{item.price}</dd>
+        </dl>
+
         <h3> Framsteg </h3>
         <ProgressBar
           progressBarMax={item.goal}

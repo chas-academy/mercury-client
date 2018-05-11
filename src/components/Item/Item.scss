@@ -9,8 +9,6 @@
     box-shadow: var(--shadow-primary);
     border-radius: var(--border-rounded);
     background: var(--gradient-warm);
-    height: 5em;
-    transition: height 0.5s;
     header {
         display: flex;
         justify-content: space-between;
@@ -25,6 +23,10 @@
     dl {
         display: flex;
         flex-wrap: wrap;
+        margin: 0;
+        transition: height 1s;
+        height: 5em;
+        overflow: hidden;
         dt,
         dd {
             padding-top: 0.5em;
@@ -40,13 +42,12 @@
             text-align: end;
         }
     }
+    .collapsed {
+        height: 1px;
+    }
     h3 {
         all: unset;
         margin-top: 0.5em;
         font-variant-caps: all-petite-caps;
     }
-}
-
-.expanded {
-    height: 10em;
 }
