@@ -3,7 +3,12 @@ import './CalculateGoal.css';
 
 function CalculateGoal(props) {
   const goalPerUse = Math.ceil(props.item.price / props.item.goal);
-  return goalPerUse;
+
+  return props.item.goal > 0 ? (
+    <p>Kostnad: {goalPerUse} kr per användning</p>
+  ) : (
+    ''
+  );
 }
 
 export default CalculateGoal;
