@@ -16,30 +16,18 @@ import {
   AUTH_FAILURE
 } from '../constants';
 
+const notification = (title, message) => ({
+  title: `${title}`,
+  message: `${message}`,
+  position: 'tc'
+});
+
+/* Redux Action Creators - login user */
 export const requestToken = () => ({ type: LOGIN_START });
 export const receiveUser = user => ({ type: LOGIN_SUCCESS, payload: user });
 export const requestFailure = () => ({ type: LOGIN_FAILURE });
 
-const notification = (title, message) => ({
-  title: `${title}`,
-  message: `${message}`,
-  position: 'tc'
-});
-export const requestTokenLogout = () => ({ type: LOGOUT_START });
-export const removeUser = () => ({ type: LOGOUT_SUCCESS });
-export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
-export const authStart = () => ({ type: AUTH_START });
-export const authSuccess = user => ({ type: AUTH_SUCCESS, payload: user });
-export const authFailure = () => ({ type: AUTH_FAILURE });
-
-const API_LOGIN_URL = process.env.REACT_APP_API_SIGN_IN_URL;
-
-const notification = (title, message) => ({
-  title: `${title}`,
-  message: `${message}`,
-  position: 'tc'
-});
-
+/* Post request to API without Bearer token  - initiate login actions using the action creators above */
 export const requestLogin = formData => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
 
@@ -76,7 +64,7 @@ export const authStart = () => ({ type: AUTH_START });
 export const authSuccess = user => ({ type: AUTH_SUCCESS, payload: user });
 export const authFailure = () => ({ type: AUTH_FAILURE });
 
-/* Get request to API */
+/* Get request to API - initiate auth actions using the action creators above */
 export const authorizeToken = () => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(authStart());
@@ -107,7 +95,7 @@ export const requestTokenLogout = () => ({ type: LOGOUT_START });
 export const removeUser = () => ({ type: LOGOUT_SUCCESS });
 export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
 
-/* Post request to API - initiate actions using the action creators above */
+/* Post request to API - initiate logout actions using the action creators above */
 export const requestLogout = () => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(requestTokenLogout());
