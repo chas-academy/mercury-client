@@ -114,13 +114,6 @@ class AddItemWizard extends Component {
                 placeholder="Search..."
                 selected={this.handleCanonicalChange}
               />
-              {/* <Input
-                name="canonical"
-                placeholder=""
-                value={this.state.item.canonicalId}
-                onChange={this.handleChange}
-                variant="underlined"
-              /> */}
             </label>
           </form>
         )}
@@ -176,13 +169,15 @@ class AddItemWizard extends Component {
           ) : (
               <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
             )}
-          {this.state.currentStep < 4 ? (
-            <LineButton onClick={this.goNext}>Nästa</LineButton>
-          ) : (
-              <LineButton onClick={this.handleSubmit} type="submit">
-                Spara
-            </LineButton>
-            )}
+
+          {this.state.currentStep === 1 && this.state.item.canonicalId !== undefined
+            || this.state.currentStep === 2 && this.state.item.price > 0
+            || this.state.currentStep === 3 && this.state.item.goal > 0 ?
+            <LineButton onClick={this.goNext}>Nästa</LineButton> :
+            this.state.currentStep === 4 ?
+            <LineButton onClick={this.handleSubmit} type="submit">Spara</LineButton> :
+            <LineButton disabled="disabled" onClick={this.goNext}>Nästa</LineButton>
+          }
         </div>
       </div>
     );
