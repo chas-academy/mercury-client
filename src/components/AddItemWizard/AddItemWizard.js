@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Input, LineButton, StepBar } from '../';
 import AgAutocomplete from 'react-algoliasearch';
 
-import { createItem } from '../../actions/items';
+import { createItem, createItemWarning } from '../../actions/items';
 import './AddItemWizard.css';
 
 class AddItemWizard extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentStep: 1,
-      description: '',
-      cost: '',
-      goal: '',
-      notification: '',
-    };
 
     this.handleCanonicalChange = this.handleCanonicalChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -27,10 +20,10 @@ class AddItemWizard extends Component {
     this.state = {
       currentStep: 1,
       item: {
-        goal: null,
-        price: null,
-        canonicalId: null,
-      },
+        goal: '',
+        price: '',
+        canonicalId: undefined,
+      }
     };
   }
 
@@ -44,7 +37,7 @@ class AddItemWizard extends Component {
         canonicalId: id
       }
     });
-    
+
   }
 
   handleChange = (e) => {
@@ -90,10 +83,23 @@ class AddItemWizard extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(createItem(this.state.item));
+    if (
+      this.state.item.goal === '' ||
+      this.state.item.price === '' ||
+      this.state.item.canonicalId === undefined
+    ) {
+      const errorMsg = 'Du måste fylla i ett giltigt pris/mål.'
+      this.props.dispatch(createItemWarning(errorMsg));
+    }
+    else {
+      this.props.dispatch(createItem(this.state.item));
+    }
   }
 
   render() {
+    if (this.props.requestFullfilled) {
+      return <Redirect to="/" />
+    } else
     return (
       <div className="formContainer">
         <StepBar currentStep={this.state.currentStep} />
@@ -101,6 +107,7 @@ class AddItemWizard extends Component {
           <form key="1" onSubmit={this.handleSubmit}>
             <label htmlFor="canonical">Vad har du köpt?
             <AgAutocomplete
+                value='canonicalItem'
                 apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
                 appId={'O1ZPQGWGG4'}
                 displayKey="name"
@@ -109,13 +116,6 @@ class AddItemWizard extends Component {
                 placeholder="Search..."
                 selected={this.handleCanonicalChange}
               />
-              {/* <Input
-                name="canonical"
-                placeholder=""
-                value={this.state.item.canonicalId}
-                onChange={this.handleChange}
-                variant="underlined"
-              /> */}
             </label>
           </form>
         )}
@@ -124,6 +124,7 @@ class AddItemWizard extends Component {
           <form key="2" onSubmit={this.handleSubmit}>
             <label htmlFor="price">Vad kostade den?
               <Input
+                type="number"
                 name="price"
                 placeholder=""
                 value={this.state.item.price}
@@ -139,6 +140,7 @@ class AddItemWizard extends Component {
           <form key="3" onSubmit={this.handleSubmit}>
             <label htmlFor="goal">Vad är ditt mål?
               <Input
+                type="number"
                 name="goal"
                 placeholder=""
                 value={this.state.item.goal}
@@ -169,19 +171,25 @@ class AddItemWizard extends Component {
           {this.state.currentStep > 1 ? (
             <LineButton onClick={this.goBack}>Tillbaka</LineButton>
           ) : (
-            <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
-          )}
-          {this.state.currentStep < 4 ? (
-            <LineButton onClick={this.goNext}>Nästa</LineButton>
-          ) : (
-              <LineButton onClick={this.handleSubmit} type="submit">
-                Spara
-            </LineButton>
+              <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
             )}
+
+          {(this.state.currentStep === 1 && this.state.item.canonicalId !== undefined)
+            || (this.state.currentStep === 2 && this.state.item.price > 0)
+            || (this.state.currentStep === 3 && this.state.item.goal > 0) ?
+            <LineButton onClick={this.goNext}>Nästa</LineButton> :
+            this.state.currentStep === 4 ?
+              <LineButton onClick={this.handleSubmit} type="submit">Spara</LineButton> :
+              <LineButton disabled="disabled" onClick={this.goNext}>Nästa</LineButton>
+          }
         </div>
       </div>
     );
   }
 }
 
-export default connect(null)(AddItemWizard);
+const mapStateToProps = state => ({
+  requestFullfilled: state.items.requestFullfilled
+});
+
+export default connect(mapStateToProps)(AddItemWizard);

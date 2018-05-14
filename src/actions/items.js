@@ -9,7 +9,8 @@ import {
   REQUEST_ITEMS_FAILURE,
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
-  ADD_ITEM_FAILURE
+  ADD_ITEM_FAILURE,
+  ADD_ITEM_RESET
 } from '../constants';
 
 /* Redux Action Creators - get/read items */
@@ -56,6 +57,7 @@ export const fetchItems = () => (dispatch: Dispatch, getState: GetState) => {
 export const addItem = () => ({ type: ADD_ITEM_START });
 export const addItemSuccess = () => ({ type: ADD_ITEM_SUCCESS });
 export const addItemFailure = () => ({ type: ADD_ITEM_FAILURE });
+export const addItemReset = () => ({ type: ADD_ITEM_RESET });
 
 /* Post request to API - called from AddItemWizard component */
 export const createItem = (item: Object) => (dispatch: Dispatch) => {
@@ -70,10 +72,30 @@ export const createItem = (item: Object) => (dispatch: Dispatch) => {
   AxiosCustom.post(`/items`, itemWithUserMetaId)
     .then(response => {
       dispatch(addItemSuccess());
-      console.log(response);
+      const notification = {
+        title: 'Tillagd!',
+        message: 'Din pryl är tillagd.',
+        position: 'tc'
+      };
+      dispatch(Notifications.success(notification));
+      dispatch(addItemReset());
     })
     .catch(error => {
       dispatch(addItemFailure());
-      console.error(error);
+      const notification = {
+        title: 'Något gick fel!',
+        message: error,
+        position: 'tc'
+      };
+      dispatch(Notifications.error(notification))
     });
 };
+
+export const createItemWarning = (error: String) => (dispatch: Dispatch) => {
+  const notification = {
+    title: 'Sakta i backarna!',
+    message: error,
+    position: 'tc'
+  }
+  dispatch(Notifications.warning(notification));
+}

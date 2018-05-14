@@ -30,6 +30,12 @@ class NotificationComponent extends React.Component {
           WebkitBoxShadow: '0 16px 32px -16px #EB4979',
           MozBoxShadow: '0 16px 32px -16px #EB4979',
           boxShadow: '0 16px 32px -16px #EB4979'
+        },
+        warning: {
+          background: 'linear-gradient(to bottom, #FF9F69, #F2AF4B)',
+          WebkitBoxShadow: '0 16px 32px -16px #F2AF4B',
+          MozBoxShadow: '0 16px 32px -16px #F2AF4B',
+          boxShadow: '0 16px 32px -16px #F2AF4B'
         }
       },
       Dismiss: {
