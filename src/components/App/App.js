@@ -11,7 +11,6 @@ const mapStateToProps = ({ user }) => ({ user });
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.dispatch(authorizeToken());
   }
 
@@ -21,17 +20,17 @@ class App extends Component {
       <Loader />
     ) : (
       <React.Fragment>
+        <GlobalNav />
         <main className="content">
           <NotificationComponent />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/login" component={LogIn} />
             <Route path="/add" component={AddItem} />
             <Route path="/settings" component={Settings} />
-            <Route path="/login" component={LogIn} />
             <Route path="/*" component={PageNotFound} />
           </Switch>
         </main>
-        <GlobalNav />
       </React.Fragment>
     );
   }
