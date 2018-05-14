@@ -1,19 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Icon } from '..';
 import './GlobalNav.css';
 
-const GlobalNav = () => (
+const GlobalNav = ({ active }:{active: string}) => (
   <nav className="navbar">
-    <Link to="/">
+    <NavLink
+      to="/"
+      activeClassName="home"
+      exact
+    >
       <Icon icon="home" />
-    </Link>
-    <Link to="/add">
+    </NavLink>
+    <NavLink
+      to="/add"
+      activeClassName="add"
+    >
       <Icon icon="plus" />
-    </Link>
-    <Link to="/settings">
+    </NavLink>
+    <NavLink
+      to="/settings"
+      activeClassName="settings"
+    >
       <Icon icon="cog" />
-    </Link>
+    </NavLink>
   </nav>
 );
 
