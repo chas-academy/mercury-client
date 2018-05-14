@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
 import { GlobalNav, Loader, NotificationComponent } from '../';
 import { authorizeToken } from '../../actions/user';
@@ -26,7 +26,10 @@ class App extends Component {
           <NotificationComponent />
           <Switch>
             <PrivateRoute exact path="/" component={Home} />
-            <Route path="/login" component={LogIn} />
+            <Route
+              path="/login"
+              render={() => (authenticated ? <Redirect to="/" /> : <LogIn />)}
+            />
             <PrivateRoute path="/add" component={AddItem} />
             <PrivateRoute path="/settings" component={Settings} />
             <Route path="/*" component={PageNotFound} />
