@@ -3,7 +3,7 @@ import JWT from 'jsonwebtoken';
 import AxiosCustom from '../auth/axios';
 import * as Auth from '../auth/localStorage';
 import Notifications from 'react-notification-system-redux';
-import type { Dispatch, Action } from '../types';
+import type { Dispatch } from '../types';
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
@@ -41,7 +41,7 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       Auth.storeDataInLocalStorage({
         token
       }); /* Set token in local storage using 'store' dependency */
-      const decodedUser = Auth.decodeUser();
+      const decodedUser = Auth.decodeToken();
       dispatch(receiveUser(decodedUser));
       dispatch(
         Notifications.success(
@@ -68,11 +68,10 @@ export const authFailure = () => ({ type: AUTH_FAILURE });
 export const authorizeToken = () => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(authStart());
-
+  // Auth.verifyToken();
   AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL)
     .then(response => {
-      const decodedUser = Auth.decodeUser();
-      console.log(decodedUser);
+      const decodedUser = Auth.decodeToken();
       dispatch(authSuccess(decodedUser));
       dispatch(
         Notifications.success(

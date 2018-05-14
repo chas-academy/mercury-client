@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   render() {
-    const { fetchingUser, authenticated } = this.props.user;
+    const { fetchingUser } = this.props.user;
     return fetchingUser ? (
       <Loader />
     ) : (
