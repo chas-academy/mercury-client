@@ -20,7 +20,7 @@ class App extends Component {
       <Loader />
     ) : (
       <React.Fragment>
-        <GlobalNav />
+        <GlobalNav />>
         <main className="content">
           <NotificationComponent />
           <Switch>
