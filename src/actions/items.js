@@ -1,7 +1,8 @@
 // @flow
-import Axios from 'axios';
 import Notifications from 'react-notification-system-redux';
-
+import AxiosCustom from '../auth/axios';
+import * as Auth from '../auth/localStorage';
+import type { Dispatch, GetState } from '../types';
 import {
   REQUEST_ITEMS_START,
   REQUEST_ITEMS_SUCCESS,
@@ -11,32 +12,28 @@ import {
   ADD_ITEM_FAILURE
 } from '../constants';
 
-import type { Dispatch } from '../types';
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-
-export const requestItems = () => ({
-  type: REQUEST_ITEMS_START
-});
-
-export const receiveItems = items => ({
+/* Redux Action Creators - get/read items */
+export const requestItems = () => ({ type: REQUEST_ITEMS_START });
+export const receiveItems = (items: Array<Object>) => ({
   type: REQUEST_ITEMS_SUCCESS,
   payload: items
 });
+export const requestItemsFailure = () => ({ type: REQUEST_ITEMS_FAILURE });
 
-export const requestItemsFailure = () => ({
-  type: REQUEST_ITEMS_FAILURE
-});
-
-export const fetchItems = (query: string) => (dispatch: Dispatch) => {
+/* Request signed in user's items from API  */
+export const fetchItems = () => (dispatch: Dispatch, getState: GetState) => {
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false)
+    /* Early return if no user is signed in and update headers accordingly */
+    return;
+  if (getState().user.authenticated === false)
+    return; /* Second fail safe, make sure that user is authenticated before fetching items */
   dispatch(requestItems());
-  // Temporary userId for testing purposes
-  // should be replaced by the id of the current logged in user
-  const userId = 1;
 
-  Axios.get(`${API_BASE_URL}/users/${userId}/${query}`)
+  const userId: Number = Auth.getTokenData('userId');
+
+  AxiosCustom.get(`/users/${userId}/items/`)
     .then(response => {
-      dispatch(receiveItems(response.data.data));
+      dispatch(receiveItems(response.data));
       const notification = {
         title: 'Success!',
         message: 'Successfully fetched items!',
@@ -51,31 +48,32 @@ export const fetchItems = (query: string) => (dispatch: Dispatch) => {
       } else {
         dispatch(Notifications.error(error));
       }
-
       dispatch(requestItemsFailure());
     });
 };
 
-export const addItem = () => ({
-  type: ADD_ITEM_START
-});
+/* Redux Action Creators - create item */
+export const addItem = () => ({ type: ADD_ITEM_START });
+export const addItemSuccess = () => ({ type: ADD_ITEM_SUCCESS });
+export const addItemFailure = () => ({ type: ADD_ITEM_FAILURE });
 
-export const addItemSuccess = () => ({
-  type: ADD_ITEM_SUCCESS
-});
-
-export const addItemFailure = () => ({
-  type: ADD_ITEM_FAILURE
-});
-
-export const createItem = (item: object) => (dispatch: Dispatch) => {
+/* Post request to API - called from AddItemWizard component */
+export const createItem = (item: Object) => (dispatch: Dispatch) => {
   console.log('attempting to add item', item);
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(addItem());
-  Axios.post(`${API_BASE_URL}/items`, item)
+
+  const userId = Auth.getTokenData('userId');
+  /* copy the item argument and add current user's id */
+  const itemWithUserMetaId = Object.assign({ userMetaId: userId }, item);
+
+  AxiosCustom.post(`/items`, itemWithUserMetaId)
     .then(response => {
+      dispatch(addItemSuccess());
       console.log(response);
     })
     .catch(error => {
+      dispatch(addItemFailure());
       console.error(error);
     });
 };
