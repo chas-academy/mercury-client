@@ -52,12 +52,12 @@ export const verifyToken = () => {
     return (
       clearTimeout(verifyTokenTimeOut),
       (verifyTokenTimeOut = setTimeout(function() {
-        AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL)
-          .then(response => console.log(response))
-          .catch(error => {
+        AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL).catch(
+          error => {
             deleteToken();
             window.location.reload();
-          });
+          }
+        );
       }, 1000))
     );
   }
