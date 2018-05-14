@@ -3,7 +3,6 @@ import JWT from 'jsonwebtoken';
 import AxiosCustom from './axios';
 
 export const checkIfUserIsSignedInAndUpdateAxiosHeaders = () => {
-  console.log(AxiosCustom.defaults.headers.common);
   getToken() /* If a token is found in local storage, */
     ? (AxiosCustom.defaults.headers.common[
         'Authorization' /* AxiosCustom's headers gets updated with the current token as Bearer token. */
@@ -11,8 +10,6 @@ export const checkIfUserIsSignedInAndUpdateAxiosHeaders = () => {
     : delete AxiosCustom.defaults.headers.common[
         'Authorization'
       ]; /* Otherwise, the default header config gets deleted */
-  console.log(AxiosCustom.defaults.headers.common);
-  // console.log(Boolean(getToken()));
   return Boolean(
     /* returns true if a token is found, which indicates that an user is signed in */
     getToken() /* otherwise, it returns false */
@@ -30,10 +27,9 @@ export const getToken = () => Store.get('token');
 export const deleteToken = () => Store.remove('token');
 
 export function decodeToken() {
-  const token = getToken();
-  if (token) {
+  if (getToken()) {
     return JWT.verify(
-      token,
+      getToken(),
       process.env.REACT_APP_API_JWT_SECRET,
       (errors, decodedToken) => {
         if (errors) {
@@ -46,9 +42,26 @@ export function decodeToken() {
   }
 }
 
+let verifyTokenTimeOut = 0;
+
+export const verifyToken = () => {
+  if (!decodeToken()) {
+    return window.location.reload();
+    /* if the return of decodeToken is false, then reload the window */
+  } else {
+    return (
+      clearTimeout(verifyTokenTimeOut),
+      (verifyTokenTimeOut = setTimeout(function() {
+        AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL).catch(
+          error => {
+            deleteToken();
+            window.location.reload();
+          }
+        );
+      }, 1000))
+    );
+  }
+};
+
 export const getTokenData = data =>
   decodeToken() && decodeToken()[data] ? decodeToken()[data] : null;
-
-/* weird function that's not needed */
-export const decodeUser = () =>
-  decodeToken(getToken(), process.env.REACT_APP_API_JWT_SECRET);
