@@ -1,17 +1,17 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
 import { GlobalNav, Loader, NotificationComponent } from '../';
 import { authorizeToken } from '../../actions/user';
 import './App.css';
+import { PrivateRoute } from '../../auth/routes';
 
 const mapStateToProps = ({ user }) => ({ user });
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.dispatch(authorizeToken());
   }
 
@@ -21,17 +21,20 @@ class App extends Component {
       <Loader />
     ) : (
       <React.Fragment>
+        <GlobalNav />
         <main className="content">
           <NotificationComponent />
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/add" component={AddItem} />
-            <Route path="/settings" component={Settings} />
-            <Route path="/login" component={LogIn} />
+            <PrivateRoute exact path="/" component={Home} />
+            <Route
+              path="/login"
+              render={() => (authenticated ? <Redirect to="/" /> : <LogIn />)}
+            />
+            <PrivateRoute path="/add" component={AddItem} />
+            <PrivateRoute path="/settings" component={Settings} />
             <Route path="/*" component={PageNotFound} />
           </Switch>
         </main>
-        <GlobalNav />
       </React.Fragment>
     );
   }

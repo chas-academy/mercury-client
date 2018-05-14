@@ -6,18 +6,18 @@ import { Items, Loader } from '../components';
 
 class ItemsContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchItems('items'));
+    this.props.dispatch(fetchItems());
   }
 
   render() {
     const {
-      user: { authenticated, data }
+      user: { fetchingUser }
     } = this.props;
     const {
       items: { isFetching, allItems }
     } = this.props;
 
-    return isFetching ? (
+    return isFetching || fetchingUser ? (
       <Loader />
     ) : (
       <React.Fragment>
