@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Input, LineButton, StepBar } from '../';
+import { Input, LineButton, StepBar, CalculateGoal } from '../';
 import AgAutocomplete from 'react-algoliasearch';
 
 import { createItem } from '../../actions/items';
@@ -15,7 +15,7 @@ class AddItemWizard extends Component {
       description: '',
       cost: '',
       goal: '',
-      notification: '',
+      notification: ''
     };
 
     this.handleCanonicalChange = this.handleCanonicalChange.bind(this);
@@ -29,8 +29,8 @@ class AddItemWizard extends Component {
       item: {
         goal: null,
         price: null,
-        canonicalId: null,
-      },
+        canonicalId: null
+      }
     };
   }
 
@@ -44,8 +44,7 @@ class AddItemWizard extends Component {
         canonicalId: id
       }
     });
-    
-  }
+  };
 
   handleChange = (e) => {
     if (e.target.name === 'price') {
@@ -53,16 +52,16 @@ class AddItemWizard extends Component {
         item: {
           goal: this.state.item.goal,
           price: e.target.value,
-          canonicalId: this.state.item.canonicalId,
-        },
+          canonicalId: this.state.item.canonicalId
+        }
       });
     } else if (e.target.name === 'goal') {
       this.setState({
         item: {
           goal: e.target.value,
           price: this.state.item.price,
-          canonicalId: this.state.item.canonicalId,
-        },
+          canonicalId: this.state.item.canonicalId
+        }
       });
     } else if (e.target.name === 'notifications') {
       this.setState({ notification: e.target.value });
@@ -72,8 +71,8 @@ class AddItemWizard extends Component {
   goBack(event) {
     event.preventDefault();
     if (this.state.currentStep > 1) {
-      this.setState(previousState => ({
-        currentStep: previousState.currentStep - 1,
+      this.setState((previousState) => ({
+        currentStep: previousState.currentStep - 1
       }));
     }
   }
@@ -82,8 +81,8 @@ class AddItemWizard extends Component {
     event.preventDefault();
 
     if (this.state.currentStep < 4) {
-      this.setState(previousState => ({
-        currentStep: previousState.currentStep + 1,
+      this.setState((previousState) => ({
+        currentStep: previousState.currentStep + 1
       }));
     }
   }
@@ -99,8 +98,9 @@ class AddItemWizard extends Component {
         <StepBar currentStep={this.state.currentStep} />
         {this.state.currentStep === 1 && (
           <form key="1" onSubmit={this.handleSubmit}>
-            <label htmlFor="canonical">Vad har du köpt?
-            <AgAutocomplete
+            <label htmlFor="canonical">
+              Vad har du köpt?
+              <AgAutocomplete
                 apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
                 appId={'O1ZPQGWGG4'}
                 displayKey="name"
@@ -122,7 +122,8 @@ class AddItemWizard extends Component {
 
         {this.state.currentStep === 2 && (
           <form key="2" onSubmit={this.handleSubmit}>
-            <label htmlFor="price">Vad kostade den?
+            <label htmlFor="price">
+              Vad kostade den?
               <Input
                 name="price"
                 placeholder=""
@@ -137,7 +138,9 @@ class AddItemWizard extends Component {
 
         {this.state.currentStep === 3 && (
           <form key="3" onSubmit={this.handleSubmit}>
-            <label htmlFor="goal">Vad är ditt mål?
+            <CalculateGoal item={this.state.item} />
+            <label htmlFor="goal">
+              Vad är ditt mål?
               <Input
                 name="goal"
                 placeholder=""
@@ -169,15 +172,17 @@ class AddItemWizard extends Component {
           {this.state.currentStep > 1 ? (
             <LineButton onClick={this.goBack}>Tillbaka</LineButton>
           ) : (
-            <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
+            <LineButton onClick={this.goBack} disabled="disabled">
+              Tillbaka
+            </LineButton>
           )}
           {this.state.currentStep < 4 ? (
             <LineButton onClick={this.goNext}>Nästa</LineButton>
           ) : (
-              <LineButton onClick={this.handleSubmit} type="submit">
-                Spara
+            <LineButton onClick={this.handleSubmit} type="submit">
+              Spara
             </LineButton>
-            )}
+          )}
         </div>
       </div>
     );
