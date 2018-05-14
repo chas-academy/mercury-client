@@ -81,18 +81,17 @@ class AddItemWizard extends Component {
   }
 
   handleSubmit(event) {
+    // TODO: Improve this check!
     event.preventDefault();
-    if (this.currentStep < 4) {
-      this.goNext
-    } else if (
+    if (
       this.state.item.goal === '' ||
-      this.state.item.price === '') {
+      this.state.item.price === '' ||
+      this.state.item.canonicalId === undefined
+    ) {
       const errorMsg = 'Du måste fylla i ett giltigt pris/mål.'
       this.props.dispatch(createItemWarning(errorMsg));
-    } else if (this.state.item.canonicalId === undefined) {
-      const errorMsg = 'Du måste välja en giltig pryl.'
-      this.props.dispatch(createItemWarning(errorMsg));
-    } else {
+    }
+    else {
       this.props.dispatch(createItem(this.state.item));
     }
   }
@@ -122,6 +121,7 @@ class AddItemWizard extends Component {
           <form key="2" onSubmit={this.handleSubmit}>
             <label htmlFor="price">Vad kostade den?
               <Input
+                type="number"
                 name="price"
                 placeholder=""
                 value={this.state.item.price}
@@ -137,6 +137,7 @@ class AddItemWizard extends Component {
           <form key="3" onSubmit={this.handleSubmit}>
             <label htmlFor="goal">Vad är ditt mål?
               <Input
+                type="number"              
                 name="goal"
                 placeholder=""
                 value={this.state.item.goal}
@@ -170,13 +171,13 @@ class AddItemWizard extends Component {
               <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
             )}
 
-          {this.state.currentStep === 1 && this.state.item.canonicalId !== undefined
-            || this.state.currentStep === 2 && this.state.item.price > 0
-            || this.state.currentStep === 3 && this.state.item.goal > 0 ?
+          {(this.state.currentStep === 1 && this.state.item.canonicalId !== undefined)
+            || (this.state.currentStep === 2 && this.state.item.price > 0)
+            || (this.state.currentStep === 3 && this.state.item.goal > 0) ?
             <LineButton onClick={this.goNext}>Nästa</LineButton> :
             this.state.currentStep === 4 ?
-            <LineButton onClick={this.handleSubmit} type="submit">Spara</LineButton> :
-            <LineButton disabled="disabled" onClick={this.goNext}>Nästa</LineButton>
+              <LineButton onClick={this.handleSubmit} type="submit">Spara</LineButton> :
+              <LineButton disabled="disabled" onClick={this.goNext}>Nästa</LineButton>
           }
         </div>
       </div>
