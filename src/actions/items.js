@@ -70,10 +70,31 @@ export const createItem = (item: Object) => (dispatch: Dispatch) => {
   AxiosCustom.post(`/items`, itemWithUserMetaId)
     .then(response => {
       dispatch(addItemSuccess());
+      const notification = {
+        title: 'Success!',
+        message: 'Successfully added item!',
+        position: 'tc'
+      };
+      dispatch(Notifications.success(notification))
       console.log(response);
     })
     .catch(error => {
       dispatch(addItemFailure());
+      const notification = {
+        title: 'Error!',
+        message: 'Something went terribly wrong!',
+        position: 'tc'
+      };
+      dispatch(Notifications.error(notification))
       console.error(error);
     });
 };
+
+export const createItemWarning = (error: String) => (dispatch: Dispatch) => {
+  const notification = {
+    title: 'Sakta i backarna!',
+    message: error,
+    position: 'tc'
+  }
+  dispatch(Notifications.warning(notification));
+}

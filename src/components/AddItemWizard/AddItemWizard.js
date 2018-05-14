@@ -3,20 +3,12 @@ import { connect } from 'react-redux';
 import { Input, LineButton, StepBar } from '../';
 import AgAutocomplete from 'react-algoliasearch';
 
-import { createItem } from '../../actions/items';
+import { createItem, createItemWarning } from '../../actions/items';
 import './AddItemWizard.css';
 
 class AddItemWizard extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentStep: 1,
-      description: '',
-      cost: '',
-      goal: '',
-      notification: '',
-    };
 
     this.handleCanonicalChange = this.handleCanonicalChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -27,9 +19,9 @@ class AddItemWizard extends Component {
     this.state = {
       currentStep: 1,
       item: {
-        goal: null,
-        price: null,
-        canonicalId: null,
+        goal: '',
+        price: '',
+        canonicalId: undefined,
       },
     };
   }
@@ -44,7 +36,7 @@ class AddItemWizard extends Component {
         canonicalId: id
       }
     });
-    
+
   }
 
   handleChange = (e) => {
@@ -90,7 +82,19 @@ class AddItemWizard extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(createItem(this.state.item));
+    if (this.currentStep < 4) {
+      this.goNext
+    } else if (
+      this.state.item.goal === '' ||
+      this.state.item.price === '') {
+      const errorMsg = 'Du måste fylla i ett giltigt pris/mål.'
+      this.props.dispatch(createItemWarning(errorMsg));
+    } else if (this.state.item.canonicalId === undefined) {
+      const errorMsg = 'Du måste välja en giltig pryl.'
+      this.props.dispatch(createItemWarning(errorMsg));
+    } else {
+      this.props.dispatch(createItem(this.state.item));
+    }
   }
 
   render() {
@@ -101,6 +105,7 @@ class AddItemWizard extends Component {
           <form key="1" onSubmit={this.handleSubmit}>
             <label htmlFor="canonical">Vad har du köpt?
             <AgAutocomplete
+                value='canonicalItem'
                 apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
                 appId={'O1ZPQGWGG4'}
                 displayKey="name"
@@ -169,8 +174,8 @@ class AddItemWizard extends Component {
           {this.state.currentStep > 1 ? (
             <LineButton onClick={this.goBack}>Tillbaka</LineButton>
           ) : (
-            <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
-          )}
+              <LineButton onClick={this.goBack} disabled="disabled">Tillbaka</LineButton>
+            )}
           {this.state.currentStep < 4 ? (
             <LineButton onClick={this.goNext}>Nästa</LineButton>
           ) : (
