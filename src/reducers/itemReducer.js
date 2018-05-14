@@ -3,11 +3,16 @@ import {
   REQUEST_ITEMS_START,
   REQUEST_ITEMS_SUCCESS,
   REQUEST_ITEMS_FAILURE,
+  ADD_ITEM_START,
+  ADD_ITEM_SUCCESS,
+  ADD_ITEM_FAILURE,
+  ADD_ITEM_RESET,
 } from '../constants';
 
 const defaultState = {
   isFetching: false,
   allItems: [],
+  requestFullfilled: false,
 };
 
 const items = (state = defaultState, action) => {
@@ -28,6 +33,30 @@ const items = (state = defaultState, action) => {
         ...state,
         isFetching: false,
       };
+      case ADD_ITEM_START:
+      return {
+        ...state,
+        isFetching: true,
+        requestFullfilled: false,
+      };
+      case ADD_ITEM_SUCCESS: 
+      return {
+        ...state,
+        isFetching: false,
+        requestFullfilled: true
+      };
+      case ADD_ITEM_FAILURE: 
+      return {
+        ...state,
+        isFetching: false,
+        requestFullfilled: false
+      }
+      case ADD_ITEM_RESET:
+      return {
+        ...state,
+        isFetching: false,
+        requestFullfilled: false
+      } 
     default:
       return state;
   }

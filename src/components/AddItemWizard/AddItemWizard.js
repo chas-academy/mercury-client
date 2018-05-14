@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Input, LineButton, StepBar } from '../';
 import AgAutocomplete from 'react-algoliasearch';
@@ -22,7 +23,7 @@ class AddItemWizard extends Component {
         goal: '',
         price: '',
         canonicalId: undefined,
-      },
+      }
     };
   }
 
@@ -81,7 +82,6 @@ class AddItemWizard extends Component {
   }
 
   handleSubmit(event) {
-    // TODO: Improve this check!
     event.preventDefault();
     if (
       this.state.item.goal === '' ||
@@ -97,6 +97,9 @@ class AddItemWizard extends Component {
   }
 
   render() {
+    if (this.props.requestFullfilled) {
+      return <Redirect to="/" />
+    } else
     return (
       <div className="formContainer">
         <StepBar currentStep={this.state.currentStep} />
@@ -137,7 +140,7 @@ class AddItemWizard extends Component {
           <form key="3" onSubmit={this.handleSubmit}>
             <label htmlFor="goal">Vad är ditt mål?
               <Input
-                type="number"              
+                type="number"
                 name="goal"
                 placeholder=""
                 value={this.state.item.goal}
@@ -185,4 +188,8 @@ class AddItemWizard extends Component {
   }
 }
 
-export default connect(null)(AddItemWizard);
+const mapStateToProps = state => ({
+  requestFullfilled: state.items.requestFullfilled
+});
+
+export default connect(mapStateToProps)(AddItemWizard);
