@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Input, LineButton, StepBar, CalculateGoal } from '../';
 import AgAutocomplete from 'react-algoliasearch';
@@ -112,8 +112,9 @@ class AddItemWizard extends Component {
                   displayKey="name"
                   indices={[{ index: 'canonical_items' }]}
                   inputId="input-search"
-                  placeholder="Search..."
+                  placeholder=" "
                   selected={this.handleCanonicalChange}
+                  options={{debug: true}}
                 />
               </label>
             </form>
