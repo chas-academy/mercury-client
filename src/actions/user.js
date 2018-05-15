@@ -16,7 +16,7 @@ import {
   AUTH_FAILURE
 } from '../constants';
 
-const notification = (title, message) => ({
+const composeNotification = (title, message) => ({
   title: `${title}`,
   message: `${message}`,
   position: 'tc'
@@ -45,17 +45,26 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       dispatch(receiveUser(decodedUser));
       dispatch(
         Notifications.success(
-          notification(`Welcome, ${decodedUser.firstName}!`, `Let's get rich!`)
+          composeNotification(
+            `Welcome, ${decodedUser.firstName}!`,
+            `Let's get rich!`
+          )
         )
       );
     })
     .catch(error => {
-      if (error.response && error.response.data.message) {
+      if (error.response.data.message)
         console.error(error.response.data.message);
-      } else {
-        console.error(error);
-      }
       dispatch(requestFailure());
+      dispatch(
+        Notifications.warning(
+          composeNotification(
+            'Försök igen!',
+            'Verkar som att du skrev in fel e-post eller lösenord. Eller så är båda fel.'
+          )
+        )
+      );
+      console.error(error);
     });
 };
 
@@ -68,19 +77,10 @@ export const authFailure = () => ({ type: AUTH_FAILURE });
 export const authorizeToken = () => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(authStart());
-  // Auth.verifyToken();
   AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL)
     .then(response => {
       const decodedUser = Auth.decodeToken();
       dispatch(authSuccess(decodedUser));
-      dispatch(
-        Notifications.success(
-          notification(
-            `Successfully authed, ${decodedUser.firstName}!`,
-            `Let's continue`
-          )
-        )
-      );
     })
     .catch(error => {
       Auth.deleteToken();
@@ -96,14 +96,16 @@ export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
 
 /* Post request to API - initiate logout actions using the action creators above */
 export const requestLogout = () => (dispatch: Dispatch) => {
-  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
+  /* if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return; */
   dispatch(requestTokenLogout());
 
   AxiosCustom.post(process.env.REACT_APP_API_SIGN_OUT_URL)
     .then(response => {
       dispatch(removeUser()) && Auth.deleteToken('token');
       dispatch(
-        Notifications.success(notification(`Bye`, `Now you're logged out`))
+        Notifications.success(
+          composeNotification(`Bye`, `Now you're logged out`)
+        )
       );
     })
     .catch(error => {

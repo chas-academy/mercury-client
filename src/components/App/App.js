@@ -5,8 +5,8 @@ import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import { Home, AddItem, Settings, PageNotFound, LogIn } from '../../views';
 import { GlobalNav, Loader, NotificationComponent } from '../';
 import { authorizeToken } from '../../actions/user';
-import './App.css';
 import { PrivateRoute } from '../../auth/routes';
+import './App.css';
 
 const mapStateToProps = ({ user }) => ({ user });
 

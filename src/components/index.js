@@ -21,3 +21,4 @@ export { default as CalculateGoal } from './CalculateGoal/CalculateGoal';
 export {
   default as SettingsComponent
 } from './SettingsComponent/SettingsComponent';
+export { default as LogOut } from './LogOut/LogOut';
