@@ -9,7 +9,7 @@
     text-align: center;
     label {
         display: block;
-        margin: 2em;
+        margin: 4em;
     }
     .btnGroup {
         display: flex;
@@ -40,6 +40,7 @@
   .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
     width: 100%;
     border: 0;
+    margin-top: 1em;
     border-bottom: 1px solid black;
     font-size: 1.5em;
   }
