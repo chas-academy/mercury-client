@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import type { ItemT } from '../../types';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import IncrementButton from '../IncrementButton/IncrementButton';
 import Icon from '../Icon/Icon';
 import './Item.css';
 
@@ -48,6 +49,7 @@ class Item extends Component<Props, State> {
           progressBarMax={item.goal}
           progressBarCurrent={item.delimiter}
         />
+        <IncrementButton itemId={item.itemId} />
       </article>
     );
   }

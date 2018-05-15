@@ -7,6 +7,9 @@ import {
   ADD_ITEM_SUCCESS,
   ADD_ITEM_FAILURE,
   ADD_ITEM_RESET,
+  INCREMENT_USAGE_START,
+  INCREMENT_USAGE_SUCCESS,
+  INCREMENT_USAGE_FAILURE,
 } from '../constants';
 
 const defaultState = {
@@ -33,30 +36,48 @@ const items = (state = defaultState, action) => {
         ...state,
         isFetching: false,
       };
-      case ADD_ITEM_START:
+    case ADD_ITEM_START:
       return {
         ...state,
         isFetching: true,
         requestFullfilled: false,
       };
-      case ADD_ITEM_SUCCESS: 
+    case ADD_ITEM_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        requestFullfilled: true
+        requestFullfilled: true,
       };
-      case ADD_ITEM_FAILURE: 
+    case ADD_ITEM_FAILURE:
       return {
         ...state,
         isFetching: false,
-        requestFullfilled: false
-      }
-      case ADD_ITEM_RESET:
+        requestFullfilled: false,
+      };
+    case ADD_ITEM_RESET:
       return {
         ...state,
         isFetching: false,
-        requestFullfilled: false
-      } 
+        requestFullfilled: false,
+      };
+    case INCREMENT_USAGE_START:
+      return {
+        ...state,
+        isFetching: true,
+        requestFullfilled: false,
+      };
+    case INCREMENT_USAGE_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        requestFullfilled: true,
+      };
+    case INCREMENT_USAGE_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        requestFullfilled: false,
+      };
     default:
       return state;
   }
