@@ -1,20 +1,20 @@
 .formContainer {
-    margin: auto;
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 2em;
-    width: 80%;
     padding-top: 3em;
+    padding-bottom: 1em;
     -webkit-box-shadow: 0px 11px 34px -10px rgba(74, 74, 74, 0.42);
     -moz-box-shadow: 0px 11px 34px -10px rgba(74, 74, 74, 0.42);
     box-shadow: 0px 11px 34px -10px rgba(74, 74, 74, 0.42);
     text-align: center;
     label {
         display: block;
-        margin: 4em;
+        margin: 2em 1em 2em 1em;
     }
     .btnGroup {
         display: flex;
-        width: 0;
-        align-content: center;
+        justify-content: space-between;
     }
     .default {
         background: var(--light);
