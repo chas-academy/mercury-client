@@ -17,7 +17,7 @@ export {
 } from './NotificationComponent/NotificationComponent';
 export { default as Loader } from './Loader/Loader';
 export { default as LineButton } from './LineButton/LineButton';
+export { default as CalculateGoal } from './CalculateGoal/CalculateGoal';
 export {
   default as SettingsComponent
 } from './SettingsComponent/SettingsComponent';
-export { default as CalculateGoal } from './CalculateGoal/CalculateGoal';
