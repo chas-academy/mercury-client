@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { requestLogin, requestLogout } from '../../actions/user';
+import { requestLogin } from '../../actions/user';
 import { Input, Button, Icon, LineButton } from '../';
 import './LogInForm.css';
 
@@ -9,7 +8,6 @@ class LogInForm extends Component {
   constructor(props: Props) {
     super((props: Props));
     this.onSubmit = this.onSubmit.bind(this);
-    this.onLogout = this.onLogout.bind(this);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
 
@@ -24,10 +22,6 @@ class LogInForm extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.dispatch(requestLogin(this.state.formData));
-  }
-
-  onLogout(e) {
-    this.props.dispatch(requestLogout());
   }
 
   onEmailChange(e) {
@@ -71,7 +65,6 @@ class LogInForm extends Component {
           />
           <LineButton type="submit">Logga in</LineButton>
         </form>
-        <Button onClick={this.onLogout}>Logout</Button>
       </section>
     );
   }
