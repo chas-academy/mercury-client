@@ -173,19 +173,13 @@ class AddItemWizard extends Component {
           )}
 
           {this.state.currentStep === 4 && (
-            <form key="4" onSubmit={this.handleSubmit}>
-              <label htmlFor="notifications">
-                Hur ofta vill du ha notiser?
-                <Input
-                  disabled="true"
-                  name="notifications"
-                  placeholder="null"
-                  value={this.state.notification}
-                  onChange={this.handleChange}
-                  variant="underlined"
-                />
-              </label>
-            </form>
+            <div>
+              <h2>Du kommer lägga till: </h2>
+              <h3>{this.state.item.canonical.name}</h3>
+              <p><strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr</p>
+              <p><strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar</p>             
+            </div>
+            
           )}
           <div className="btnGroup">
             {this.state.currentStep > 1 ? (
