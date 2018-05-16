@@ -3,8 +3,6 @@ import React from 'react';
 import { Item } from '../';
 import './Items.css';
 
-import type { ItemT } from '../../types';
-
 // const Items = ({ items }: { items: Array<ItemT> }) => (
 class Items extends React.Component {
   constructor(

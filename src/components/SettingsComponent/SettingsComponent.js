@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Icon, LineButton, Button } from '../';
+import React from 'react';
+import { Icon } from '../';
 import './SettingsComponent.css';
 
 const SettingsComponent = () => (
