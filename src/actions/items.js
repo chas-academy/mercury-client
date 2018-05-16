@@ -113,7 +113,8 @@ export const addUsage = (itemId) => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false ) return;
   dispatch(incrementUsage());
 
-  const userId = Auth.getTokenData('userId');
+  // could probably be removed?
+  // const userId = Auth.getTokenData('userId');
   
   AxiosCustom.put(`/items/${itemId}/increment`)
     .then(response => {

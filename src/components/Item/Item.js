@@ -39,7 +39,7 @@ class Item extends Component<Props, State> {
   }
 
   render() {
-    const { item, handleIncrement } = this.props;
+    const { item } = this.props;
 
     return (
       <article className="item">
