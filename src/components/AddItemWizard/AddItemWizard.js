@@ -191,7 +191,7 @@ class AddItemWizard extends Component {
               )}
 
             {(this.state.currentStep === 1 &&
-              this.state.item.canonical.id !== undefined) ||
+              this.state.item.canonical.id !== null) ||
               (this.state.currentStep === 2 && this.state.item.price > 0) ||
               (this.state.currentStep === 3 && this.state.item.goal > 0) ? (
                 <LineButton onClick={this.goNext}>Nästa</LineButton>

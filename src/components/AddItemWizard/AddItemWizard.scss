@@ -41,9 +41,12 @@
     margin-top: 1em;
     border-bottom: 1px solid black;
     font-size: 1.5em;
+    background-color: transparent !important;
+    outline: none;
+    text-align: right;
   }
   .algolia-autocomplete .aa-hint {
-    color: #999;
+    color: transparent;
   }
   .algolia-autocomplete .aa-dropdown-menu {
     width: 100%;
