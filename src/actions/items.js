@@ -10,7 +10,10 @@ import {
   ADD_ITEM_START,
   ADD_ITEM_SUCCESS,
   ADD_ITEM_FAILURE,
-  ADD_ITEM_RESET
+  ADD_ITEM_RESET,
+  INCREMENT_USAGE_START,
+  INCREMENT_USAGE_SUCCESS,
+  INCREMENT_USAGE_FAILURE,
 } from '../constants';
 
 /* Redux Action Creators - get/read items */
@@ -99,3 +102,30 @@ export const createItemWarning = (error: String) => (dispatch: Dispatch) => {
   }
   dispatch(Notifications.warning(notification));
 }
+
+/* Redux Action Creators - increment usage */
+export const incrementUsage = () => ({ type: INCREMENT_USAGE_START });
+export const incrementUsageSuccess = () => ({ type: INCREMENT_USAGE_SUCCESS });
+export const incrementUsageFailure = () => ({ type: INCREMENT_USAGE_FAILURE });
+
+export const addUsage = (itemId) => (dispatch: Dispatch) => {
+
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false ) return;
+  dispatch(incrementUsage());
+
+  const userId = Auth.getTokenData('userId');
+  
+  AxiosCustom.put(`/items/${itemId}/increment`)
+    .then(response => {
+      dispatch(incrementUsageSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(incrementUsageFailure());
+      const notification = {
+        title: "Något gick fel!",
+        message: error,
+        position: 'tc'
+      };
+      dispatch(Notifications.error(notification));
+    });
+};
