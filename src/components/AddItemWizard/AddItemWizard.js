@@ -95,6 +95,7 @@ class AddItemWizard extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    event.target.disabled = true;
     const itemToSave = {
       goal: this.state.item.goal,
       price: this.state.item.price,
@@ -177,9 +178,9 @@ class AddItemWizard extends Component {
               <h2>Du kommer lägga till: </h2>
               <h3>{this.state.item.canonical.name}</h3>
               <p><strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr</p>
-              <p><strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar</p>             
+              <p><strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar</p>
             </div>
-            
+
           )}
           <div className="btnGroup">
             {this.state.currentStep > 1 ? (
