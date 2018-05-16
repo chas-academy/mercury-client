@@ -63,7 +63,7 @@ const items = (state = defaultState, action) => {
     case INCREMENT_USAGE_START:
       return {
         ...state,
-        isFetching: true,
+        isFetching: false,
         requestFullfilled: false,
       };
     case INCREMENT_USAGE_SUCCESS:

@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import type { ItemT } from '../../types';
 import ProgressBar from '../ProgressBar/ProgressBar';
-import IncrementButton from '../IncrementButton/IncrementButton';
 import Icon from '../Icon/Icon';
 import './Item.css';
 
@@ -12,25 +11,39 @@ type State = {
 };
 
 class Item extends Component<Props, State> {
-  constructor(props: ItemT) {
+  constructor(
+    props: ItemT,
+    handleIncrement,
+    item,
+  ) {
     super(props);
 
     // This binding is necessary to make `this` work in the callback
     this.toggleCard = this.toggleCard.bind(this);
+    this.incrementCounter = this.incrementCounter.bind(this);
 
     this.state = { isOpen: false };
   }
+
   toggleCard = () => {
     this.setState((prevState) => ({
       isOpen: !prevState.isOpen
     }));
   };
 
+  incrementCounter = (data, event) => {
+    this.setState((prevState) => {
+      this.props.item.delimiter++;
+    });
+    this.props.handleIncrement(data, event)
+  }
+
   render() {
-    const { item } = this.props;
+    const { item, handleIncrement } = this.props;
+
     return (
-      <article className="item" onClick={this.toggleCard}>
-        <header>
+      <article className="item">
+        <header onClick={this.toggleCard}>
           <h2>{item.CanonicalItem.name}</h2>
           <Icon icon={item.CanonicalItem.icon} />
         </header>
@@ -49,7 +62,7 @@ class Item extends Component<Props, State> {
           progressBarMax={item.goal}
           progressBarCurrent={item.delimiter}
         />
-        <IncrementButton itemId={item.itemId} />
+        <button onClick={e => this.incrementCounter(item.itemId, e)}>Ny användning</button>
       </article>
     );
   }
