@@ -5,9 +5,11 @@ function CalculateGoal(props) {
   const goalPerUse = Math.ceil(props.item.price / props.item.goal);
 
   return props.item.goal > 0 ? (
-    <p>Kostnad: {goalPerUse} kr per användning</p>
+    <div>
+      <p className="goalResult">{goalPerUse} kr</p> <br />per användning
+    </div>
   ) : (
-    ''
+    <p className="goalResult">...</p>
   );
 }
 
