@@ -1,53 +1,96 @@
 .item {
-    flex: 0 1 340px;
+  flex: 0 1 370px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  padding: 1em;
+  box-sizing: border-box;
+  font-weight: 400;
+  color: var(--dark);
+  box-shadow: var(--shadow);
+  border-radius: var(--border-rounded);
+  background: var(--light);
+
+  &:first-child {
+    margin: 0;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      all: unset;
+      display: inline-flex;
+      font-size: 1em;
+      margin: 0;
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      -webkit-margin-start: 0;
+      -webkit-margin-end: 0;
+      flex: 0 1 auto;
+    }
+
+    .icon {
+      color: #008abb;
+    }
+  }
+
+  table {
     display: flex;
     flex-direction: column;
-    margin-top: 2em;
-    padding: 1.5em;
-    font-weight: 400;
-    color: var(--light);
-    box-shadow: var(--shadow-primary);
-    border-radius: var(--border-rounded);
-    background: var(--gradient-warm);
-    header {
-        display: flex;
-        justify-content: space-between;
-        h2 {
-            all: unset;
-            font-size: 1em;
-            font-weight: 1200;
-            margin-bottom: 1rem;
-            flex: 0 1 auto;
-        }
+    margin: 0;
+    height: 7em;
+    position: relative;
+    top: 1em;
+    transition: height 0.5s;
+    overflow: hidden;
+
+    tr {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1em;
+      padding: 0.5em 0;
+
+      th {
+        text-align: left;
+        font-weight: 400;
+        flex: 1;
+      }
+
+      td {
+        text-align: end;
+      }
+
+      td:first-of-type {
+        font-weight: 600;
+        flex: 0 0 80px;
+        letter-spacing: 1px;
+      }
+      td:last-of-type {
+        flex: 0 0 120px;
+      }
     }
-    dl {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0;
-        transition: height 0.5s;
-        height: 5em;
-        overflow: hidden;
-        dt,
-        dd {
-            padding-top: 0.5em;
-            font-variant-caps: all-petite-caps;
-        }
-        dt {
-            width: 33%;
-        }
-        dd {
-            margin-left: auto;
-            width: 66%;
-            font-weight: bold;
-            text-align: end;
-        }
-    }
-    .collapsed {
-        height: 1px;
-    }
-    h3 {
-        all: unset;
-        margin-top: 0.5em;
-        font-variant-caps: all-petite-caps;
-    }
+  }
+
+  .collapsed {
+    height: 1px;
+  }
+
+  .button {
+    align-self: flex-end;
+    position: relative;
+    top: 1.6em;
+    left: 0.2em;
+    z-index: 1;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+
+  // h3 {
+  //   all: unset;
+  //   margin-top: 0.5em;
+  //   font-variant-caps: all-petite-caps;
+  // }
 }
