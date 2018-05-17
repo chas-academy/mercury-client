@@ -1,11 +1,10 @@
 import React from 'react';
-import { PageTitle, SettingsComponent, LogOut } from '../components';
+import { PageTitle, SettingsComponent } from '../components';
 
 const Settings = () => (
   <React.Fragment>
     <PageTitle title="inställningar" />
     <SettingsComponent />
-    <LogOut />
   </React.Fragment>
 );
 
