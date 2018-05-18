@@ -1,11 +1,11 @@
 import React from 'react';
+import { PageTitle, SettingsComponent } from '../components';
 
-const style = {
-  fontSize: '5em',
-  textAlign: 'center',
-};
 const Settings = () => (
-  <h1 style={style}>Inställningar</h1>
+  <React.Fragment>
+    <PageTitle title="inställningar" />
+    <SettingsComponent />
+  </React.Fragment>
 );
 
 export default Settings;

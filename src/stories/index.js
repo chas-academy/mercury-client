@@ -1,11 +1,13 @@
-import React from "react";
-import { storiesOf, addDecorator } from "@storybook/react";
-import { action, decorateAction,configureActions } from "@storybook/addon-actions";
-import { withKnobs, text, boolean, number } from "@storybook/addon-knobs/react";
-import { withNotes } from "@storybook/addon-notes";
-import LinkTo from "@storybook/addon-links/react";
-
-import "../assets/styles/style.css";
+import React from 'react';
+import { storiesOf, addDecorator } from '@storybook/react';
+import {
+  action,
+  decorateAction,
+  configureActions
+} from '@storybook/addon-actions';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs/react';
+import { withNotes } from '@storybook/addon-notes';
+import LinkTo from '@storybook/addon-links/react';
 
 import {
   Button,
@@ -13,79 +15,113 @@ import {
   ProgressBar,
   GlobalNav,
   LinkList,
+  Items,
   Item,
-  Icon
-} from "../components";
+  StepBar,
+  Icon,
+  ItemData
+} from '../components';
 
 /***** Stories of Button *****/
-action("clicked");
-action("triggered");
-const buttonStories = storiesOf("Elements/Button", module);
+action('clicked');
+action('triggered');
+const buttonStories = storiesOf('Elements/Button', module);
 
 buttonStories
   .addDecorator(withKnobs)
-  .add("No props is passed", () => <Button>button</Button>)
-  .add("No children", () => (
-    <Button color="secondary" onClick={action("trigger-an-event")} />
-  ))
-  .add("button w. icon", () => (
-    <Button onClick={action("clicked")}>
-      <Icon icon="rocket" color="pink" />
+  .add("shape='box'", () => (
+    <Button shape="box" onClick={action('trigger-an-event')}>
+      button
     </Button>
   ))
-  .add("disable/enable", () => (
+  .add('round button w. icon + color grey', () => (
+    <Button color="grey" shape="round" onClick={action('clicked')}>
+      <Icon icon="rocket" />
+    </Button>
+  ))
+  .add('disable/enable', () => (
     <Button
       color="primary"
-      disabled={boolean("Disabled", true)}
-      onClick={action("triggered")}
+      disabled={boolean('Disabled', true)}
+      onClick={action('triggered')}
     >
-      {text("Label", "Write what you want!")}
+      {text('Label', 'Save')}
     </Button>
   ))
-  .add("w. icon and text", () => (
-    <Button color="secondary" onClick={action("triggered")}>
-      <Icon icon="rocket" color="var(--light)" />
-      <span>rocket</span>
+  .add('w. icon and text', () => (
+    <Button onClick={action('triggered')}>
+      <Icon icon="cog" />
+      <span>edit</span>
     </Button>
   ));
 
-
 /***** Stories of Input *****/
-storiesOf("Elements/Input", module)
-  .add("text", () => <Input type="text" />)
-  .add("date", () => <Input type="date" />)
-  .add("number", () => <Input type="number" />);
+storiesOf('Elements/Input', module)
+  .add('underlined text', () => (
+    <Input type="text" placeholder="write here, plz!" />
+  ))
+  .add('classic', () => <Input type="text" variant="classic" />)
+  .add('date', () => <Input type="date" />)
+  .add('number', () => <Input type="number" />);
 
+/***** Stories of Icon *****/
+storiesOf('Elements/Icon', module)
+  .add('home, default size - small', () => <Icon icon="home" />)
+  .add('plus - medium', () => <Icon icon="plus" size="medium" />)
+  .add('cog - large', () => <Icon icon="cog" size="large" />)
+  .add('rocket, no color provided', () => <Icon icon="rocket" size="xlarge" />);
+
+/***** Stories of Item *****/
+
+const item = {
+  itemId: 3,
+  delimiter: 30,
+  goal: 100,
+  goalType: 'days of use',
+  price: 2499,
+  auto: false,
+  completed: false,
+  createdAt: '2018-05-02T16:55:13.322Z',
+  updatedAt: '2018-05-02T16:55:13.322Z',
+  CanonicalItem: {
+    name: 'Apple Mac Book Pro 13 Touchbar',
+    icon: 'macbook'
+  }
+};
+const items = [
+  {
+    itemId: 3,
+    delimiter: 30,
+    goal: 100,
+    goalType: 'days of use',
+    price: 2499,
+    auto: false,
+    completed: false,
+    createdAt: '2018-05-02T16:55:13.322Z',
+    updatedAt: '2018-05-02T16:55:13.322Z',
+    CanonicalItem: {
+      name: 'Apple Mac Book Pro 13 Touchbar',
+      icon: 'macbook'
+    }
+  }
+];
+
+storiesOf('Elements/Item', module).add('article', () => <Item item={item} />);
+storiesOf('Elements/Items', module).add('articles', () => (
+  <Items items={items} />
+));
 
 /***** Stories of ProgressBar*****/
-const progressStories = storiesOf("Elements/Progress", module);
+const progressStories = storiesOf('Elements/Progress', module);
 progressStories.addDecorator(withKnobs);
 
 progressStories
-  .add("0%", () => <ProgressBar progressBarCurrent="0" progressBarMax="100" />)
-  .add("30%", () => (
-    <ProgressBar progressBarCurrent="30" progressBarMax="100" />
+  .add('...progress', () => (
+    <ProgressBar
+      progressBarCurrent={item.delimiter}
+      progressBarMax={item.goal}
+    />
   ))
-  .add("60%", () => (
-    <ProgressBar progressBarCurrent="60" progressBarMax="100" />
-  ))
-  .add("100%", () => (
-    <ProgressBar progressBarCurrent="100" progressBarMax="100" />
+  .add('100%', () => (
+    <ProgressBar className="" progressBarCurrent="100" progressBarMax="100" />
   ));
-
-
-/***** Stories of Icon *****/
-storiesOf("Elements/Icon", module)
-  .add("home, default size - small", () => <Icon icon="home" color="#5e515a" />)
-  .add("plus - medium", () => (
-    <Icon icon="plus" color="#d9b1b1" size="medium" />
-  ))
-  .add("cog - large", () => <Icon icon="cog" color="orange" size="large" />)
-  .add("rocket, no color provided", () => <Icon icon="rocket" size="xlarge" />);
-
-
-/***** Stories of Item *****/
-/* Needs fixin
-storiesOf("Elements/Item", module).add("text", () => (
-  <Item item={item}/>
-)); */

@@ -1,13 +1,11 @@
 import React from 'react';
+import { AddItemWizard, PageTitle } from '../components';
 
-const style = {
-  fontSize: '5em',
-  textAlign: 'center',
-};
 const AddItem = () => (
-  <h1 style={style}>
-    Lägg till
-  </h1>
+  <React.Fragment>
+    <PageTitle title="lägg till en pryl" />
+    <AddItemWizard />
+  </React.Fragment>
 );
 
 export default AddItem;

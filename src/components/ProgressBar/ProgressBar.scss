@@ -1,71 +1,90 @@
-$bar-color: white;
-$text-color: rgba($color: #000000, $alpha: 0.33);
+$bar-color: var(--ocean);
+$text-color: rgba($color: #fbfbfb, $alpha: 1);
 
-span   {
-    display: flex;
-    position: relative;
-  }
-span > span {
+.progressbar {
+  display: flex;
+  position: relative;
+
+  > span {
     align-self: center;
     position: absolute;
+    width: 80%;
+    justify-content: space-between;
     color: $text-color;
     line-height: 1;
     font-size: 1em;
     left: 1em;
-    top: 0.75em;
-    z-index: 100;
-}
-span > ::-webkit-progress-value { 
+    top: 0.3em;
+    z-index: 1; // make sures that the text is on top of the progressbar
+
+    > h3 {
+      all: unset;
+      display: flex;
+      width: 100%;
+      font-weight: bold;
+      justify-content: space-between;
+      margin: 0;
+      span {
+        line-height: 0.8;
+        letter-spacing: 1px;
+        font-weight: normal;
+        font-variant-caps: all-petite-caps;
+      }
+    }
+  }
+
+  span > ::-webkit-progress-value {
     -webkit-animation: bar-fill 2s;
     animation: bar-fill 2s;
     width: 0px;
   }
 
   progress {
-      margin-top: 0.5em;
-      border-radius: 1em;
-      height: 1.5em;
-      width: 100%;
-      background-color: rgba($color: #FFFFFF, $alpha: 0.5);
-      border: 0;
+    border-radius: 1em;
+    height: 1.5em;
+    width: 90%;
+    background-color: rgba($color: #00a8b6, $alpha: 0.3);
+    border: 0;
   }
 
   /* Style the bar colors */
   progress::-webkit-progress-bar {
-    background-color: rgba($color: #FFFFFF, $alpha: 0.5);
+    background-color: rgba($color: #00a8b6, $alpha: 0.3);
     border-radius: 1em;
-}
+  }
 
   progress::-webkit-progress-value {
     background: $bar-color;
     border-radius: 1em 0 0 1em;
-    
   }
-  
+
   progress::-moz-progress-bar {
     background: $bar-color;
     border-radius: 1em 0 0 1em;
   }
 
   // Change to fully rounded corners if the bar is full
-   .fullBar::-webkit-progress-bar {
-     border-radius: 1em;
- }
+  .fullBar::-webkit-progress-bar {
+    border-radius: 1em;
+  }
 
-   .fullBar::-webkit-progress-value {
-     border-radius: 1em;
-    
-   }
-  
-   .fullBar::-moz-progress-bar {
-     border-radius: 1em;
-   }
+  .fullBar::-webkit-progress-value {
+    border-radius: 1em;
+  }
 
-  
+  .fullBar::-moz-progress-bar {
+    border-radius: 1em;
+  }
+
   @-webkit-keyframes bar-fill {
-    0% { width: 0; }
+    0% {
+      width: 0;
+    }
   }
-  
+
   @keyframes bar-fill {
-    0% { width: 0; }
+    0% {
+      width: 0;
+    }
   }
+}

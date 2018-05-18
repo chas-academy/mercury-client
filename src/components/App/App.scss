@@ -1,16 +1,44 @@
-.nav-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3rem;
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-between;
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+
+/***** Colors *****/
+:root {
+  --dark: #212121;
+  --light: #fbfbfb;
+  --orange: #f2994a;
+  --grey: #dfe3e9;
+  --pink: #ff7bda;
+  --ocean: #00a8b6;
+  --yellow: #f3af4c;
+  --peach: #ffa067;
+  --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
+}
+/***** Skin properties - how to explain it? *****/
+:root {
+  --border-rounded: 8px;
+  --shadow: 0px 8px 24px -8px rgba(74, 74, 74, 0.4);
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--dark);
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  background-color: var(--light);
+
+  ul,
+  li {
+    list-style: none;
   }
-  
-  .nav-container > .glass-content {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2%;
+  margin-right: 2%;
+}

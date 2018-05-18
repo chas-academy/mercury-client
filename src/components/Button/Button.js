@@ -1,10 +1,19 @@
+// @flow
 import React from 'react';
-
 import './Button.css';
-/* TODO: add props validation */
 
-const Button = ({ color = 'default', children, ...props }: {color: string, children: any, props: {}}) => (
-  <button className={`button ${color}`} {...props}>
+const Button = ({
+  color = 'primary',
+  shape = 'box',
+  children,
+  ...props
+}: {
+  color: string,
+  shape: string,
+  children: Object | string,
+  props: {}
+}) => (
+  <button className={`button ${color} ${shape}`} {...props}>
     {children}
   </button>
 );

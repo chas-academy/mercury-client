@@ -1,47 +1,54 @@
 .button {
+  all: unset;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
   padding: 0.4em;
-  font-weight: 400;
-  border-radius: var(--border-rounded);
-  box-shadow: var(--shadow-dark);
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-}
+  justify-content: space-around;
+  box-sizing: border-box;
 
-.default {
-  color: var(--dark);
-  &:hover,
-  &:active {
-    color: var(--primary-color);
+  &.box {
+    max-width: 96px;
+    border-radius: var(--border-rounded);
   }
-}
 
-.primary {
-  color: var(--light);
-  background: var(--primary-color);
-  &:hover,
-  &:active {
-    color: var(--primary-color);
-    background: var(--light);
+  &.round {
+    border-radius: 50%;
+    width: 1.7em;
+    height: 1.7em;
+    padding: 0;
+    box-shadow: var(--shadow);
+
+    &.light {
+      color: var(--light);
+      background: var(--ocean);
+    }
   }
-}
 
-.secondary {
-  color: var(--light);
-  background: var(--secondary-color);
-  &:hover,
-  &:active {
-    color: var(--secondary-color);
-    background: var(--light);
+  &.primary {
+    color: var(--light);
+    background: var(--orange);
+    &:hover,
+    &:active {
+      color: var(--orange);
+      background: var(--light);
+    }
   }
-}
 
-.button:disabled {
-  color: var(--dark);
-  background: var(--light);
-  box-shadow: var(--light);
-}
+  .icon {
+    margin: 0 0.1em;
+  }
 
-.button > span {
-  margin: 0 0.1em;
+  &:disabled {
+    color: var(--dark);
+    background: var(--grey);
+
+    &:hover,
+    &:active {
+      color: var(--dark);
+      background: var(--grey);
+    }
+  }
 }

@@ -1,37 +1,56 @@
 import {
-  REQUEST_AUTH,
-  RECEIVE_USER,
-  AUTH_FAILED,
-} from '../actions/action-types';
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_START,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAILURE,
+  AUTH_START,
+  AUTH_SUCCESS,
+  AUTH_FAILURE
+} from '../constants';
 
-const initialState = {
-  isAuthenticated: false,
-  isFetching: false,
+const defaultState = {
+  fetchingUser: false,
+  authenticated: false
 };
 
-const userReducer = (state = initialState, action) => {
+const user = (state = defaultState, action) => {
   switch (action.type) {
-    case REQUEST_AUTH:
+    case LOGIN_START:
+    case LOGOUT_START:
+    case AUTH_START:
       return {
         ...state,
-        isFetching: true,
+        fetchingUser: true
       };
-    case RECEIVE_USER:
+    case LOGIN_SUCCESS:
+    case AUTH_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        isAuthenticated: true,
+        fetchingUser: false,
+        authenticated: true,
+        data: action.payload,
+        userId: action.payload.userId
       };
-    case AUTH_FAILED:
-      /* TODO */
+    case LOGIN_FAILURE:
+    case LOGOUT_FAILURE:
       return {
         ...state,
-        isFetching: false,
-        isAuthenticated: false,
+        fetchingUser: false
+      };
+    case LOGOUT_SUCCESS:
+    case AUTH_FAILURE:
+      return {
+        ...state,
+        fetchingUser: false,
+        authenticated: false,
+        data: {},
+        userId: null
       };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default user;

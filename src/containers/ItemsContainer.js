@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchData } from '../actions/items';
-import { Items } from '../components';
+import { withRouter } from 'react-router-dom';
+import { fetchItems, addUsage } from '../actions/items';
+import { Items, Loader } from '../components';
 
 class ItemsContainer extends Component {
-  componentWillMount() {
-    this.props.dispatch(fetchData('items'));
+  constructor() {
+    super();
+
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
+  componentDidMount() {
+    this.props.dispatch(fetchItems());
+  }
+
+  handleIncrement(itemId) {
+    this.props.dispatch(addUsage(itemId));
   }
 
   render() {
-    const { itemReducer: { isFetching, items } } = this.props;
+    const {
+      user: { fetchingUser },
+      items: { isFetching, allItems },
+    } = this.props;
 
-    return (
-      isFetching ? <p>Loading...</p> : <Items items={items} />
+    return isFetching || fetchingUser ? (
+      <Loader />
+    ) : (
+      <React.Fragment>
+        <Items items={allItems} handleIncrement={this.handleIncrement} />
+      </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ itemReducer }) => ({ itemReducer });
+const mapStateToProps = ({ items, user }) => ({ items, user });
 
-export default connect(mapStateToProps)(ItemsContainer);
+export default withRouter(connect(mapStateToProps)(ItemsContainer));

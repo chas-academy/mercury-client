@@ -1,15 +1,25 @@
 // @flow
 
-export type ItemT = {
-  id: number,
+export type CanonicalItemT = {
   name: string,
+  id: number,
+  icon: string
+};
+
+export type ItemT = {
+  itemId: number,
+  CanonicalItem: Object,
   price: number,
   goal: number,
   delimiter: number,
-  created: Date,
-  updated: Date,
+  createdAt: Date,
+  updatedAt: Date,
+  auto: boolean,
+  completed: boolean,
+  CanonicalItem: CanonicalItemT
 };
 
+/* TODO: Update types */
 export type User = {
   id: number,
   name: string

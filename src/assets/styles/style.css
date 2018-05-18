@@ -1,7 +1,0 @@
-@import url("./utils/reset.css");
-@import url("./utils/variables.css");
-body {
-  line-height: 1;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  color: var(--dark);
-  background-color: var(--light); }

@@ -1,6 +1,47 @@
-nav {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    align-items: center;
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.7);
+
+  a:nth-child(1) {
+    color: var(--ocean);
+    filter: grayscale(70%);
+    opacity: 0.5;
+  }
+
+  a:nth-child(2) {
+    color: var(--pink);
+    filter: grayscale(70%);
+    opacity: 0.5;
+  }
+
+  a:nth-child(3) {
+    color: var(--orange);
+    filter: grayscale(70%);
+    opacity: 0.5;
+  }
+  a.home {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  a.add {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  a.settings {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  a:hover {
+    filter: grayscale(0%);
+    opacity: 0.8;
+  }
 }

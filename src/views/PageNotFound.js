@@ -1,14 +1,11 @@
 import React from 'react';
-
-const style = {
-  fontSize: '3em',
-  textAlign: 'center',
-};
+import { PageTitle } from '../components';
 
 const PageNotFound = () => (
-  <div>
-    <h1 style={style}>Hoppsan, den sidan verkar inte finnas (404)</h1>
-  </div>
+  <React.Fragment>
+    <PageTitle title="ingenting" />
+    <h2>Hoppsan, den sidan verkar inte finnas (404)</h2>
+  </React.Fragment>
 );
 
 export default PageNotFound;
