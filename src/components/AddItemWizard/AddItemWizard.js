@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Input, LineButton, StepBar, CalculateGoal, Button, Icon } from '../';
+import { Input, LineButton, StepBar, CalculateGoal } from '../';
 import AgAutocomplete from 'react-algoliasearch';
 
 import { createItem, createItemWarning } from '../../actions/items';
@@ -204,9 +204,9 @@ class AddItemWizard extends Component {
                 Spara
               </LineButton>
             ) : (
-              <Button disabled="disabled" onClick={this.goNext}>
+              <LineButton disabled="disabled" onClick={this.goNext}>
                 Nästa
-              </Button>
+              </LineButton>
             )}
           </div>
         </div>

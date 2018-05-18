@@ -1,43 +1,42 @@
-.stepBar  {
-    //background: gray;
-    margin-bottom: 2em;
-    ul {
-        margin: 0;
-        padding: 0;
-    }
+.stepBar {
+  margin-bottom: 2em;
+  width: 340px;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
     li {
-    background:  #E0E0E0; 
-    list-style-type: none;
-    display: inline-block;
-    border-radius: 50%;
-    height: 2em;
-    width: 2em;
-    color: white;
-    line-height: 2;
-    text-align: center;
-        &:not(:last-child) {
-            margin-right: 3em;
-        }
+      background: #e0e0e0;
+      list-style-type: none;
+      display: inline-block;
+      border-radius: 50%;
+      height: 2em;
+      width: 2em;
+      color: white;
+      line-height: 2;
+      text-align: center;
 
-        &:not(:last-child):after {
-            content: '';
-            width: 4em;
-            height: 2px;
-            background-color:  #E0E0E0 ;
-            position: absolute;
-            margin-top: 1em;
-            z-index: -1;
-        }
+      &:not(:last-child) {
+        margin-right: 3em;
+      }
 
+      &:not(:last-child):after {
+        content: '';
+        width: 4em;
+        height: 2px;
+        background-color: #e0e0e0;
+        position: absolute;
+        margin-top: 1em;
+        z-index: -1;
+      }
     }
-    .active {
-        background:  linear-gradient(to bottom, #8878e3, #9e6ff1, #b962fa, #d74bfe); 
-       // border: 1px rgba(#8878E3, 0.7) solid;
-        box-shadow: 0 16px 22px -16px #8878E3;
-
-    }
-    .done {
-        background:  linear-gradient(to bottom, #8878e3, #9e6ff1, #b962fa, #d74bfe); 
-        //border: 1px rgba(#8878E3, 0.7) solid;
-    }
+  }
+  .active {
+    background: linear-gradient(to bottom, #8878e3, #9e6ff1, #b962fa, #d74bfe);
+    box-shadow: 0 16px 22px -16px #8878e3;
+  }
+  .done {
+    background: linear-gradient(to bottom, #8878e3, #9e6ff1, #b962fa, #d74bfe);
+  }
 }

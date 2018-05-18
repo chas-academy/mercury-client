@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-sizing: border-box;
 
   &.box {
     max-width: 96px;
@@ -15,32 +16,29 @@
 
   &.round {
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-  }
+    width: 1.7em;
+    height: 1.7em;
+    padding: 0;
+    box-shadow: var(--shadow);
 
-  .icon {
-    margin: 0 0.1em;
+    &.light {
+      color: var(--light);
+      background: var(--ocean);
+    }
   }
 
   &.primary {
     color: var(--light);
-    background: var(--primary-color);
+    background: var(--orange);
     &:hover,
     &:active {
-      color: var(--primary-color);
+      color: var(--orange);
       background: var(--light);
     }
   }
 
-  &.grey {
-    color: var(--light);
-    background: var(--grey);
-    &:hover,
-    &:active {
-      color: var(--light);
-      background: var(--primary-color);
-    }
+  .icon {
+    margin: 0 0.1em;
   }
 
   &:disabled {

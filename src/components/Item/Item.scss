@@ -33,7 +33,7 @@
     }
 
     .icon {
-      color: #008abb;
+      color: var(--ocean);
     }
   }
 
@@ -87,10 +87,4 @@
     letter-spacing: 2px;
     font-weight: bold;
   }
-
-  // h3 {
-  //   all: unset;
-  //   margin-top: 0.5em;
-  //   font-variant-caps: all-petite-caps;
-  // }
 }

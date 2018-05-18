@@ -4,28 +4,18 @@
 :root {
   --dark: #212121;
   --light: #fbfbfb;
-  --primary-color: #f2994a;
+  --orange: #f2994a;
   --grey: #dfe3e9;
   --pink: #ff7bda;
-  --ocean: #00a1ba;
+  --ocean: #00a8b6;
   --yellow: #f3af4c;
   --peach: #ffa067;
-  --blue: #4fc6ff;
-  --teal: #307490;
   --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
-  --gradient-purple: linear-gradient(
-    0deg,
-    #add1fb 0%,
-    #8394ff 67%,
-    #7472b0 99%
-  );
-  --gradient-blue: 0px 8px 24px -8px rgba(74, 74, 74, 0.4);
 }
 /***** Skin properties - how to explain it? *****/
 :root {
   --border-rounded: 8px;
   --shadow: 0px 8px 24px -8px rgba(74, 74, 74, 0.4);
-  --shadow-primary: 0 16px 32px -16px var(--primary-color);
 }
 
 body {
@@ -37,7 +27,11 @@ body {
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-weight: 400;
   background-color: var(--light);
-  background-image: url('../../assets/sunset.svg');
+
+  ul,
+  li {
+    list-style: none;
+  }
 }
 
 .content {

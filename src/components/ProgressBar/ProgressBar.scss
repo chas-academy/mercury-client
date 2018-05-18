@@ -1,4 +1,4 @@
-$bar-color: #008abb;
+$bar-color: var(--ocean);
 $text-color: rgba($color: #fbfbfb, $alpha: 1);
 
 .progressbar {
@@ -15,7 +15,7 @@ $text-color: rgba($color: #fbfbfb, $alpha: 1);
     font-size: 1em;
     left: 1em;
     top: 0.3em;
-    z-index: 50;
+    z-index: 1; // make sures that the text is on top of the progressbar
 
     > h3 {
       all: unset;
@@ -43,13 +43,13 @@ $text-color: rgba($color: #fbfbfb, $alpha: 1);
     border-radius: 1em;
     height: 1.5em;
     width: 90%;
-    background-color: rgba($color: #008abb, $alpha: 0.3);
+    background-color: rgba($color: #00a8b6, $alpha: 0.3);
     border: 0;
   }
 
   /* Style the bar colors */
   progress::-webkit-progress-bar {
-    background-color: rgba($color: #008abb, $alpha: 0.3);
+    background-color: rgba($color: #00a8b6, $alpha: 0.3);
     border-radius: 1em;
   }
 
