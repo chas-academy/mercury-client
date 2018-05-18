@@ -10,13 +10,15 @@ function stepClass(step, currentstep) {
   }
   return '';
 }
+
 function stepIcon(step, currentstep, icon) {
   if (step < currentstep) {
     return 'checkmark';
   }
   return icon;
 }
-const StepBar = ({ currentStep }: {currentStep: number}) => (
+
+const StepBar = ({ currentStep }: { currentStep: number }) => (
   <div className="stepBar">
     <ul>
       <li className={stepClass(1, currentStep)}>
@@ -32,7 +34,6 @@ const StepBar = ({ currentStep }: {currentStep: number}) => (
         <Icon icon={stepIcon(4, currentStep, 'clock')} size="xsmall" />
       </li>
     </ul>
-
   </div>
 );
 

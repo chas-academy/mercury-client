@@ -102,11 +102,6 @@ export const requestLogout = () => (dispatch: Dispatch) => {
   AxiosCustom.post(process.env.REACT_APP_API_SIGN_OUT_URL)
     .then(response => {
       dispatch(removeUser()) && Auth.deleteToken('token');
-      dispatch(
-        Notifications.success(
-          composeNotification(`Bye`, `Now you're logged out`)
-        )
-      );
     })
     .catch(error => {
       if (error.response && error.response.data.message) {

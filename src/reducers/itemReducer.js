@@ -9,13 +9,13 @@ import {
   ADD_ITEM_RESET,
   INCREMENT_USAGE_START,
   INCREMENT_USAGE_SUCCESS,
-  INCREMENT_USAGE_FAILURE,
+  INCREMENT_USAGE_FAILURE
 } from '../constants';
 
 const defaultState = {
   isFetching: false,
   allItems: [],
-  requestFullfilled: false,
+  requestFullfilled: false
 };
 
 const items = (state = defaultState, action) => {
@@ -23,60 +23,57 @@ const items = (state = defaultState, action) => {
     case REQUEST_ITEMS_START:
       return {
         ...state,
-        isFetching: true,
+        isFetching: true
       };
     case REQUEST_ITEMS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        allItems: action.payload,
+        allItems: action.payload
       };
     case REQUEST_ITEMS_FAILURE:
       return {
         ...state,
-        isFetching: false,
+        isFetching: false
       };
     case ADD_ITEM_START:
       return {
         ...state,
         isFetching: true,
-        requestFullfilled: false,
+        requestFullfilled: false
       };
     case ADD_ITEM_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        requestFullfilled: true,
+        requestFullfilled: true
       };
     case ADD_ITEM_FAILURE:
       return {
         ...state,
         isFetching: false,
-        requestFullfilled: false,
+        requestFullfilled: false
       };
     case ADD_ITEM_RESET:
       return {
         ...state,
         isFetching: false,
-        requestFullfilled: false,
+        requestFullfilled: false
       };
     case INCREMENT_USAGE_START:
       return {
         ...state,
-        isFetching: false,
-        requestFullfilled: false,
+        isFetching: false
       };
     case INCREMENT_USAGE_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        requestFullfilled: true,
+        isFetching: false
       };
     case INCREMENT_USAGE_FAILURE:
       return {
         ...state,
-        isFetching: false,
-        requestFullfilled: false,
+        isFetching: false
       };
     default:
       return state;

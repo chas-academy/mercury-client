@@ -9,13 +9,19 @@ function percent(foo: number, bar: number) {
 
 const ProgressBar = ({
   progressBarMax,
-  progressBarCurrent,
+  progressBarCurrent
 }: {
-progressBarMax: number,
-progressBarCurrent: number
+  progressBarMax: number,
+  progressBarCurrent: number
 }) => (
   <span className="progressbar">
-    <span>{percent(progressBarCurrent, progressBarMax)} %</span>
+    {/* <span>{percent(progressBarCurrent, progressBarMax)} %</span> */}
+    <span>
+      <h3>
+        <span>användningar</span>
+        {progressBarCurrent}
+      </h3>
+    </span>
     <progress
       className={
         percent(progressBarCurrent, progressBarMax) > 98 ? 'fullBar' : ''

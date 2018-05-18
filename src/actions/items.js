@@ -13,7 +13,7 @@ import {
   ADD_ITEM_RESET,
   INCREMENT_USAGE_START,
   INCREMENT_USAGE_SUCCESS,
-  INCREMENT_USAGE_FAILURE,
+  INCREMENT_USAGE_FAILURE
 } from '../constants';
 
 /* Redux Action Creators - get/read items */
@@ -50,7 +50,12 @@ export const fetchItems = () => (dispatch: Dispatch, getState: GetState) => {
         dispatch(Notifications.error(error.response.data.message));
         console.error(error.response.data.message);
       } else {
-        dispatch(Notifications.error(error));
+        const notification = {
+          title: 'Något gick fel!',
+          message: error.message,
+          position: 'tc'
+        };
+        dispatch(Notifications.error(notification));
       }
       dispatch(requestItemsFailure());
     });
@@ -90,7 +95,7 @@ export const createItem = (item: Object) => (dispatch: Dispatch) => {
         message: error,
         position: 'tc'
       };
-      dispatch(Notifications.error(notification))
+      dispatch(Notifications.error(notification));
     });
 };
 
@@ -99,23 +104,22 @@ export const createItemWarning = (error: String) => (dispatch: Dispatch) => {
     title: 'Sakta i backarna!',
     message: error,
     position: 'tc'
-  }
+  };
   dispatch(Notifications.warning(notification));
-}
+};
 
 /* Redux Action Creators - increment usage */
 export const incrementUsage = () => ({ type: INCREMENT_USAGE_START });
 export const incrementUsageSuccess = () => ({ type: INCREMENT_USAGE_SUCCESS });
 export const incrementUsageFailure = () => ({ type: INCREMENT_USAGE_FAILURE });
 
-export const addUsage = (itemId) => (dispatch: Dispatch) => {
-
-  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false ) return;
+export const addUsage = itemId => (dispatch: Dispatch) => {
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(incrementUsage());
 
   // could probably be removed?
   // const userId = Auth.getTokenData('userId');
-  
+
   AxiosCustom.put(`/items/${itemId}/increment`)
     .then(response => {
       dispatch(incrementUsageSuccess(response.data));
@@ -123,8 +127,8 @@ export const addUsage = (itemId) => (dispatch: Dispatch) => {
     .catch(error => {
       dispatch(incrementUsageFailure());
       const notification = {
-        title: "Något gick fel!",
-        message: error,
+        title: 'Något gick fel!',
+        message: `${error}`,
         position: 'tc'
       };
       dispatch(Notifications.error(notification));

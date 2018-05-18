@@ -15,8 +15,7 @@
     color: var(--ocean);
     filter: grayscale(70%);
     opacity: 0.5;
-    }
-
+  }
 
   a:nth-child(2) {
     color: var(--pink);
@@ -25,25 +24,24 @@
   }
 
   a:nth-child(3) {
-    color: var(--primary-color);
+    color: var(--orange);
     filter: grayscale(70%);
     opacity: 0.5;
-
   }
-a.home {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-a.add {
-  filter: grayscale(0%);
-  opacity: 1.0;
-}
-a.settings {
-  filter: grayscale(0%);
-  opacity: 1.0;
-}
-a:hover {
-  filter: grayscale(0%);
-  opacity: 0.8;
-}
+  a.home {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  a.add {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  a.settings {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  a:hover {
+    filter: grayscale(0%);
+    opacity: 0.8;
+  }
 }

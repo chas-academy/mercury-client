@@ -1,10 +1,10 @@
 // @flow
-import React from "react";
-import "./Button.css";
+import React from 'react';
+import './Button.css';
 
 const Button = ({
-  color = "primary",
-  shape = "box",
+  color = 'primary',
+  shape = 'box',
   children,
   ...props
 }: {
