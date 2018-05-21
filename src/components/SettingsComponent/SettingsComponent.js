@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Icon, Button, Card, LogOut } from '../';
+import React from 'react';
+import { Card, LogOut } from '../';
 import './SettingsComponent.css';
 
 const SettingsComponent = () => (
