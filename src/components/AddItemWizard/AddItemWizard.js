@@ -43,7 +43,7 @@ class AddItemWizard extends Component {
         }
       }
     });
-    console.log(this.state.item.canonical.name);
+    this.goNext(e);
   };
 
   handleChange = e => {
@@ -69,8 +69,6 @@ class AddItemWizard extends Component {
           }
         }
       });
-    } else if (e.target.name === 'notifications') {
-      this.setState({ notification: e.target.value });
     }
   };
 
@@ -101,7 +99,10 @@ class AddItemWizard extends Component {
       price: this.state.item.price,
       canonicalId: this.state.item.canonical.id
     }
-    if (
+    if (this.state.currentStep < 4) {
+      this.goNext(event)
+    }
+    else if (
       this.state.item.goal === '' ||
       this.state.item.price === '' ||
       this.state.item.canonical.id === undefined
@@ -115,7 +116,7 @@ class AddItemWizard extends Component {
 
   render() {
     if (this.props.requestFullfilled) {
-      return <Redirect to="/" />;
+      return <Redirect to="/" />
     } else
       return (
         <div className="formContainer">
@@ -150,6 +151,7 @@ class AddItemWizard extends Component {
                   onChange={this.handleChange}
                   variant="underlined"
                   unit="kr"
+                  autoFocus
                 />
               </label>
             </form>
@@ -168,6 +170,7 @@ class AddItemWizard extends Component {
                   onChange={this.handleChange}
                   variant="underlined"
                   unit="ggr"
+                  autoFocus
                 />
               </label>
             </form>
