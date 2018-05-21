@@ -22,19 +22,17 @@ class App extends Component {
     ) : (
       <React.Fragment>
         <GlobalNav />
-        <main className="content">
-          <NotificationComponent />
-          <Switch>
-            <PrivateRoute exact path="/" component={Home} />
-            <Route
-              path="/login"
-              render={() => (authenticated ? <Redirect to="/" /> : <LogIn />)}
-            />
-            <PrivateRoute path="/add" component={AddItem} />
-            <PrivateRoute path="/settings" component={Settings} />
-            <Route path="/*" component={PageNotFound} />
-          </Switch>
-        </main>
+        <NotificationComponent />
+        <Switch>
+          <PrivateRoute exact path="/" component={Home} />
+          <Route
+            path="/login"
+            render={() => (authenticated ? <Redirect to="/" /> : <LogIn />)}
+          />
+          <PrivateRoute path="/add" component={AddItem} />
+          <PrivateRoute path="/settings" component={Settings} />
+          <Route path="/*" component={PageNotFound} />
+        </Switch>
       </React.Fragment>
     );
   }
