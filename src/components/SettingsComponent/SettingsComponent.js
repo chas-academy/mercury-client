@@ -1,24 +1,20 @@
-import React from 'react';
-import { Icon } from '../';
+import React, { Component } from 'react';
+import { Icon, Button, Card, LogOut } from '../';
 import './SettingsComponent.css';
 
 const SettingsComponent = () => (
-  <div className="settingsComponent">
-    <Icon icon="cog" size="large" />
-    <h3> Tillkännagivanden:</h3>
+  <Card>
+    <LogOut />
+
+    <h2>Tillkännagivanden</h2>
     <a href="https://www.algolia.com/">
       <img
         alt="Algolia Logo"
         src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.png"
       />
     </a>
-    <br />
-    <br />
-    Ikoner från <a href="https://fontawesome.com/">Font Awesome</a>
-    <br />
-    <br />
-    <br />
-  </div>
+    <a href="https://fontawesome.com/">Ikoner från Font Awesome</a>
+  </Card>
 );
 
 export default SettingsComponent;

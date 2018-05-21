@@ -4,10 +4,6 @@ import { withRouter } from 'react-router-dom';
 import { requestLogout } from '../../actions/user';
 import { Button, Loader } from '..';
 
-const mapStateToProps = state => ({
-  authenticated: state.user.authenticated
-});
-
 class LogOut extends Component {
   constructor(props) {
     super(props);
@@ -20,14 +16,8 @@ class LogOut extends Component {
   }
 
   render() {
-    const { authenticated } = this.props;
-
-    if (authenticated) {
-      return <Button onClick={this.onLogout}>Logga ut</Button>;
-    } else {
-      return <Loader />;
-    }
+    return <Button onClick={this.onLogout}>Logga ut</Button>;
   }
 }
 
-export default withRouter(connect(mapStateToProps)(LogOut));
+export default withRouter(connect()(LogOut));

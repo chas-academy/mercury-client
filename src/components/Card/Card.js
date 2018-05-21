@@ -4,10 +4,10 @@ import './Card.css';
 
 const Card = ({
   variant = 'box',
-  children,
+  children
 }: {
-variant: string,
-children: any
+  variant: string,
+  children: any
 }) => <div className={`card ${variant}`}>{children}</div>;
 
 export default Card;

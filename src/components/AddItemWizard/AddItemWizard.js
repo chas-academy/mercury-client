@@ -180,34 +180,37 @@ class AddItemWizard extends Component {
             <div>
               <h2>Du kommer lägga till: </h2>
               <h3>{this.state.item.canonical.name}</h3>
-              <p><strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr</p>
-              <p><strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar</p>
+              <p>
+                <strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr
+              </p>
+              <p>
+                <strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar
+              </p>
             </div>
-
           )}
           <div className="btnGroup">
             {this.state.currentStep > 1 ? (
               <LineButton onClick={this.goBack}>Tillbaka</LineButton>
             ) : (
-                <LineButton onClick={this.goBack} disabled="disabled">
-                  Tillbaka
+              <LineButton onClick={this.goBack} disabled="disabled">
+                Tillbaka
               </LineButton>
-              )}
+            )}
 
             {(this.state.currentStep === 1 &&
               this.state.item.canonical.id !== null) ||
-              (this.state.currentStep === 2 && this.state.item.price > 0) ||
-              (this.state.currentStep === 3 && this.state.item.goal > 0) ? (
-                <LineButton onClick={this.goNext}>Nästa</LineButton>
-              ) : this.state.currentStep === 4 ? (
-                <LineButton onClick={this.handleSubmit} type="submit">
-                  Spara
+            (this.state.currentStep === 2 && this.state.item.price > 0) ||
+            (this.state.currentStep === 3 && this.state.item.goal > 0) ? (
+              <LineButton onClick={this.goNext}>Nästa</LineButton>
+            ) : this.state.currentStep === 4 ? (
+              <LineButton onClick={this.handleSubmit} type="submit">
+                Spara
               </LineButton>
-              ) : (
-                  <LineButton disabled="disabled" onClick={this.goNext}>
-                    Nästa
+            ) : (
+              <LineButton disabled="disabled" onClick={this.goNext}>
+                Nästa
               </LineButton>
-                )}
+            )}
           </div>
         </div>
       );

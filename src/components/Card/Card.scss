@@ -1,27 +1,15 @@
 .card {
-  background: var(--gradient-warm);
+  background: var(--light);
+  box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 
   &.box {
     border-radius: var(--border-rounded);
-    box-shadow: var(--shadow-dark);
-    width: 320px;
-    height: 160px;
-  }
-
-  &.circle {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-
-    h4 {
-      color: turquoise;
-    }
-  }
-
-  h2 {
-    color: var(--light);
+    box-shadow: var(--shadow);
+    width: 100%;
+    flex: 0 1 300px;
   }
 }
