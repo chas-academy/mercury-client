@@ -5,25 +5,22 @@ import './Items.css';
 
 // const Items = ({ items }: { items: Array<ItemT> }) => (
 class Items extends React.Component {
-  constructor(
-    items,
-    handleIncrement,
-    props,
-  ) {
+  constructor(items, handleIncrement, props) {
     super(props);
   }
   render() {
-    const {
-      items,
-      handleIncrement,
-    } = this.props;
+    const { items, handleIncrement } = this.props;
 
     return (
-      <div>
-        <section className="items">
-          {items.map(item => <Item key={item.itemId} item={item} handleIncrement={handleIncrement} />)}
-        </section>
-      </div>
+      <section className="items">
+        {items.map(item => (
+          <Item
+            key={item.itemId}
+            item={item}
+            handleIncrement={handleIncrement}
+          />
+        ))}
+      </section>
     );
   }
 }

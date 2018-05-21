@@ -1,7 +1,7 @@
 // @flow
-import React from "react";
-import { Helmet } from "react-helmet";
-import "./PageTitle.css";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import './PageTitle.css';
 
 type Props = {
   title?: string,

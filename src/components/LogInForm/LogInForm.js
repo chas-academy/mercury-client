@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestLogin } from '../../actions/user';
-import { Input, Icon, LineButton } from '../';
+import { Input, Icon, LineButton, Box } from '../';
 import './LogInForm.css';
 
 class LogInForm extends Component {
@@ -46,26 +46,28 @@ class LogInForm extends Component {
 
   render() {
     return (
-      <section className="login">
-        <Icon icon="signin" size="large" />
-        <form onSubmit={this.onSubmit}>
-          <Input
-            type="email"
-            placeholder="e-mail"
-            value={this.state.formData.email}
-            onChange={this.onEmailChange}
-            variant="underlined"
-          />
-          <Input
-            type="password"
-            placeholder="lösenord"
-            value={this.state.formData.password}
-            onChange={this.onPasswordChange}
-            variant="underlined"
-          />
-          <LineButton type="submit">Logga in</LineButton>
-        </form>
-      </section>
+      <Box variant="card">
+        <section className="login">
+          <Icon icon="signin" size="large" />
+          <form onSubmit={this.onSubmit}>
+            <Input
+              type="email"
+              placeholder="e-mail"
+              value={this.state.formData.email}
+              onChange={this.onEmailChange}
+              variant="underlined"
+            />
+            <Input
+              type="password"
+              placeholder="lösenord"
+              value={this.state.formData.password}
+              onChange={this.onPasswordChange}
+              variant="underlined"
+            />
+            <LineButton type="submit">Logga in</LineButton>
+          </form>
+        </section>
+      </Box>
     );
   }
 }
