@@ -1,10 +1,14 @@
 import React from 'react';
-import { AddItemWizard, PageTitle } from '../components';
+import { AddItemWizard, PageTitle, Header } from '../components';
 
 const AddItem = () => (
   <React.Fragment>
-    <PageTitle title="lägg till en pryl" />
-    <AddItemWizard />
+    <Header>
+      <PageTitle title="lägg till en pryl" />
+    </Header>
+    <main className="content">
+      <AddItemWizard />
+    </main>
   </React.Fragment>
 );
 

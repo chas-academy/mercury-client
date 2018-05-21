@@ -1,5 +1,11 @@
-.settings {
+.attribution {
+  display: flex;
+  flex-direction: column;
+  > * {
+    padding: 1rem;
+  }
   h2 {
-    all: unset;
+    font-size: 1em;
+    font-weight: 400;
   }
 }
