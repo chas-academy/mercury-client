@@ -7,7 +7,7 @@
     padding: 0;
 
     li {
-      background: #e0e0e0;
+      background: var(--grey);
       list-style-type: none;
       display: inline-block;
       border-radius: 50%;
@@ -19,13 +19,14 @@
 
       &:not(:last-child) {
         margin-right: 3em;
+        z-index: 1;
       }
 
       &:not(:last-child):after {
         content: '';
         width: 4em;
         height: 2px;
-        background-color: #e0e0e0;
+        background-color: var(--grey);
         position: absolute;
         margin-top: 1em;
         z-index: -1;

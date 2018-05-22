@@ -1,10 +1,7 @@
 .box {
   flex: 1 1 16rem;
   box-sizing: border-box;
-
-  &.seamless {
-    text-align: center;
-  }
+  text-align: center;
 
   &.card {
     border-radius: var(--border-rounded);
