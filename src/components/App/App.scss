@@ -30,45 +30,13 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: stretch;
-  margin: 0.4rem 0.4rem 2rem;
+  align-items: center;
+  margin: 0.4em;
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 26rem) {
+@media only screen and (min-width: 481px) {
   .content {
-    margin: 0.4rem 2rem 1rem;
-  }
-}
-
-@media screen and (min-width: 30rem) {
-  .content {
-    flex-direction: row;
-    justify-content: center;
-    margin: 2rem 4rem;
-  }
-}
-
-@media screen and (min-width: 38rem) {
-  .content {
-    margin: 2rem 8rem;
-  }
-}
-
-@media screen and (min-width: 48rem) {
-  .content {
-    margin: 2rem 10rem;
-  }
-}
-
-@media screen and (min-width: 60rem) {
-  .content {
-    margin: 2rem 14rem;
-  }
-}
-
-@media screen and (min-width: 80rem) {
-  .content {
-    margin: 2rem 16rem;
+    margin: 2em 8em;
   }
 }
