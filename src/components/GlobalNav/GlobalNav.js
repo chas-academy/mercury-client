@@ -10,7 +10,7 @@ const GlobalNav = ({ active }:{active: string}) => (
       activeClassName="home"
       exact
     >
-      <Icon icon="home" />
+      <Icon icon="items" />
     </NavLink>
     <NavLink
       to="/add"
