@@ -1,12 +1,18 @@
 .box {
-  flex: 1 1 16rem;
   box-sizing: border-box;
   text-align: center;
 
+  &.invisible {
+    flex: 1 1 16em;
+    display: flex;
+    flex-direction: column;
+  }
+
   &.card {
+    flex: 0 1 16em;
     border-radius: var(--border-rounded);
     box-shadow: var(--shadow);
     background: var(--light);
-    padding: 0.5rem;
+    padding: 0.5em;
   }
 }
