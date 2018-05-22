@@ -6,20 +6,29 @@
   padding: 0.4em;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   box-sizing: border-box;
+  transition: all 200ms ease;
 
   &.box {
-    max-width: 96px;
+    max-width: 10rem;
     border-radius: var(--border-rounded);
   }
 
   &.round {
     border-radius: 50%;
-    width: 1.7em;
-    height: 1.7em;
+    width: 2em;
+    height: 2em;
     padding: 0;
     box-shadow: var(--shadow);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
 
     &.light {
       color: var(--light);
@@ -37,18 +46,8 @@
     }
   }
 
-  .icon {
-    margin: 0 0.1em;
-  }
-
   &:disabled {
     color: var(--dark);
     background: var(--grey);
-
-    &:hover,
-    &:active {
-      color: var(--dark);
-      background: var(--grey);
-    }
   }
 }
