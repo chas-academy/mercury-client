@@ -23,3 +23,4 @@ export { default as ProgressBar } from './ProgressBar/ProgressBar';
 export { default as LineButton } from './LineButton/LineButton';
 export { default as Icon } from './Icon/Icon';
 export { default as CalculateGoal } from './CalculateGoal/CalculateGoal';
+export { default as RegisterForm } from './RegisterForm/RegisterForm';
