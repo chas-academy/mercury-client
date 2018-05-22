@@ -30,15 +30,45 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
-  margin: 2rem 0.4rem;
+  align-items: stretch;
+  margin: 0.4rem 0.4rem 2rem;
   box-sizing: border-box;
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 26rem) {
   .content {
-    flex-flow: row wrap;
+    margin: 0.4rem 2rem 1rem;
+  }
+}
+
+@media screen and (min-width: 30rem) {
+  .content {
+    flex-direction: row;
     justify-content: center;
-    padding: 0 16rem;
+    margin: 2rem 4rem;
+  }
+}
+
+@media screen and (min-width: 38rem) {
+  .content {
+    margin: 2rem 8rem;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .content {
+    margin: 2rem 10rem;
+  }
+}
+
+@media screen and (min-width: 60rem) {
+  .content {
+    margin: 2rem 14rem;
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .content {
+    margin: 2rem 16rem;
   }
 }

@@ -46,10 +46,10 @@ class LogInForm extends Component {
 
   render() {
     return (
-      <Box variant="card">
-        <section className="login">
+      <Box>
+        <Box variant="card">
           <Icon icon="signin" size="large" />
-          <form onSubmit={this.onSubmit}>
+          <form className="login" onSubmit={this.onSubmit}>
             <Input
               type="email"
               placeholder="e-mail"
@@ -66,7 +66,7 @@ class LogInForm extends Component {
             />
             <LineButton type="submit">Logga in</LineButton>
           </form>
-        </section>
+        </Box>
       </Box>
     );
   }

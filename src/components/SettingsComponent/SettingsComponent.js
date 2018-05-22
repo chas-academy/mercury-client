@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, LogOut } from '../';
-import { Link } from 'react-router-dom';
+import { Box, LogOut } from '..';
 import './SettingsComponent.css';
 
 const SettingsComponent = () => (
