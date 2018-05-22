@@ -15,7 +15,6 @@ const ProgressBar = ({
   progressBarCurrent: number
 }) => (
   <span className="progressbar">
-    {/* <span>{percent(progressBarCurrent, progressBarMax)} %</span> */}
     <span>
       <h3>
         <span>användningar</span>
