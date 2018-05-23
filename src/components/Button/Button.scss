@@ -11,7 +11,6 @@
   transition: all 200ms ease;
 
   &.box {
-    max-width: 10rem;
     border-radius: var(--border-rounded);
   }
 
@@ -29,25 +28,10 @@
     &:active {
       transform: scale(0.95);
     }
-
-    &.light {
-      color: var(--light);
-      background: var(--ocean);
-    }
   }
 
   &.primary {
     color: var(--light);
-    background: var(--orange);
-    &:hover,
-    &:active {
-      color: var(--orange);
-      background: var(--light);
-    }
-  }
-
-  &:disabled {
-    color: var(--dark);
-    background: var(--grey);
+    background: var(--ocean);
   }
 }

@@ -1,39 +1,46 @@
 .stepBar {
-    margin-bottom: 2em;
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li {
-            background: var(--grey);
-            list-style-type: none;
-            display: inline-block;
-            border-radius: 50%;
-            height: 2em;
-            width: 2em;
-            color: white;
-            line-height: 2;
-            text-align: center;
-            &:not(:last-child) {
-                margin-right: 3em;
-                z-index: 1;
-            }
-            &:not(:last-child):after {
-                content: '';
-                width: 4em;
-                height: 2px;
-                background-color: var(--grey);
-                position: absolute;
-                margin-top: 1em;
-                z-index: -1;
-            }
-        }
+  align-self: center;
+  margin-bottom: 2em;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      background: var(--grey);
+      list-style-type: none;
+      display: inline-block;
+      border-radius: 50%;
+      height: 2em;
+      width: 2em;
+      color: var(--light);
+      line-height: 2;
+      text-align: center;
+
+      &:not(:last-child) {
+        margin-right: 3em;
+        z-index: 1;
+      }
+
+      &:not(:last-child):after {
+        content: '';
+        width: 4em;
+        height: 2px;
+        background-color: var(--grey);
+        position: absolute;
+        margin-top: 1em;
+        z-index: -1;
+      }
     }
-    .active {
-        background: var(--add);
-        box-shadow: 0 16px 22px -16px #8878e3;
-    }
-    .done {
-        background: var(--add);
-    }
+  }
+
+  .active {
+    background: var(--add);
+    box-shadow: 0 16px 22px -16px #8878e3;
+  }
+
+  .done {
+    background: var(--add);
+  }
 }

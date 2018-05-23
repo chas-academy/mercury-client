@@ -76,7 +76,6 @@ class Item extends Component<Props, State> {
           />
           <Button
             shape="round"
-            color="light"
             onClick={e => this.incrementCounter(item.itemId, e)}
           >
             +1
