@@ -6,8 +6,10 @@ const AddItem = () => (
     <Header>
       <PageTitle title="lägg till en pryl" />
     </Header>
-    <main className="content">
-      <AddItemWizard />
+    <main>
+      <section className="content">
+        <AddItemWizard />
+      </section>
     </main>
   </React.Fragment>
 );

@@ -1,5 +1,5 @@
 .item {
-  flex: 0 1 30em;
+  flex: 1 1 30em;
   display: flex;
   flex-direction: column;
   margin-top: 2em;
@@ -12,7 +12,11 @@
   background: var(--light);
 
   &:first-child {
-    margin: 0;
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 7em;
   }
 
   header {
@@ -49,7 +53,6 @@
     .button {
       align-self: flex-end;
       margin-left: 0.4em;
-      // z-index: 1;
       letter-spacing: 2px;
       font-weight: bold;
     }

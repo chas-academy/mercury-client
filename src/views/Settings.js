@@ -6,8 +6,10 @@ const Settings = () => (
     <Header>
       <PageTitle title="inställningar" />
     </Header>
-    <main className="content">
-      <SettingsComponent />
+    <main>
+      <section className="content">
+        <SettingsComponent />
+      </section>
     </main>
   </React.Fragment>
 );
