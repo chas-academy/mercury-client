@@ -13,7 +13,10 @@ import {
   LOGOUT_FAILURE,
   AUTH_START,
   AUTH_SUCCESS,
-  AUTH_FAILURE
+  AUTH_FAILURE,
+  REGISTRATION_START,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_FAILURE
 } from '../constants';
 
 const composeNotification = (title, message) => ({
@@ -112,3 +115,27 @@ export const requestLogout = () => (dispatch: Dispatch) => {
       dispatch(requestFailureLogout());
     });
 };
+
+/* Redux Action Creators - register user */
+export const requestRegistration = () => ({ type: REGISTRATION_START });
+export const completeRegistration = () => ({ type: REGISTRATION_SUCCESS });
+export const failRegistration = () => ({ type: REGISTRATION_FAILURE });
+
+export const registerUser = formData => (dispatch: Dispatch) => {
+  // if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
+  console.log(formData);
+
+  dispatch(requestRegistration());
+
+  const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
+
+  AxiosCustom.post(process.env.REACT_APP_API_USERS_URL, {token})
+    .then(response => {
+      console.log(response);
+      dispatch(completeRegistration());      
+    })
+    .catch(error => {
+      console.error(error);
+      dispatch(failRegistration());
+    })
+}

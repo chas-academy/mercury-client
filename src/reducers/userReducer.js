@@ -7,7 +7,10 @@ import {
   LOGOUT_FAILURE,
   AUTH_START,
   AUTH_SUCCESS,
-  AUTH_FAILURE
+  AUTH_FAILURE,
+  REGISTRATION_START,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_FAILURE
 } from '../constants';
 
 const defaultState = {
@@ -48,6 +51,9 @@ const user = (state = defaultState, action) => {
         data: {},
         userId: null
       };
+    case REGISTRATION_START:
+    case REGISTRATION_SUCCESS:
+    case REGISTRATION_FAILURE:
     default:
       return state;
   }

@@ -52,14 +52,14 @@ class LogInForm extends Component {
           <form className="login" onSubmit={this.onSubmit}>
             <Input
               type="email"
-              placeholder="e-mail"
+              placeholder="E-post"
               value={this.state.formData.email}
               onChange={this.onEmailChange}
               variant="underlined"
             />
             <Input
               type="password"
-              placeholder="lösenord"
+              placeholder="Lösenord"
               value={this.state.formData.password}
               onChange={this.onPasswordChange}
               variant="underlined"
