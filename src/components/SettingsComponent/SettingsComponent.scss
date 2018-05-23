@@ -1,8 +1,10 @@
 .settings-card {
   flex: 1;
+
   > * {
     margin: 2em 0 1em;
   }
+
   .button {
     align-self: center;
   }
@@ -15,6 +17,7 @@
   p > * {
     padding: 1em;
   }
+
   h2 {
     font-size: 1em;
     font-weight: 400;

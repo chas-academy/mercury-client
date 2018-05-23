@@ -47,26 +47,23 @@ class LogInForm extends Component {
   render() {
     return (
       <Box>
-        <Box variant="card" customClassName="column">
-          <Icon icon="signin" size="large" />
-          <form className="login" onSubmit={this.onSubmit}>
-            <Input
-              type="email"
-              placeholder="E-post"
-              value={this.state.formData.email}
-              onChange={this.onEmailChange}
-              variant="underlined"
-            />
-            <Input
-              type="password"
-              placeholder="Lösenord"
-              value={this.state.formData.password}
-              onChange={this.onPasswordChange}
-              variant="underlined"
-            />
-            <LineButton type="submit">Logga in</LineButton>
-          </form>
-        </Box>
+        <form className="login" onSubmit={this.onSubmit}>
+          <Input
+            type="email"
+            placeholder="E-post"
+            value={this.state.formData.email}
+            onChange={this.onEmailChange}
+            variant="underlined"
+          />
+          <Input
+            type="password"
+            placeholder="Lösenord"
+            value={this.state.formData.password}
+            onChange={this.onPasswordChange}
+            variant="underlined"
+          />
+          <LineButton>Logga in</LineButton>
+        </form>
       </Box>
     );
   }

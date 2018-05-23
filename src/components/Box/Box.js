@@ -3,7 +3,7 @@ import React from 'react';
 import './Box.css';
 
 const Box = ({
-  variant = 'invisible',
+  variant = '',
   display = '',
   customClass = '',
   children
