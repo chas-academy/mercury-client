@@ -3,49 +3,50 @@
 /***** Colors *****/
 
 :root {
-    --dark: #212121;
-    --light: #fbfbfb;
-    --orange: #f2994a;
-    --grey: #dfe3e9;
-    --pink: #ff7bda;
-    --ocean: #00a8b6;
-    --yellow: #f3af4c;
-    --peach: #ffa067;
-    --turquoise: #43ada5;
-    --sky: #009fb7;
-    --royalblue: #028dc2;
-    --steelblue: #5675bb;
-    --indigo: #8359a0;
-    --mulberry: #9b3b72;
-    --emerald: #70d299;
-    --lightgreen: #97e18b;
-    --darkgreen: #006638;
-    --forrest: #398640;
-    --sage: #96b1ad;
-    --marine: #4d6a9f;
-    --hotpink: #b4057c;
-    --rosewood: #946b80;
-    --bubblegum: #c986c9;
-    --lemon: #f9f871;
-    --lilac: #b08fda;
-    --wine: #970063;
-    --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
-    --border-rounded: 8px;
-    --shadow: 0px 6px 17px 0px #6868683d;
+  --dark: #212121;
+  --light: #fbfbfb;
+  --orange: #f2994a;
+  --grey: #dfe3e9;
+  --pink: #ff7bda;
+  --ocean: #00a8b6;
+  --yellow: #f3af4c;
+  --peach: #ffa067;
+  --turquoise: #43ada5;
+  --sky: #009fb7;
+  --royalblue: #028dc2;
+  --steelblue: #5675bb;
+  --indigo: #8359a0;
+  --mulberry: #9b3b72;
+  --emerald: #70d299;
+  --lightgreen: #97e18b;
+  --darkgreen: #006638;
+  --forrest: #398640;
+  --sage: #96b1ad;
+  --marine: #4d6a9f;
+  --hotpink: #b4057c;
+  --rosewood: #946b80;
+  --bubblegum: #c986c9;
+  --lemon: #f9f871;
+  --lilac: #b08fda;
+  --wine: #970063;
+  --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
+  --border-rounded: 8px;
+  --shadow: 0px 6px 17px 0px #6868683d;
 }
 
 :root {
-    --add: var(--lilac);
+  --add: var(--lilac);
 }
 
 body {
-    margin: 0;
-    font-size: 100%;
-    line-height: 1;
-    color: var(--dark);
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    background-color: var(--light);
+  margin: 0;
+  line-height: 1;
+  font-size: 100%;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  color: var(--dark);
+  background-color: var(--light);
 }
 
 main {
@@ -67,7 +68,7 @@ main {
   max-width: 32em;
 }
 
-@media only screen and (min-width: 481px) {
+@media only screen and (min-width: 56em) {
   main {
     margin-top: 4em;
   }
