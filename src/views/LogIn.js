@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
-import { LogInForm, PageTitle, Header, RegisterForm } from '../components';
+import {
+  LogInForm,
+  PageTitle,
+  Header,
+  RegisterForm,
+  Button,
+  Box,
+  LineButton
+} from '../components';
 
 class LogIn extends Component {
   constructor(props) {
@@ -10,7 +18,7 @@ class LogIn extends Component {
 
     this.state = {
       displayRegister: false
-    }
+    };
   }
 
   toggleForms(e) {
@@ -21,35 +29,33 @@ class LogIn extends Component {
   }
 
   render() {
-    if (this.state.displayRegister === true) {
-      return (
-        <React.Fragment>
-          <Header>
-            <PageTitle title="registrera" />
-          </Header>
-          <main className="content">
-            <RegisterForm />
-            <button onClick={this.toggleForms}>
-              Klicka här för att logga in
-          </button>
-          </main>
-        </React.Fragment>
-      )
-    } else {
-      return (
-        <React.Fragment>
-          <Header>
-            <PageTitle title="logga in" />
-          </Header>
-          <main className="content">
-            <LogInForm />
-            <button onClick={this.toggleForms}>
-              Klicka här för att registrera
-          </button>
-          </main>
-        </React.Fragment>
-      )
-    }
+    return (
+      <React.Fragment>
+        <Header>
+          <PageTitle
+            title={
+              this.state.displayRegister === true ? 'registrera' : 'logga in'
+            }
+          />
+        </Header>
+        <main>
+          <section className="content">
+            <Box display="flex" variant="card">
+              {this.state.displayRegister === true ? (
+                <RegisterForm />
+              ) : (
+                <LogInForm />
+              )}
+              <LineButton onClick={this.toggleForms}>
+                {this.state.displayRegister === true
+                  ? 'Klicka här för att logga in istället'
+                  : 'Klicka här för att registrera ett konto'}
+              </LineButton>
+            </Box>
+          </section>
+        </main>
+      </React.Fragment>
+    );
   }
 }
 

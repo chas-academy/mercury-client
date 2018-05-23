@@ -4,7 +4,7 @@ import './SettingsComponent.css';
 
 const SettingsComponent = () => (
   <React.Fragment>
-    <Box customClass="column settings-card">
+    <Box display="flex column" customClass="settings-card">
       <LogOut />
       <Box variant="card" display="flex">
         <section className="attribution">

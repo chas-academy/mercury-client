@@ -1,23 +1,17 @@
 .box {
   box-sizing: border-box;
-  text-align: center;
+  flex: 0 1 24em;
 
-  &.invisible {
+  &.flex {
     flex: 1;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
   }
 
   &.column {
     flex-flow: column;
-  }
-
-  &.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 30vh;
   }
 
   &.card {
@@ -25,13 +19,5 @@
     box-shadow: var(--shadow);
     background: var(--light);
     padding: 1em;
-  }
-}
-
-@media only screen and (max-width: 481px) {
-  .box {
-    &.invisible {
-      width: 100%;
-    }
   }
 }
