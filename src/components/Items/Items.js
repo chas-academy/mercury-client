@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import { Item } from '../';
-import './Items.css';
 
 class Items extends Component {
   constructor(items, handleIncrement, props) {
@@ -12,7 +11,7 @@ class Items extends Component {
     const { items, handleIncrement } = this.props;
 
     return (
-      <section className="items">
+      <React.Fragment>
         {items.map(item => (
           <Item
             key={item.itemId}
@@ -20,7 +19,7 @@ class Items extends Component {
             handleIncrement={handleIncrement}
           />
         ))}
-      </section>
+      </React.Fragment>
     );
   }
 }

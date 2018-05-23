@@ -7,8 +7,10 @@ const Home = () => (
     <Header>
       <PageTitle title="mina prylar" />
     </Header>
-    <main className="content">
-      <ItemsContainer />
+    <main>
+      <section className="content">
+        <ItemsContainer />
+      </section>
     </main>
   </React.Fragment>
 );

@@ -7,8 +7,10 @@ const LogIn = () => (
     <Header>
       <PageTitle title="logga in" />
     </Header>
-    <main className="content">
-      <LogInForm />
+    <main>
+      <section className="content">
+        <LogInForm />
+      </section>
     </main>
   </React.Fragment>
 );
