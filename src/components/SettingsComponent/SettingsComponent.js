@@ -4,9 +4,10 @@ import './SettingsComponent.css';
 
 const SettingsComponent = () => (
   <React.Fragment>
-    <Box>
-      <Box variant="card">
-        <div className="attribution">
+    <Box customClass="column settings-card">
+      <LogOut />
+      <Box variant="card" display="flex">
+        <section className="attribution">
           <h2>Tillkännagivanden</h2>
           <a href="https://www.algolia.com/">
             <img
@@ -16,9 +17,8 @@ const SettingsComponent = () => (
           </a>
 
           <a href="https://fontawesome.com/">Ikoner från Font Awesome</a>
-        </div>
+        </section>
       </Box>
-      <LogOut />
     </Box>
   </React.Fragment>
 );

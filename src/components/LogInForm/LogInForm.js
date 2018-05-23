@@ -47,7 +47,7 @@ class LogInForm extends Component {
   render() {
     return (
       <Box>
-        <Box variant="card">
+        <Box variant="card" customClassName="column">
           <Icon icon="signin" size="large" />
           <form className="login" onSubmit={this.onSubmit}>
             <Input
