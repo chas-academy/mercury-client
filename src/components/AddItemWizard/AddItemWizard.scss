@@ -1,6 +1,4 @@
 .formContainer {
-  background-color: var(--light);
-
   .add-item {
     div,
     p {
@@ -44,12 +42,12 @@
   font-size: 1.5em;
   background-color: transparent !important;
   outline: none;
-  text-align: center;
+  text-align: left;
   font-family: inherit;
 }
 
 .algolia-autocomplete .aa-hint {
-  color: transparent;
+  color: var(--grey);
 }
 
 .algolia-autocomplete .aa-dropdown-menu {
@@ -61,6 +59,7 @@
 }
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  text-align: left;
   cursor: pointer;
   padding: 5px 4px;
 }

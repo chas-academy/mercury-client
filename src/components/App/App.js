@@ -17,7 +17,6 @@ class App extends Component {
 
   render() {
     const { fetchingUser, authenticated } = this.props.user;
-    const apa = true;
     return fetchingUser ? (
       <Loader />
     ) : (
