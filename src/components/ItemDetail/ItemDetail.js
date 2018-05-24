@@ -7,7 +7,7 @@ const ItemDetail = ({ name, value, currency = 'kr', unit = '' }) => {
       <span>{name}</span>
       <span>
         {value} {currency}
-        <span>{unit && '/' + unit}</span>
+        <span>{unit && '/ ' + unit}</span>
       </span>
     </li>
   );

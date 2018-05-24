@@ -2,14 +2,14 @@
   all: unset;
   font: inherit;
   cursor: pointer;
-  color: inherit;
-  padding: 0.4em;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  padding: 0.4em;
   transition: all 200ms ease;
   color: var(--light);
+  -webkit-text-fill-color: var(--light);
 
   &.box {
     border-radius: var(--border-rounded);
@@ -20,10 +20,12 @@
   }
 
   &.round {
+    display: inline-block;
     border-radius: 50%;
     width: 2em;
     height: 2em;
     padding: 0;
+    text-align: center;
     box-shadow: var(--shadow);
 
     &:hover {

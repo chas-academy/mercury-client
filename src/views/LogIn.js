@@ -28,7 +28,8 @@ class LogIn extends Component {
   }
 
   componentWillMount() {
-    document.body.style.backgroundImage = 'linear-gradient(to bottom, #f2994a, #ff8572, #fc7d9e, #df83c3, #b08fda)';
+    document.body.style.backgroundImage =
+      'linear-gradient(to bottom, #f2994a, #ff8572, #fc7d9e, #df83c3, #b08fda)';
   }
 
   componentWillUnmount() {
@@ -48,7 +49,7 @@ class LogIn extends Component {
                 <LogInForm />
               )}
               <span>eller</span>
-              <Button type="link" onClick={this.toggleForms}>
+              <Button variant="link" onClick={this.toggleForms}>
                 {this.state.displayRegister === true
                   ? 'logga in'
                   : 'registrera ett konto'}

@@ -25,7 +25,7 @@ const PageTitle = ({ ...props }: Props) => {
   }
 
   return (
-    <h1 className='page-title'>
+    <h1 className="page-title">
       <Helmet title={headTitle} />
       {title}
     </h1>

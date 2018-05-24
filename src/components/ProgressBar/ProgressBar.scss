@@ -4,7 +4,7 @@ $text-color: rgba($color: #fbfbfb, $alpha: 1);
 .progressbar {
   display: flex;
   position: relative;
-
+  padding: 0 0.4em;
   > span {
     position: absolute;
     left: 0;
@@ -12,9 +12,8 @@ $text-color: rgba($color: #fbfbfb, $alpha: 1);
     top: 0;
     bottom: 0;
     color: $text-color;
-    font-size: 1em;
 
-    > h3 {
+    .progressbar-title {
       all: unset;
       display: flex;
       height: 100%;
@@ -26,7 +25,6 @@ $text-color: rgba($color: #fbfbfb, $alpha: 1);
 
       span {
         letter-spacing: 1px;
-        font-weight: normal;
         font-variant-caps: all-petite-caps;
       }
     }

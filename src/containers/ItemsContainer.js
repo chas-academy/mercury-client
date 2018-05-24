@@ -26,14 +26,18 @@ class ItemsContainer extends Component {
   render() {
     const {
       user: { fetchingUser },
-      items: { isFetching, allItems },
+      items: { isFetching, allItems }
     } = this.props;
 
     return isFetching || fetchingUser ? (
       <Loader />
     ) : (
       <React.Fragment>
-        <Items items={allItems} handleIncrement={this.handleIncrement} handleDecrement={this.handleDecrement} />
+        <Items
+          items={allItems}
+          handleIncrement={this.handleIncrement}
+          handleDecrement={this.handleDecrement}
+        />
       </React.Fragment>
     );
   }

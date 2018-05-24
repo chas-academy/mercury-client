@@ -1,5 +1,13 @@
-.formContainer {
+.box.formContainer {
+  min-height: 24em;
+  justify-content: space-between;
+
   .add-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
     div,
     p {
       text-align: center;
@@ -8,12 +16,15 @@
     label {
       text-align: center;
       display: block;
-      margin: 2em 1em 2em 1em;
+      margin: 2em 1em 1em;
     }
 
     .input {
       &.underlined {
         text-align: right;
+        input {
+          width: 80%;
+        }
       }
     }
   }
@@ -21,10 +32,19 @@
   .btnGroup {
     display: flex;
     justify-content: space-between;
-  }
+    padding: 1em 0 0;
 
-  .box {
-    text-align: center;
+    .button {
+      flex: 1;
+
+      &:first-of-type {
+        margin-right: 1em;
+      }
+
+      &:last-of-type {
+        margin-left: 1em;
+      }
+    }
   }
 }
 
@@ -53,8 +73,9 @@
 .algolia-autocomplete .aa-dropdown-menu {
   width: 100%;
   background-color: var(--light);
-  border: 1px solid var(--light);
-  border-radius: var(--border-rounded);
+  border: 1px solid var(--add);
+  border-bottom-left-radius: var(--border-rounded);
+  border-bottom-right-radius: var(--border-rounded);
   border-top: none;
 }
 

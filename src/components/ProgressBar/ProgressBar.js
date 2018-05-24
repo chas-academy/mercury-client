@@ -16,10 +16,10 @@ const ProgressBar = ({
 }) => (
   <span className="progressbar">
     <span>
-      <h3>
+      <span className="progressbar-title">
         <span>användningar</span>
         {progressBarCurrent}
-      </h3>
+      </span>
     </span>
     <progress
       className={
@@ -27,8 +27,8 @@ const ProgressBar = ({
       }
       max={100}
       value={
-        percent(progressBarCurrent, progressBarMax) < 3
-          ? 3
+        percent(progressBarCurrent, progressBarMax) < 4
+          ? 4
           : percent(progressBarCurrent, progressBarMax)
       }
     >

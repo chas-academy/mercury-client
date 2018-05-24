@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Input, LineButton, StepBar, CalculateGoal, Box } from '../';
+import { Input, StepBar, CalculateGoal, Box, Button } from '../';
 import AgAutocomplete from 'react-algoliasearch';
-
 import { createItem, createItemWarning } from '../../actions/items';
 import './AddItemWizard.css';
 
@@ -31,7 +30,8 @@ class AddItemWizard extends Component {
   }
 
   componentDidMount() {
-    document.body.style.backgroundImage = 'linear-gradient(to bottom, #b08fda, #cb8ed2, #e18fc8, #f391bb, #ff96ae)';
+    document.body.style.backgroundImage =
+      'linear-gradient(to bottom, #b08fda, #cb8ed2, #e18fc8, #f391bb, #ff96ae)';
   }
 
   componentWillUnmount() {
@@ -107,6 +107,7 @@ class AddItemWizard extends Component {
       price: this.state.item.price,
       canonicalId: this.state.item.canonical.id
     };
+
     if (this.state.currentStep < 4) {
       this.goNext(event);
     } else if (
@@ -128,105 +129,98 @@ class AddItemWizard extends Component {
       return <Redirect to="/" />;
     } else
       return (
-        <Box display="flex" customClass="formContainer">
-          <Box variant="card" display="flex" customClass="column">
+        <React.Fragment>
+          <Box variant="card" display="flex column" customClass="formContainer">
             <StepBar currentStep={this.state.currentStep} />
+
             {this.state.currentStep === 1 && (
               <form className="add-item" key="1" onSubmit={this.handleSubmit}>
-                <label htmlFor="canonical">
-                  Vad har du köpt?
-                  <AgAutocomplete
-                    defaultValue={this.state.item.canonical.name}
-                    apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
-                    appId={'O1ZPQGWGG4'}
-                    displayKey="name"
-                    indices={[{ index: 'canonical_items' }]}
-                    inputId="input-search"
-                    placeholder=" "
-                    selected={this.handleCanonicalChange}
-                  />
-                </label>
+                <label htmlFor="canonical">Vad har du köpt?</label>
+                <AgAutocomplete
+                  defaultValue={this.state.item.canonical.name}
+                  apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
+                  appId={'O1ZPQGWGG4'}
+                  displayKey="name"
+                  indices={[{ index: 'canonical_items' }]}
+                  inputId="input-search"
+                  placeholder=" "
+                  selected={this.handleCanonicalChange}
+                />
               </form>
             )}
 
             {this.state.currentStep === 2 && (
               <form className="add-item" key="2" onSubmit={this.handleSubmit}>
-                <label htmlFor="price">
-                  Vad kostade den?
-                  <Input
-                    type="number"
-                    name="price"
-                    placeholder=""
-                    value={this.state.item.price}
-                    onChange={this.handleChange}
-                    variant="underlined"
-                    unit="kr"
-                    max="999999999"
-                    autoFocus
-                  />
-                </label>
+                <label htmlFor="price">Vad kostade den?</label>
+                <Input
+                  type="number"
+                  name="price"
+                  placeholder=""
+                  value={this.state.item.price}
+                  onChange={this.handleChange}
+                  variant="underlined"
+                  unit="kr"
+                  max="999999999"
+                  autoFocus
+                />
               </form>
             )}
 
             {this.state.currentStep === 3 && (
               <form className="add-item" key="3" onSubmit={this.handleSubmit}>
                 <CalculateGoal item={this.state.item} />
-                <label htmlFor="goal">
-                  Vad är ditt mål?
-                  <Input
-                    type="number"
-                    name="goal"
-                    placeholder=""
-                    value={this.state.item.goal}
-                    onChange={this.handleChange}
-                    variant="underlined"
-                    unit="ggr"
-                    max="999999999"
-                    autoFocus
-                  />
-                </label>
+                <label htmlFor="goal">Vad är ditt mål? </label>
+                <Input
+                  type="number"
+                  name="goal"
+                  placeholder=""
+                  value={this.state.item.goal}
+                  onChange={this.handleChange}
+                  variant="underlined"
+                  unit="ggr"
+                  max="999999999"
+                  autoFocus
+                />
               </form>
             )}
 
             {this.state.currentStep === 4 && (
-              <div>
-                <h2>Du kommer lägga till: </h2>
-                <h3>{this.state.item.canonical.name}</h3>
+              <Box display="flex column">
+                <p>Du kommer lägga till: </p>
+                <p>{this.state.item.canonical.name}</p>
                 <p>
                   <strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr
                 </p>
                 <p>
                   <strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar
                 </p>
-              </div>
+              </Box>
             )}
 
             <div className="btnGroup">
               {this.state.currentStep > 1 ? (
-                <LineButton onClick={this.goBack}>Tillbaka</LineButton>
+                <Button onClick={this.goBack}>Tillbaka</Button>
               ) : (
-                <LineButton onClick={this.goBack} disabled="disabled">
-                  Tillbaka
-                </LineButton>
+                <Button onClick={this.goBack} disabled="disabled">
+                  tillbaka
+                </Button>
               )}
 
               {(this.state.currentStep === 1 &&
                 this.state.item.canonical.id !== null) ||
               (this.state.currentStep === 2 && this.state.item.price > 0) ||
               (this.state.currentStep === 3 && this.state.item.goal > 0) ? (
-                <LineButton onClick={this.goNext}>Nästa</LineButton>
+                <Button onClick={this.goNext}>Nästa</Button>
               ) : this.state.currentStep === 4 ? (
-                <LineButton onClick={this.handleSubmit} type="submit">
-                  Spara
-                </LineButton>
+                <Button onClick={this.handleSubmit}>Spara</Button>
               ) : (
-                <LineButton disabled="disabled" onClick={this.goNext}>
+                <Button disabled="disabled" onClick={this.goNext}>
                   Nästa
-                </LineButton>
+                </Button>
               )}
             </div>
           </Box>
-        </Box>
+        </React.Fragment>
       );
   }
 }
