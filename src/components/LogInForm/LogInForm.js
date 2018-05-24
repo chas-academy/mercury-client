@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestLogin } from '../../actions/user';
-import { Input, LineButton, Box } from '../';
+import { Input, Button } from '../';
+
 import './LogInForm.css';
 
 class LogInForm extends Component {
@@ -46,25 +47,23 @@ class LogInForm extends Component {
 
   render() {
     return (
-      <Box>
-        <form className="login" onSubmit={this.onSubmit}>
-          <Input
-            type="email"
-            placeholder="E-post"
-            value={this.state.formData.email}
-            onChange={this.onEmailChange}
-            variant="underlined"
-          />
-          <Input
-            type="password"
-            placeholder="Lösenord"
-            value={this.state.formData.password}
-            onChange={this.onPasswordChange}
-            variant="underlined"
-          />
-          <LineButton>Logga in</LineButton>
-        </form>
-      </Box>
+      <form className="form" onSubmit={this.onSubmit}>
+        <Input
+          type="email"
+          placeholder="E-post"
+          value={this.state.formData.email}
+          onChange={this.onEmailChange}
+          variant="underlined"
+        />
+        <Input
+          type="password"
+          placeholder="Lösenord"
+          value={this.state.formData.password}
+          onChange={this.onPasswordChange}
+          variant="underlined"
+        />
+        <Button color="primary">Logga in</Button>
+      </form>
     );
   }
 }

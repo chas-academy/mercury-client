@@ -1,4 +1,18 @@
-.login {
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .button {
+    margin-top: calc(1em + 4px);
+  }
+  /* styles for span containing 'eller'/'or' in login/register view between buttons */
+  + span {
+    align-self: center;
+    text-transform: lowercase;
+    margin: 1em 0;
+  }
+
   @media screen and (min-width: 600px) {
     input {
       font-size: 1.2em;
