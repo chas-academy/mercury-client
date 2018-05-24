@@ -6,8 +6,7 @@ import {
   Header,
   RegisterForm,
   Button,
-  Box,
-  LineButton
+  Box
 } from '../components';
 
 class LogIn extends Component {
@@ -40,17 +39,18 @@ class LogIn extends Component {
         </Header>
         <main>
           <section className="content">
-            <Box display="flex" variant="card">
+            <Box display="flex column" variant="card">
               {this.state.displayRegister === true ? (
                 <RegisterForm />
               ) : (
                 <LogInForm />
               )}
-              <LineButton onClick={this.toggleForms}>
+              <span>eller</span>
+              <Button color="link" onClick={this.toggleForms}>
                 {this.state.displayRegister === true
-                  ? 'Klicka här för att logga in istället'
-                  : 'Klicka här för att registrera ett konto'}
-              </LineButton>
+                  ? 'logga in'
+                  : 'registrera ett konto'}
+              </Button>
             </Box>
           </section>
         </main>

@@ -1,6 +1,5 @@
 .input {
   display: block;
-  margin: auto;
   width: inherit;
   padding-top: 1em;
 
@@ -11,27 +10,19 @@
   input {
     all: unset;
     border: 0;
-    width: 80%;
     font-size: 1em;
     margin-top: 1em;
     -moz-appearance: textfield;
     -webkit-appearance: none;
-
-    &.classic {
-      background: var(--light);
-      border-radius: var(--border-rounded);
-      box-shadow: 0.5px 0.5px 3px 0px inset #585858;
-      padding: 0.4em;
-    }
   }
 
   span {
-    color: silver;
+    color: var(--grey);
     max-width: 9%;
     margin-left: 5px;
   }
-}
 
-.underlined {
-  border-bottom: 1px solid var(--dark);
+  &.underlined {
+    border-bottom: 1px solid var(--dark);
+  }
 }
