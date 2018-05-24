@@ -46,14 +46,6 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       }); /* Set token in local storage using 'store' dependency */
       const decodedUser = Auth.decodeToken();
       dispatch(receiveUser(decodedUser));
-      dispatch(
-        Notifications.success(
-          composeNotification(
-            `Welcome, ${decodedUser.firstName}!`,
-            `Let's get rich!`
-          )
-        )
-      );
     })
     .catch(error => {
       if (error.response.data.message)

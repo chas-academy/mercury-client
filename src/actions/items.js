@@ -38,12 +38,6 @@ export const fetchItems = () => (dispatch: Dispatch, getState: GetState) => {
   AxiosCustom.get(`/users/${userId}/items/`)
     .then(response => {
       dispatch(receiveItems(response.data));
-      const notification = {
-        title: 'Success!',
-        message: 'Successfully fetched items!',
-        position: 'tc'
-      };
-      dispatch(Notifications.success(notification));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
