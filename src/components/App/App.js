@@ -17,11 +17,12 @@ class App extends Component {
 
   render() {
     const { fetchingUser, authenticated } = this.props.user;
+    const apa = true;
     return fetchingUser ? (
       <Loader />
     ) : (
       <React.Fragment>
-        <GlobalNav />
+        <GlobalNav isAuth={this.props} />
         <NotificationComponent />
         <Switch>
           <PrivateRoute exact path="/" component={Home} />
