@@ -5,7 +5,6 @@ import {
   PageTitle,
   Header,
   RegisterForm,
-  Button,
   Box,
   LineButton
 } from '../components';
