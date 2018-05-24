@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchItems, addUsage, removeUsage } from '../actions/items';
-import { Items, Loader } from '../components';
+import { Items, Loader, Welcome } from '../components';
 
 class ItemsContainer extends Component {
   constructor() {
@@ -32,14 +32,19 @@ class ItemsContainer extends Component {
     return isFetching || fetchingUser ? (
       <Loader />
     ) : (
-      <React.Fragment>
-        <Items
-          items={allItems}
-          handleIncrement={this.handleIncrement}
-          handleDecrement={this.handleDecrement}
-        />
-      </React.Fragment>
-    );
+        <React.Fragment>
+          {
+            allItems.length > 0 ?
+              <Items
+                items={allItems}
+                handleIncrement={this.handleIncrement}
+                handleDecrement={this.handleDecrement}
+              />
+              :
+              <Welcome />
+          }
+        </React.Fragment>
+      );
   }
 }
 
