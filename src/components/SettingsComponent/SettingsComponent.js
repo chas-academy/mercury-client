@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, LogOut, Icon } from '..';
+import { Box, LogOut } from '..';
 import './SettingsComponent.css';
 
 class SettingsComponent extends Component {
