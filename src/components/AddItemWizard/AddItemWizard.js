@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Input, LineButton, StepBar, CalculateGoal, Box } from '../';
+import { Input, LineButton, StepBar, CalculateGoal, Box, Icon } from '../';
 import AgAutocomplete from 'react-algoliasearch';
 
 import { createItem, createItemWarning } from '../../actions/items';
@@ -24,7 +24,8 @@ class AddItemWizard extends Component {
         price: '',
         canonical: {
           id: null,
-          name: ''
+          name: '',
+          icon: ''
         }
       }
     };
@@ -41,13 +42,15 @@ class AddItemWizard extends Component {
   handleCanonicalChange = e => {
     const id = e._args[0].canonicalId;
     const name = e._args[0].name;
+    const icon = e._args[0].icon;
     this.setState({
       item: {
         goal: this.state.item.goal,
         price: this.state.item.price,
         canonical: {
           id: id,
-          name: name
+          name: name,
+          icon: icon
         }
       }
     });
@@ -62,7 +65,8 @@ class AddItemWizard extends Component {
           price: e.target.value,
           canonical: {
             id: this.state.item.canonical.id,
-            name: this.state.item.canonical.name
+            name: this.state.item.canonical.name,
+            icon: this.state.item.canonical.icon
           }
         }
       });
@@ -73,7 +77,8 @@ class AddItemWizard extends Component {
           price: this.state.item.price,
           canonical: {
             id: this.state.item.canonical.id,
-            name: this.state.item.canonical.name
+            name: this.state.item.canonical.name,
+            icon: this.state.item.canonical.icon
           }
         }
       });
@@ -95,7 +100,7 @@ class AddItemWizard extends Component {
     if (this.state.currentStep < 4) {
       this.setState(previousState => ({
         currentStep: previousState.currentStep + 1
-      }));
+      }));Icon
     }
   }
 
@@ -192,6 +197,7 @@ class AddItemWizard extends Component {
               <div>
                 <h2>Du kommer lägga till: </h2>
                 <h3>{this.state.item.canonical.name}</h3>
+                <Icon size="large" icon={this.state.item.canonical.icon} />
                 <p>
                   <strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr
                 </p>
