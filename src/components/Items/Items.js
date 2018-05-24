@@ -7,6 +7,14 @@ class Items extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    document.body.style.backgroundImage ='linear-gradient(to bottom, #00a8b6, #6ebad5, #abcde8, #dbe2f2, #fbfbfb)';
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundImage = null;
+  }
+
   render() {
     const { items, handleIncrement } = this.props;
 

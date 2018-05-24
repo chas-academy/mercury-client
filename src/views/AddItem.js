@@ -4,9 +4,9 @@ import { AddItemWizard, PageTitle, Header } from '../components';
 const AddItem = () => (
   <React.Fragment>
     <Header>
-      <PageTitle title="lägg till en pryl" view="add" />
+      <PageTitle title="lägg till en pryl" />
     </Header>
-    <main>
+    <main className='additem-view'>
       <section className="content">
         <AddItemWizard />
       </section>
