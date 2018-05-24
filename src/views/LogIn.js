@@ -27,26 +27,28 @@ class LogIn extends Component {
     });
   }
 
+  componentWillMount() {
+    document.body.style.backgroundImage = 'linear-gradient(to bottom, #f2994a, #ff8572, #fc7d9e, #df83c3, #b08fda)';
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundImage = null;
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Header>
-          <PageTitle
-            title={
-              this.state.displayRegister === true ? 'registrera' : 'logga in'
-            }
-          />
-        </Header>
         <main>
           <section className="content">
             <Box display="flex column" variant="card">
+              <h2>Worth It</h2>
               {this.state.displayRegister === true ? (
                 <RegisterForm />
               ) : (
                 <LogInForm />
               )}
               <span>eller</span>
-              <Button color="link" onClick={this.toggleForms}>
+              <Button type="link" onClick={this.toggleForms}>
                 {this.state.displayRegister === true
                   ? 'logga in'
                   : 'registrera ett konto'}

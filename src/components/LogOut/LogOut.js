@@ -16,7 +16,7 @@ class LogOut extends Component {
   }
 
   render() {
-    return <Button onClick={this.onLogout}>Logga ut</Button>;
+    return <Button type='warning' onClick={this.onLogout}>Logga ut</Button>;
   }
 }
 

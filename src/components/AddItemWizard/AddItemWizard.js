@@ -111,7 +111,9 @@ class AddItemWizard extends Component {
       this.goNext(event);
     } else if (
       this.state.item.goal === '' ||
+      this.state.item.goal > 999999999 ||
       this.state.item.price === '' ||
+      this.state.item.price > 999999999 ||
       this.state.item.canonical.id === undefined
     ) {
       const errorMsg = 'Du måste fylla i ett giltigt pris/mål.';

@@ -39,6 +39,10 @@
     background: var(--primary);
   }
 
+  &.warning {
+    background: var(--warning);
+  }
+
   &.link {
     background: var(--link);
   }

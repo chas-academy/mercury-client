@@ -75,6 +75,7 @@ class Item extends Component<Props, State> {
             progressBarCurrent={item.delimiter}
           />
           <Button
+            type="primary"
             shape="round"
             onClick={e => this.incrementCounter(item.itemId, e)}
           >
