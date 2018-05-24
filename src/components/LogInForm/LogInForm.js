@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { requestLogin } from '../../actions/user';
-import { Input, Icon, LineButton, Box } from '../';
+import { Input, LineButton, Box } from '../';
 import './LogInForm.css';
 
 class LogInForm extends Component {
