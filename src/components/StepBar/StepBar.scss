@@ -14,9 +14,9 @@
       border-radius: 50%;
       height: 2.4em;
       width: 2.4em;
-
       line-height: 2;
       text-align: center;
+      border: 1px solid var(--grey);
 
       &:not(:last-child) {
         margin-right: 3em;
@@ -24,12 +24,12 @@
 
       &:not(:last-child):after {
         content: '';
-        width: 4em;
+        width: 3em;
+        margin-left: 0.5em;
         height: 2px;
         background-color: var(--grey);
         position: absolute;
         margin-top: 1em;
-        z-index: -1;
       }
     }
 
@@ -46,13 +46,55 @@
     .active {
       color: var(--lilac);
       background: var(--light);
-      border: 2px solid var(--light);
       box-shadow: var(--shadow);
     }
 
     .done {
       color: var(--lilac);
       background: var(--light);
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    ul {
+  
+      li {
+        height: 2.4em;
+        width: 2.4em;
+  
+        &:not(:last-child) {
+          margin-right: 1em;
+        }
+  
+        &:not(:last-child):after {
+          width: 1em;
+          margin-left: 0.5em;
+          height: 2px;
+          position: absolute;
+          margin-top: 1em;
+        }
+      }
+  
+      // .icon {
+      //   position: relative;
+      //   top: 0.4em;
+      // }
+  
+      // .inactive {
+      //   color: var(--light);
+      //   background: var(--grey);
+      // }
+  
+      // .active {
+      //   color: var(--lilac);
+      //   background: var(--light);
+      //   box-shadow: var(--shadow);
+      // }
+  
+      // .done {
+      //   color: var(--lilac);
+      //   background: var(--light);
+      // }
     }
   }
 }
