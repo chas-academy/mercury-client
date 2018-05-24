@@ -30,6 +30,14 @@ class AddItemWizard extends Component {
     };
   }
 
+  componentDidMount() {
+    document.body.style.backgroundImage = 'linear-gradient(to bottom, #b08fda, #c0aae4, #d1c5ed, #e5e0f5, #fbfbfb)';
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundImage = null;
+  }
+
   handleCanonicalChange = e => {
     const id = e._args[0].canonicalId;
     const name = e._args[0].name;

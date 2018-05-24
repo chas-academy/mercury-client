@@ -5,9 +5,9 @@ import { PageTitle, Header } from '../components';
 const Home = () => (
   <React.Fragment>
     <Header>
-      <PageTitle title="mina prylar" view={'home'} />
+      <PageTitle title="mina prylar" />
     </Header>
-    <main>
+    <main className='home-view'>
       <section className="content">
         <ItemsContainer />
       </section>

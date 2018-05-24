@@ -29,7 +29,9 @@
   --lemon: #f9f871;
   --lilac: #b08fda;
   --wine: #970063;
-  --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
+  --homeBg: linear-gradient(to bottom, #00a8b6, #6ebad5, #abcde8, #dbe2f2, #fbfbfb);
+  --addBg: linear-gradient(to bottom, #b08fda, #c0aae4, #d1c5ed, #e5e0f5, #fbfbfb);
+  --settingsBg: linear-gradient(to bottom, #f2994a, #ffa496, #ffbfd5, #fae0f7, #fbfbfb);
   --border-rounded: 8px;
   --shadow: 0px 6px 17px 0px #6868683d;
 }
@@ -46,7 +48,9 @@ body {
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-weight: 400;
   color: var(--dark);
-  background-color: var(--light);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 main {
