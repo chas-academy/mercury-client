@@ -2,18 +2,18 @@
   display: inline-block;
 
   &.xsmall {
-    width: 14px;
-    height: 14px;
+    width: 0.875em;
+    height: 0.875em;
   }
 
   &.small {
-    width: 24px;
-    height: 24px;
+    width: 1.5em;
+    height: 1.5em;
   }
 
   &.medium {
-    width: 32px;
-    height: 32px;
+    width: 2em;
+    height: 2em;
   }
 
   svg {
