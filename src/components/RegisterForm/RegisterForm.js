@@ -89,7 +89,7 @@ class RegisterForm extends Component {
           onChange={this.onInputChange}
           variant="underlined"
         />
-        <Button>Registrera</Button>
+        <Button type="warning">Registrera</Button>
       </form>
     );
   }

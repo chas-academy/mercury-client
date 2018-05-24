@@ -62,7 +62,7 @@ class LogInForm extends Component {
           onChange={this.onPasswordChange}
           variant="underlined"
         />
-        <Button color="primary">Logga in</Button>
+        <Button type="warning">Logga in</Button>
       </form>
     );
   }

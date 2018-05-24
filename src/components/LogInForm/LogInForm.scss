@@ -1,3 +1,14 @@
+h2 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 400;
+  margin-bottom: 0;
+  background: -webkit-var(--loginBg);
+	background: var(--loginBg);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -8,6 +19,7 @@
   }
   /* styles for span containing 'eller'/'or' in login/register view between buttons */
   + span {
+    color: gray;
     align-self: center;
     text-transform: lowercase;
     margin: 1em 0;
