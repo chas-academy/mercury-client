@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchItems, addUsage } from '../actions/items';
+import { fetchItems, addUsage, removeUsage } from '../actions/items';
 import { Items, Loader } from '../components';
 
 class ItemsContainer extends Component {
@@ -9,6 +9,7 @@ class ItemsContainer extends Component {
     super();
 
     this.handleIncrement = this.handleIncrement.bind(this);
+    this.handleDecrement = this.handleDecrement.bind(this);
   }
   componentDidMount() {
     this.props.dispatch(fetchItems());
@@ -16,6 +17,10 @@ class ItemsContainer extends Component {
 
   handleIncrement(itemId) {
     this.props.dispatch(addUsage(itemId));
+  }
+
+  handleDecrement(itemId) {
+    this.props.dispatch(removeUsage(itemId));
   }
 
   render() {
@@ -28,7 +33,7 @@ class ItemsContainer extends Component {
       <Loader />
     ) : (
       <React.Fragment>
-        <Items items={allItems} handleIncrement={this.handleIncrement} />
+        <Items items={allItems} handleIncrement={this.handleIncrement} handleDecrement={this.handleDecrement} />
       </React.Fragment>
     );
   }

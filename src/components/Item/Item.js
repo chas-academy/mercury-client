@@ -1,9 +1,9 @@
 // @flow
-import React, { Component } from 'react';
-import type { ItemT } from '../../types';
-import { Button, ProgressBar, Icon, ItemDetail } from '..';
-import { calculateCostPerUse } from '../helpers';
-import './Item.css';
+import React, { Component } from "react";
+import type { ItemT } from "../../types";
+import { Button, ProgressBar, Icon, ItemDetail } from "..";
+import { calculateCostPerUse } from "../helpers";
+import "./Item.css";
 
 type Props = Object;
 type State = {
@@ -11,11 +11,12 @@ type State = {
 };
 
 class Item extends Component<Props, State> {
-  constructor(props: ItemT, handleIncrement, item) {
+  constructor(props: ItemT, handleIncrement, handleDecrement, item) {
     super(props);
     // These bindings is necessary to make `this` work in callbacks
     this.toggleCard = this.toggleCard.bind(this);
     this.incrementCounter = this.incrementCounter.bind(this);
+    this.decrementCounter = this.decrementCounter.bind(this);
 
     this.state = {
       isOpen: false
@@ -35,6 +36,13 @@ class Item extends Component<Props, State> {
     this.props.handleIncrement(data, event);
   };
 
+  decrementCounter = (data, event) => {
+    this.setState(prevState => {
+      this.props.item.delimiter--;
+    });
+    this.props.handleDecrement(data, event);
+  };
+
   render() {
     const { item } = this.props;
 
@@ -49,7 +57,7 @@ class Item extends Component<Props, State> {
 
         <div
           className={
-            !this.state.isOpen ? 'item-details collapsed' : 'item-details'
+            !this.state.isOpen ? "item-details collapsed" : "item-details"
           }
         >
           <ul>
@@ -70,6 +78,16 @@ class Item extends Component<Props, State> {
         </div>
 
         <footer className="item-footer">
+          {this.state.isOpen ? (
+            <Button
+              shape="round"
+              onClick={e => this.decrementCounter(item.itemId, e)}
+            >
+              -1
+            </Button>
+          ) : (
+            ""
+          )}
           <ProgressBar
             progressBarMax={item.goal}
             progressBarCurrent={item.delimiter}
