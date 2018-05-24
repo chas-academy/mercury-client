@@ -8,7 +8,7 @@ class Items extends Component {
   }
 
   componentDidMount() {
-    document.body.style.backgroundImage ='linear-gradient(to bottom, #00a8b6, #6ebad5, #abcde8, #dbe2f2, #fbfbfb)';
+    document.body.style.backgroundImage ='linear-gradient(to bottom, #00a8b6, #00b3b6, #0abdb4, #2cc7ae, #49d1a7)';
   }
 
   componentWillUnmount() {

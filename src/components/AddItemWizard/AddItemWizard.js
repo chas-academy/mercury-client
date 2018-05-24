@@ -31,7 +31,7 @@ class AddItemWizard extends Component {
   }
 
   componentDidMount() {
-    document.body.style.backgroundImage = 'linear-gradient(to bottom, #b08fda, #c0aae4, #d1c5ed, #e5e0f5, #fbfbfb)';
+    document.body.style.backgroundImage = 'linear-gradient(to bottom, #b08fda, #cb8ed2, #e18fc8, #f391bb, #ff96ae)';
   }
 
   componentWillUnmount() {
