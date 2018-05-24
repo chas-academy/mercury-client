@@ -2,53 +2,58 @@
   all: unset;
   font: inherit;
   cursor: pointer;
-  color: inherit;
-  padding: 0.4em;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   box-sizing: border-box;
+  padding: 0.4em;
+  transition: all 200ms ease;
+  color: var(--light);
+  -webkit-text-fill-color: var(--light);
 
   &.box {
-    max-width: 96px;
     border-radius: var(--border-rounded);
+    font-variant: all-petite-caps;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.2em;
   }
 
   &.round {
+    display: inline-block;
     border-radius: 50%;
-    width: 1.7em;
-    height: 1.7em;
+    width: 2em;
+    height: 2em;
     padding: 0;
+    text-align: center;
     box-shadow: var(--shadow);
 
-    &.light {
-      color: var(--light);
-      background: var(--ocean);
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
 
   &.primary {
-    color: var(--light);
-    background: var(--orange);
-    &:hover,
-    &:active {
-      color: var(--orange);
-      background: var(--light);
-    }
+    background: var(--primary);
   }
 
-  .icon {
-    margin: 0 0.1em;
+  &.warning {
+    background: var(--warning);
+  }
+
+  &.link {
+    background: var(--link);
+  }
+
+  &:hover {
+    letter-spacing: 2px;
   }
 
   &:disabled {
-    color: var(--dark);
-    background: var(--grey);
-
-    &:hover,
-    &:active {
-      color: var(--dark);
-      background: var(--grey);
-    }
+    background-color: var(--grey);
   }
 }

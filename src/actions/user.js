@@ -13,7 +13,10 @@ import {
   LOGOUT_FAILURE,
   AUTH_START,
   AUTH_SUCCESS,
-  AUTH_FAILURE
+  AUTH_FAILURE,
+  REGISTRATION_START,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_FAILURE
 } from '../constants';
 
 const composeNotification = (title, message) => ({
@@ -43,27 +46,27 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       }); /* Set token in local storage using 'store' dependency */
       const decodedUser = Auth.decodeToken();
       dispatch(receiveUser(decodedUser));
-      dispatch(
-        Notifications.success(
-          composeNotification(
-            `Welcome, ${decodedUser.firstName}!`,
-            `Let's get rich!`
-          )
-        )
-      );
     })
     .catch(error => {
-      if (error.response.data.message)
-        console.error(error.response.data.message);
+      console.error(error);
       dispatch(requestFailure());
-      dispatch(
-        Notifications.warning(
-          composeNotification(
-            'Försök igen!',
-            'Verkar som att du skrev in fel e-post eller lösenord. Eller så är båda fel.'
+      if (error.response.data.message) {
+        console.error(error.response.data.message);
+        dispatch(
+          Notifications.warning(
+            composeNotification(
+              'Försök igen!',
+              `${error.response.data.message}`
+            )
           )
-        )
-      );
+        );
+      } else {
+        dispatch(
+          Notifications.warning(
+            composeNotification('Försök igen!', 'Något galet har hänt...')
+          )
+        );
+      }
       console.error(error);
     });
 };
@@ -77,6 +80,7 @@ export const authFailure = () => ({ type: AUTH_FAILURE });
 export const authorizeToken = () => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(authStart());
+
   AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL)
     .then(response => {
       const decodedUser = Auth.decodeToken();
@@ -96,7 +100,7 @@ export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
 
 /* Post request to API - initiate logout actions using the action creators above */
 export const requestLogout = () => (dispatch: Dispatch) => {
-  /* if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return; */
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(requestTokenLogout());
 
   AxiosCustom.post(process.env.REACT_APP_API_SIGN_OUT_URL)
@@ -110,5 +114,40 @@ export const requestLogout = () => (dispatch: Dispatch) => {
         console.error(error);
       }
       dispatch(requestFailureLogout());
+    });
+};
+
+/* Redux Action Creators - register user */
+export const requestRegistration = () => ({ type: REGISTRATION_START });
+export const completeRegistration = () => ({ type: REGISTRATION_SUCCESS });
+export const failRegistration = () => ({ type: REGISTRATION_FAILURE });
+
+export const registerUser = formData => (dispatch: Dispatch) => {
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
+
+  dispatch(requestRegistration());
+
+  const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
+
+  AxiosCustom.post(process.env.REACT_APP_API_USERS_URL, { token })
+    .then(response => {
+      dispatch(completeRegistration());
+      dispatch(
+        Notifications.success(
+          composeNotification(
+            'Välkommen till worth it!',
+            'Dags att få koll på stålarna'
+          )
+        )
+      );
+    })
+    .catch(error => {
+      dispatch(failRegistration());
+      console.error(error.response.data.message);
+      dispatch(
+        Notifications.warning(
+          composeNotification('Försök igen!', `${error.response.data.message}`)
+        )
+      );
     });
 };

@@ -1,7 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import type { ItemT } from '../../types';
-import { Button, ProgressBar, Icon } from '..';
+import { Button, ProgressBar, Icon, ItemDetail } from '..';
+import { calculateCostPerUse } from '../helpers';
 import './Item.css';
 
 type Props = Object;
@@ -10,14 +11,16 @@ type State = {
 };
 
 class Item extends Component<Props, State> {
-  constructor(props: ItemT, handleIncrement, item) {
+  constructor(props: ItemT, handleIncrement, handleDecrement, item) {
     super(props);
-
-    // This binding is necessary to make `this` work in the callback
+    // These bindings is necessary to make `this` work in callbacks
     this.toggleCard = this.toggleCard.bind(this);
     this.incrementCounter = this.incrementCounter.bind(this);
+    this.decrementCounter = this.decrementCounter.bind(this);
 
-    this.state = { isOpen: false };
+    this.state = {
+      isOpen: false
+    };
   }
 
   toggleCard = () => {
@@ -33,6 +36,13 @@ class Item extends Component<Props, State> {
     this.props.handleIncrement(data, event);
   };
 
+  decrementCounter = (data, event) => {
+    this.setState(prevState => {
+      this.props.item.delimiter--;
+    });
+    this.props.handleDecrement(data, event);
+  };
+
   render() {
     const { item } = this.props;
 
@@ -45,36 +55,51 @@ class Item extends Component<Props, State> {
           </div>
         </header>
 
-        <table className={!this.state.isOpen ? 'collapsed' : ''}>
-          <tr>
-            <th scope="row">Nu</th>
-            <td>582 kr</td>
-            <td>anv</td>
-          </tr>
-          <tr>
-            <th scope="row">Mål</th>
-            <td>{item.goal} kr</td>
-            <td>anv</td>
-          </tr>
-
-          <tr>
-            <th scope="row">Inköpsris</th>
-            <td>{item.price} kr</td>
-            <td>18-05-18</td>
-          </tr>
-        </table>
-
-        <Button
-          shape="round"
-          color="light"
-          onClick={e => this.incrementCounter(item.itemId, e)}
+        <div
+          className={
+            !this.state.isOpen ? 'item-details collapsed' : 'item-details'
+          }
         >
-          +1
-        </Button>
-        <ProgressBar
-          progressBarMax={item.goal}
-          progressBarCurrent={item.delimiter}
-        />
+          <ul>
+            <ItemDetail
+              name="kostnad"
+              value={calculateCostPerUse(item.price, item.delimiter)}
+              unit="anv"
+            />
+
+            <ItemDetail
+              name="målkostnad"
+              value={calculateCostPerUse(item.price, item.goal)}
+              unit="anv"
+            />
+
+            <ItemDetail name="inköpspris" value={item.price} />
+          </ul>
+        </div>
+
+        <footer className="item-footer">
+          {this.state.isOpen ? (
+            <Button
+              shape="round"
+              onClick={e => this.decrementCounter(item.itemId, e)}
+            >
+              -1
+            </Button>
+          ) : (
+            ''
+          )}
+          <ProgressBar
+            progressBarMax={item.goal}
+            progressBarCurrent={item.delimiter}
+          />
+          <Button
+            variant="primary"
+            shape="round"
+            onClick={e => this.incrementCounter(item.itemId, e)}
+          >
+            +1
+          </Button>
+        </footer>
       </article>
     );
   }

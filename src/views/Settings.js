@@ -1,10 +1,16 @@
 import React from 'react';
-import { PageTitle, SettingsComponent } from '../components';
+import { PageTitle, SettingsComponent, Header } from '../components';
 
 const Settings = () => (
   <React.Fragment>
-    <PageTitle title="inställningar" />
-    <SettingsComponent />
+    <Header>
+      <PageTitle title="inställningar" />
+    </Header>
+    <main className='settings-view'>
+      <section className="content">
+        <SettingsComponent />
+      </section>
+    </main>
   </React.Fragment>
 );
 

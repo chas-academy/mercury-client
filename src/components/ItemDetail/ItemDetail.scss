@@ -1,0 +1,29 @@
+.item-detail {
+  display: flex;
+
+  & + .item-detail {
+    margin-top: 1em;
+  }
+
+  > span {
+    flex: 1;
+    font-size: 1em;
+
+    &:first-child {
+      font-variant-caps: all-petite-caps;
+      font-size: 1.2em;
+    }
+
+    &:last-child {
+      text-align: right;
+      font-weight: 600;
+      flex: 2;
+
+      span {
+        display: inline-block;
+        color: var(--ocean);
+        width: 3em;
+      }
+    }
+  }
+}

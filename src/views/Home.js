@@ -1,11 +1,17 @@
 import React from 'react';
 import ItemsContainer from '../containers/ItemsContainer';
-import { PageTitle } from '../components';
+import { PageTitle, Header } from '../components';
 
 const Home = () => (
   <React.Fragment>
-    <PageTitle title="mina prylar" />
-    <ItemsContainer />
+    <Header>
+      <PageTitle title="mina prylar" />
+    </Header>
+    <main className='home-view'>
+      <section className="content">
+        <ItemsContainer />
+      </section>
+    </main>
   </React.Fragment>
 );
 

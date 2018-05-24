@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 
 /***** Colors *****/
+
 :root {
   --dark: #212121;
   --light: #fbfbfb;
@@ -10,35 +11,93 @@
   --ocean: #00a8b6;
   --yellow: #f3af4c;
   --peach: #ffa067;
-  --gradient-warm: linear-gradient(180deg, var(--yellow) 0%, var(--peach) 100%);
-}
-/***** Skin properties - how to explain it? *****/
-:root {
+  --turquoise: #43ada5;
+  --sky: #009fb7;
+  --royalblue: #028dc2;
+  --steelblue: #5675bb;
+  --indigo: #8359a0;
+  --mulberry: #9b3b72;
+  --emerald: #70d299;
+  --lightgreen: #97e18b;
+  --darkgreen: #006638;
+  --forest: #398640;
+  --sage: #aae49c;
+  --marine: #4d6a9f;
+  --hotpink: #b4057c;
+  --rosewood: #946b80;
+  --bubblegum: #c986c9;
+  --lemon: #f9f871;
+  --lilac: #b08fda;
+  --wine: #970063;
+  --homeBg: linear-gradient(
+    to bottom,
+    #00a8b6,
+    #6ebad5,
+    #abcde8,
+    #dbe2f2,
+    #fbfbfb
+  );
+  --addBg: linear-gradient(
+    to bottom,
+    #b08fda,
+    #c0aae4,
+    #d1c5ed,
+    #e5e0f5,
+    #fbfbfb
+  );
+  --settingsBg: linear-gradient(
+    to bottom,
+    #f2994a,
+    #ffa496,
+    #ffbfd5,
+    #fae0f7,
+    #fbfbfb
+  );
+  --loginBg: linear-gradient(
+    to bottom,
+    #f2994a,
+    #ff8572,
+    #fc7d9e,
+    #df83c3,
+    #b08fda
+  );
   --border-rounded: 8px;
-  --shadow: 0px 8px 24px -8px rgba(74, 74, 74, 0.4);
+  --shadow: 0px 6px 17px 0px #6868683d;
+}
+
+:root {
+  --primary: var(--ocean);
+  --warning: var(--orange);
+  --link: var(--lilac);
 }
 
 body {
   margin: 0;
-  font-size: 16px;
   line-height: 1;
-  color: var(--dark);
+  font-size: 16px;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   font-weight: 400;
-  background-color: var(--light);
+  color: var(--dark);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
 
-  ul,
-  li {
-    list-style: none;
-  }
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 0.4em;
+  box-sizing: border-box;
 }
 
 .content {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: stretch;
   justify-content: center;
-  margin-left: 2%;
-  margin-right: 2%;
+  width: 100%;
+  max-width: 32em;
 }

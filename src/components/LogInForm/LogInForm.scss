@@ -1,19 +1,33 @@
-.login {
-  margin: auto;
-  width: 80%;
-  padding-top: 1em;
-  -webkit-box-shadow: 0px 11px 34px -10px rgba(74, 74, 74, 0.42);
-  -moz-box-shadow: 0px 11px 34px -10px rgba(74, 74, 74, 0.42);
-  box-shadow: 0px 11px 34px -10px rgba(74, 74, 74, 0.42);
+.logo {
   text-align: center;
+  font-size: 2em;
+  font-weight: 400;
+  margin-bottom: 0;
+  background: -webkit-var(--loginBg);
+	background: var(--loginBg);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 
-  form {
-    width: inherit;
-    margin: auto;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
-  input {
-    width: 100%;
-    text-align: end;
-    font-size: 2em;
+  .button {
+    margin-top: calc(1em + 4px);
   }
-}}
+  /* styles for span containing 'eller'/'or' in login/register view between buttons */
+  + span {
+    color: gray;
+    align-self: center;
+    text-transform: lowercase;
+    margin: 1em 0;
+  }
+
+  @media screen and (min-width: 600px) {
+    input {
+      font-size: 1.2em;
+    }
+  }
+}

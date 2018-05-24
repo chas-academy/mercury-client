@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { requestLogout } from '../../actions/user';
-import { Button, Loader } from '..';
+import { Button } from '..';
 
 class LogOut extends Component {
   constructor(props) {
@@ -16,7 +16,11 @@ class LogOut extends Component {
   }
 
   render() {
-    return <Button onClick={this.onLogout}>Logga ut</Button>;
+    return (
+      <Button variant="warning" onClick={this.onLogout} style={{width:'100%'}}>
+        Logga ut
+        </Button>
+    );
   }
 }
 

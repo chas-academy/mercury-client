@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Input, LineButton, StepBar, CalculateGoal } from '../';
+import { Input, StepBar, CalculateGoal, Box, Button, Icon } from '../';
 import AgAutocomplete from 'react-algoliasearch';
-
 import { createItem, createItemWarning } from '../../actions/items';
 import './AddItemWizard.css';
 
@@ -24,26 +23,38 @@ class AddItemWizard extends Component {
         price: '',
         canonical: {
           id: null,
-          name: ''
+          name: '',
+          icon: ''
         }
       }
     };
   }
 
+  componentDidMount() {
+    document.body.style.backgroundImage =
+      'linear-gradient(to bottom, #b08fda, #cb8ed2, #e18fc8, #f391bb, #ff96ae)';
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundImage = null;
+  }
+
   handleCanonicalChange = e => {
     const id = e._args[0].canonicalId;
     const name = e._args[0].name;
+    const icon = e._args[0].icon;
     this.setState({
       item: {
         goal: this.state.item.goal,
         price: this.state.item.price,
         canonical: {
           id: id,
-          name: name
+          name: name,
+          icon: icon
         }
       }
     });
-    console.log(this.state.item.canonical.name);
+    this.goNext(e);
   };
 
   handleChange = e => {
@@ -54,7 +65,8 @@ class AddItemWizard extends Component {
           price: e.target.value,
           canonical: {
             id: this.state.item.canonical.id,
-            name: this.state.item.canonical.name
+            name: this.state.item.canonical.name,
+            icon: this.state.item.canonical.icon
           }
         }
       });
@@ -65,12 +77,11 @@ class AddItemWizard extends Component {
           price: this.state.item.price,
           canonical: {
             id: this.state.item.canonical.id,
-            name: this.state.item.canonical.name
+            name: this.state.item.canonical.name,
+            icon: this.state.item.canonical.icon
           }
         }
       });
-    } else if (e.target.name === 'notifications') {
-      this.setState({ notification: e.target.value });
     }
   };
 
@@ -101,9 +112,14 @@ class AddItemWizard extends Component {
       price: this.state.item.price,
       canonicalId: this.state.item.canonical.id
     };
-    if (
+
+    if (this.state.currentStep < 4) {
+      this.goNext(event);
+    } else if (
       this.state.item.goal === '' ||
+      this.state.item.goal > 999999999 ||
       this.state.item.price === '' ||
+      this.state.item.price > 999999999 ||
       this.state.item.canonical.id === undefined
     ) {
       const errorMsg = 'Du måste fylla i ett giltigt pris/mål.';
@@ -118,12 +134,13 @@ class AddItemWizard extends Component {
       return <Redirect to="/" />;
     } else
       return (
-        <div className="formContainer">
-          <StepBar currentStep={this.state.currentStep} />
-          {this.state.currentStep === 1 && (
-            <form key="1" onSubmit={this.handleSubmit}>
-              <label htmlFor="canonical">
-                Vad har du köpt?
+        <React.Fragment>
+          <Box variant="card" display="flex column" customClass="formContainer">
+            <StepBar currentStep={this.state.currentStep} />
+
+            {this.state.currentStep === 1 && (
+              <form className="add-item" key="1" onSubmit={this.handleSubmit}>
+                <label htmlFor="canonical">Vad har du köpt?</label>
                 <AgAutocomplete
                   defaultValue={this.state.item.canonical.name}
                   apiKey={'43f38932a41d9ec891aa4e996de8f4be'}
@@ -134,14 +151,12 @@ class AddItemWizard extends Component {
                   placeholder=" "
                   selected={this.handleCanonicalChange}
                 />
-              </label>
-            </form>
-          )}
+              </form>
+            )}
 
-          {this.state.currentStep === 2 && (
-            <form key="2" onSubmit={this.handleSubmit}>
-              <label htmlFor="price">
-                Vad kostade den?
+            {this.state.currentStep === 2 && (
+              <form className="add-item" key="2" onSubmit={this.handleSubmit}>
+                <label htmlFor="price">Vad kostade den?</label>
                 <Input
                   type="number"
                   name="price"
@@ -150,16 +165,16 @@ class AddItemWizard extends Component {
                   onChange={this.handleChange}
                   variant="underlined"
                   unit="kr"
+                  max="999999999"
+                  autoFocus
                 />
-              </label>
-            </form>
-          )}
+              </form>
+            )}
 
-          {this.state.currentStep === 3 && (
-            <form key="3" onSubmit={this.handleSubmit}>
-              <CalculateGoal item={this.state.item} />
-              <label htmlFor="goal">
-                Vad är ditt mål?
+            {this.state.currentStep === 3 && (
+              <form className="add-item" key="3" onSubmit={this.handleSubmit}>
+                <CalculateGoal item={this.state.item} />
+                <label htmlFor="goal">Vad är ditt mål? </label>
                 <Input
                   type="number"
                   name="goal"
@@ -168,48 +183,50 @@ class AddItemWizard extends Component {
                   onChange={this.handleChange}
                   variant="underlined"
                   unit="ggr"
+                  max="999999999"
+                  autoFocus
                 />
-              </label>
-            </form>
-          )}
+              </form>
+            )}
 
-          {this.state.currentStep === 4 && (
-            <div>
-              <h2>Du kommer lägga till: </h2>
-              <h3>{this.state.item.canonical.name}</h3>
-              <p>
-                <strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr
-              </p>
-              <p>
-                <strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar
-              </p>
+            {this.state.currentStep === 4 && (
+              <div className="result">
+                <h2>Du kommer lägga till:</h2>
+                <Icon size="large" icon={this.state.item.canonical.icon} />
+                <p>{this.state.item.canonical.name}</p>
+                <p>
+                  <strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr
+                </p>
+                <p>
+                  <strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar
+                </p>
+              </div>
+            )}
+
+            <div className="btnGroup">
+              {this.state.currentStep > 1 ? (
+                <Button onClick={this.goBack}>Tillbaka</Button>
+              ) : (
+                <Button onClick={this.goBack} disabled="disabled">
+                  tillbaka
+                </Button>
+              )}
+
+              {(this.state.currentStep === 1 &&
+                this.state.item.canonical.id !== null) ||
+              (this.state.currentStep === 2 && this.state.item.price > 0) ||
+              (this.state.currentStep === 3 && this.state.item.goal > 0) ? (
+                <Button onClick={this.goNext}>Nästa</Button>
+              ) : this.state.currentStep === 4 ? (
+                <Button onClick={this.handleSubmit}>Spara</Button>
+              ) : (
+                <Button disabled="disabled" onClick={this.goNext}>
+                  Nästa
+                </Button>
+              )}
             </div>
-          )}
-          <div className="btnGroup">
-            {this.state.currentStep > 1 ? (
-              <LineButton onClick={this.goBack}>Tillbaka</LineButton>
-            ) : (
-              <LineButton onClick={this.goBack} disabled="disabled">
-                Tillbaka
-              </LineButton>
-            )}
-
-            {(this.state.currentStep === 1 &&
-              this.state.item.canonical.id !== null) ||
-            (this.state.currentStep === 2 && this.state.item.price > 0) ||
-            (this.state.currentStep === 3 && this.state.item.goal > 0) ? (
-              <LineButton onClick={this.goNext}>Nästa</LineButton>
-            ) : this.state.currentStep === 4 ? (
-              <LineButton onClick={this.handleSubmit} type="submit">
-                Spara
-              </LineButton>
-            ) : (
-              <LineButton disabled="disabled" onClick={this.goNext}>
-                Nästa
-              </LineButton>
-            )}
-          </div>
-        </div>
+          </Box>
+        </React.Fragment>
       );
   }
 }

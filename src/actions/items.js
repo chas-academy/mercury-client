@@ -13,7 +13,10 @@ import {
   ADD_ITEM_RESET,
   INCREMENT_USAGE_START,
   INCREMENT_USAGE_SUCCESS,
-  INCREMENT_USAGE_FAILURE
+  INCREMENT_USAGE_FAILURE,
+  DECREMENT_USAGE_START,
+  DECREMENT_USAGE_SUCCESS,
+  DECREMENT_USAGE_FAILURE
 } from '../constants';
 
 /* Redux Action Creators - get/read items */
@@ -38,12 +41,6 @@ export const fetchItems = () => (dispatch: Dispatch, getState: GetState) => {
   AxiosCustom.get(`/users/${userId}/items/`)
     .then(response => {
       dispatch(receiveItems(response.data));
-      const notification = {
-        title: 'Success!',
-        message: 'Successfully fetched items!',
-        position: 'tc'
-      };
-      dispatch(Notifications.success(notification));
     })
     .catch(error => {
       if (error.response && error.response.data.message) {
@@ -117,15 +114,36 @@ export const addUsage = itemId => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(incrementUsage());
 
-  // could probably be removed?
-  // const userId = Auth.getTokenData('userId');
-
   AxiosCustom.put(`/items/${itemId}/increment`)
     .then(response => {
       dispatch(incrementUsageSuccess(response.data));
     })
     .catch(error => {
       dispatch(incrementUsageFailure());
+      const notification = {
+        title: 'Något gick fel!',
+        message: `${error}`,
+        position: 'tc'
+      };
+      dispatch(Notifications.error(notification));
+    });
+};
+
+/* Redux Action Creators - decrement usage */
+export const decrementUsage = () => ({ type: DECREMENT_USAGE_START });
+export const decrementUsageSuccess = () => ({ type: DECREMENT_USAGE_SUCCESS });
+export const decrementUsageFailure = () => ({ type: DECREMENT_USAGE_FAILURE });
+
+export const removeUsage = itemId => (dispatch: Dispatch) => {
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
+  dispatch(decrementUsage());
+
+  AxiosCustom.put(`/items/${itemId}/decrement`)
+    .then(response => {
+      dispatch(decrementUsageSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(decrementUsageFailure());
       const notification = {
         title: 'Något gick fel!',
         message: `${error}`,
