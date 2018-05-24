@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Input, StepBar, CalculateGoal, Box, Button } from '../';
+import { Input, StepBar, CalculateGoal, Box, Button, Icon } from '../';
 import AgAutocomplete from 'react-algoliasearch';
 import { createItem, createItemWarning } from '../../actions/items';
 import './AddItemWizard.css';
@@ -100,7 +100,8 @@ class AddItemWizard extends Component {
     if (this.state.currentStep < 4) {
       this.setState(previousState => ({
         currentStep: previousState.currentStep + 1
-      }));Icon
+      }));
+      Icon;
     }
   }
 
@@ -190,8 +191,9 @@ class AddItemWizard extends Component {
             )}
 
             {this.state.currentStep === 4 && (
-              <Box display="flex column">
-                <p>Du kommer lägga till: </p>
+              <div className="result">
+                <h2>Du kommer lägga till:</h2>
+                <Icon size="large" icon={this.state.item.canonical.icon} />
                 <p>{this.state.item.canonical.name}</p>
                 <p>
                   <strong>Inköpspris:</strong>&nbsp;{this.state.item.price}&nbsp;kr
@@ -199,7 +201,7 @@ class AddItemWizard extends Component {
                 <p>
                   <strong>Mål:</strong>&nbsp;{this.state.item.goal}&nbsp;användningar
                 </p>
-              </Box>
+              </div>
             )}
 
             <div className="btnGroup">

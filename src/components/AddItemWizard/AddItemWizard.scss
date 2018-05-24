@@ -29,6 +29,14 @@
     }
   }
 
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
   .btnGroup {
     display: flex;
     justify-content: space-between;
