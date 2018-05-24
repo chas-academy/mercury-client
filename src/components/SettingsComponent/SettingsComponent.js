@@ -5,7 +5,7 @@ import './SettingsComponent.css';
 class SettingsComponent extends Component {
 
   componentDidMount() {
-    document.body.style.backgroundImage = 'linear-gradient(to bottom, #f2994a, #ffa496, #ffbfd5, #fae0f7, #fbfbfb)';
+    document.body.style.backgroundImage = 'linear-gradient(to bottom, #f2994a, #f38f53, #f2855c, #ef7c65, #e9756e)';
   }
 
   componentWillUnmount() {
