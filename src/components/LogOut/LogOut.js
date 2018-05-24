@@ -17,9 +17,9 @@ class LogOut extends Component {
 
   render() {
     return (
-      <Button variant="warning" onClick={this.onLogout}>
+      <Button variant="warning" onClick={this.onLogout} style={{width:'100%'}}>
         Logga ut
-      </Button>
+        </Button>
     );
   }
 }

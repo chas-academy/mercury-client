@@ -101,7 +101,6 @@ class AddItemWizard extends Component {
       this.setState(previousState => ({
         currentStep: previousState.currentStep + 1
       }));
-      Icon;
     }
   }
 
