@@ -11,7 +11,7 @@ type Props = {
 
 const PageTitle = ({ ...props }: Props) => {
   let siteName = process.env.REACT_APP_SITE_NAME;
-  let { title, customTitle, appName } = props;
+  let { title, customTitle, appName, view } = props;
 
   if (appName) {
     siteName = `${appName} | ${siteName}`;
@@ -25,7 +25,7 @@ const PageTitle = ({ ...props }: Props) => {
   }
 
   return (
-    <h1 className="page-title">
+    <h1 className={`page-title ${view}`}>
       <Helmet title={headTitle} />
       {title}
     </h1>
