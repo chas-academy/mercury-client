@@ -23,7 +23,8 @@ class AddItemWizard extends Component {
         price: '',
         canonical: {
           id: null,
-          name: ''
+          name: '',
+          icon: ''
         }
       }
     };
@@ -41,13 +42,15 @@ class AddItemWizard extends Component {
   handleCanonicalChange = e => {
     const id = e._args[0].canonicalId;
     const name = e._args[0].name;
+    const icon = e._args[0].icon;
     this.setState({
       item: {
         goal: this.state.item.goal,
         price: this.state.item.price,
         canonical: {
           id: id,
-          name: name
+          name: name,
+          icon: icon
         }
       }
     });
@@ -62,7 +65,8 @@ class AddItemWizard extends Component {
           price: e.target.value,
           canonical: {
             id: this.state.item.canonical.id,
-            name: this.state.item.canonical.name
+            name: this.state.item.canonical.name,
+            icon: this.state.item.canonical.icon
           }
         }
       });
@@ -73,7 +77,8 @@ class AddItemWizard extends Component {
           price: this.state.item.price,
           canonical: {
             id: this.state.item.canonical.id,
-            name: this.state.item.canonical.name
+            name: this.state.item.canonical.name,
+            icon: this.state.item.canonical.icon
           }
         }
       });
@@ -95,7 +100,7 @@ class AddItemWizard extends Component {
     if (this.state.currentStep < 4) {
       this.setState(previousState => ({
         currentStep: previousState.currentStep + 1
-      }));
+      }));Icon
     }
   }
 

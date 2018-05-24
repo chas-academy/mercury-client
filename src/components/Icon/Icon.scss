@@ -16,6 +16,11 @@
     height: 2em;
   }
 
+  &.large {
+    width: 3em;
+    height: 3em;
+  }
+
   svg {
     fill: currentColor;
   }

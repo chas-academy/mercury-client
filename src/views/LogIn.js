@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import {
   LogInForm,
-  PageTitle,
-  Header,
   RegisterForm,
   Button,
   Box
@@ -42,7 +40,7 @@ class LogIn extends Component {
         <main>
           <section className="content">
             <Box display="flex column" variant="card">
-              <h2>Worth It</h2>
+              <h2 class="logo">Worth It</h2>
               {this.state.displayRegister === true ? (
                 <RegisterForm />
               ) : (
