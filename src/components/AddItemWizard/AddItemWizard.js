@@ -159,6 +159,7 @@ class AddItemWizard extends Component {
                     onChange={this.handleChange}
                     variant="underlined"
                     unit="kr"
+                    max="999999999"
                     autoFocus
                   />
                 </label>
@@ -178,6 +179,7 @@ class AddItemWizard extends Component {
                     onChange={this.handleChange}
                     variant="underlined"
                     unit="ggr"
+                    max="999999999"
                     autoFocus
                   />
                 </label>
