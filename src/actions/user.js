@@ -48,17 +48,25 @@ export const requestLogin = formData => (dispatch: Dispatch) => {
       dispatch(receiveUser(decodedUser));
     })
     .catch(error => {
-      if (error.response.data.message)
-        console.error(error.response.data.message);
+      console.error(error);
       dispatch(requestFailure());
-      dispatch(
-        Notifications.warning(
-          composeNotification(
-            'Försök igen!',
-            'Verkar som att du skrev in fel e-post eller lösenord. Eller så är båda fel.'
+      if (error.response.data.message) {
+        console.error(error.response.data.message);
+        dispatch(
+          Notifications.warning(
+            composeNotification(
+              'Försök igen!',
+              `${error.response.data.message}`
+            )
           )
-        )
-      );
+        );
+      } else {
+        dispatch(
+          Notifications.warning(
+            composeNotification('Försök igen!', 'Något galet har hänt...')
+          )
+        );
+      }
       console.error(error);
     });
 };
@@ -72,6 +80,7 @@ export const authFailure = () => ({ type: AUTH_FAILURE });
 export const authorizeToken = () => (dispatch: Dispatch) => {
   if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(authStart());
+
   AxiosCustom.get(process.env.REACT_APP_API_VERIFY_TOKEN_URL)
     .then(response => {
       const decodedUser = Auth.decodeToken();
@@ -91,7 +100,7 @@ export const requestFailureLogout = () => ({ type: LOGOUT_FAILURE });
 
 /* Post request to API - initiate logout actions using the action creators above */
 export const requestLogout = () => (dispatch: Dispatch) => {
-  /* if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return; */
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === false) return;
   dispatch(requestTokenLogout());
 
   AxiosCustom.post(process.env.REACT_APP_API_SIGN_OUT_URL)
@@ -114,20 +123,31 @@ export const completeRegistration = () => ({ type: REGISTRATION_SUCCESS });
 export const failRegistration = () => ({ type: REGISTRATION_FAILURE });
 
 export const registerUser = formData => (dispatch: Dispatch) => {
-  // if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
-  console.log(formData);
+  if (Auth.checkIfUserIsSignedInAndUpdateAxiosHeaders() === true) return;
 
   dispatch(requestRegistration());
 
   const token = JWT.sign(formData, process.env.REACT_APP_API_JWT_SECRET);
 
-  AxiosCustom.post(process.env.REACT_APP_API_USERS_URL, {token})
+  AxiosCustom.post(process.env.REACT_APP_API_USERS_URL, { token })
     .then(response => {
-      console.log(response);
-      dispatch(completeRegistration());      
+      dispatch(completeRegistration());
+      dispatch(
+        Notifications.success(
+          composeNotification(
+            'Välkommen till worth it!',
+            'Dags att få koll på stålarna'
+          )
+        )
+      );
     })
     .catch(error => {
-      console.error(error);
       dispatch(failRegistration());
-    })
-}
+      console.error(error.response.data.message);
+      dispatch(
+        Notifications.warning(
+          composeNotification('Försök igen!', `${error.response.data.message}`)
+        )
+      );
+    });
+};
