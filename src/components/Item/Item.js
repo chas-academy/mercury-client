@@ -38,7 +38,7 @@ class Item extends Component<Props, State> {
 
   decrementCounter = (data, event) => {
     this.setState(prevState => {
-      this.props.item.delimiter - 1;
+      this.props.item.delimiter--;
     });
     this.props.handleDecrement(data, event);
   };
