@@ -509,16 +509,16 @@ const Icon = ({
   icon = 'rocket',
   size = 'small'
 }: {
-  icon: string,
-  size: string
-}) => (
-  <span className={`icon ${size}`}>
-    <svg viewBox={`0 0 ${ICONS[icon].width} ${ICONS[icon].height}`}>
-      <g>
-        <path d={ICONS[icon].path} width="100%" height="100%" />
-      </g>
-    </svg>
-  </span>
-);
+    icon: string,
+    size: string
+  }) => (
+    <span className={`icon ${size}`}>
+      <svg viewBox={`0 0 ${ICONS[icon].width} ${ICONS[icon].height}`}>
+        <g>
+          <path d={ICONS[icon].path} width="100%" height="100%" />
+        </g>
+      </svg>
+    </span>
+  );
 
 export default Icon;
