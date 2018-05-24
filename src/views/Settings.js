@@ -6,7 +6,7 @@ const Settings = () => (
     <Header>
       <PageTitle title="inställningar" />
     </Header>
-    <main>
+    <main className='settings-view'>
       <section className="content">
         <SettingsComponent />
       </section>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/user';
-import { Input, LineButton, Box, Button } from '../';
+import { Input, LineButton, Box }  from '../';
 
 class RegisterForm extends Component {
   constructor(props) {

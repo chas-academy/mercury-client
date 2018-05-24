@@ -7,7 +7,7 @@ const Home = () => (
     <Header>
       <PageTitle title="mina prylar" />
     </Header>
-    <main>
+    <main className='home-view'>
       <section className="content">
         <ItemsContainer />
       </section>

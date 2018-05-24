@@ -1,26 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Box, LogOut } from '..';
 import './SettingsComponent.css';
 
-const SettingsComponent = () => (
-  <React.Fragment>
-    <Box display="flex column" customClass="settings-card">
-      <LogOut />
-      <Box variant="card" display="flex">
-        <section className="attribution">
-          <h2>Tillkännagivanden</h2>
-          <a href="https://www.algolia.com/">
-            <img
-              alt="Algolia Logo"
-              src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.png"
-            />
-          </a>
+class SettingsComponent extends Component {
 
-          <a href="https://fontawesome.com/">Ikoner från Font Awesome</a>
-        </section>
-      </Box>
-    </Box>
-  </React.Fragment>
-);
+  componentDidMount() {
+    document.body.style.backgroundImage = 'linear-gradient(to bottom, #f2994a, #f38f53, #f2855c, #ef7c65, #e9756e)';
+  }
+
+  componentWillUnmount() {
+    document.body.style.backgroundImage = null;
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Box display="flex column" customClass="settings-card">
+          <LogOut />
+          <Box variant="card" display="flex">
+            <section className="attribution">
+              <h2>Tillkännagivanden</h2>
+              <a href="https://www.algolia.com/">
+                <img
+                  alt="Algolia Logo"
+                  src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.png"
+                />
+              </a>
+
+              <a href="https://fontawesome.com/">Ikoner från Font Awesome</a>
+            </section>
+          </Box>
+        </Box>
+      </React.Fragment>
+    )
+  }
+}
 
 export default SettingsComponent;
