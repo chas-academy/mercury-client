@@ -17,11 +17,12 @@
     &:last-child {
       text-align: right;
       font-weight: 600;
+      flex: 2;
 
       span {
         display: inline-block;
         color: var(--ocean);
-        width: 3rem;
+        width: 3em;
       }
     }
   }

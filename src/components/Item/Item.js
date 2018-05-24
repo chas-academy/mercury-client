@@ -1,9 +1,9 @@
 // @flow
-import React, { Component } from "react";
-import type { ItemT } from "../../types";
-import { Button, ProgressBar, Icon, ItemDetail } from "..";
-import { calculateCostPerUse } from "../helpers";
-import "./Item.css";
+import React, { Component } from 'react';
+import type { ItemT } from '../../types';
+import { Button, ProgressBar, Icon, ItemDetail } from '..';
+import { calculateCostPerUse } from '../helpers';
+import './Item.css';
 
 type Props = Object;
 type State = {
@@ -38,7 +38,7 @@ class Item extends Component<Props, State> {
 
   decrementCounter = (data, event) => {
     this.setState(prevState => {
-      this.props.item.delimiter--;
+      this.props.item.delimiter - 1;
     });
     this.props.handleDecrement(data, event);
   };
@@ -57,7 +57,7 @@ class Item extends Component<Props, State> {
 
         <div
           className={
-            !this.state.isOpen ? "item-details collapsed" : "item-details"
+            !this.state.isOpen ? 'item-details collapsed' : 'item-details'
           }
         >
           <ul>
@@ -86,14 +86,14 @@ class Item extends Component<Props, State> {
               -1
             </Button>
           ) : (
-            ""
+            ''
           )}
           <ProgressBar
             progressBarMax={item.goal}
             progressBarCurrent={item.delimiter}
           />
           <Button
-            type="primary"
+            variant="primary"
             shape="round"
             onClick={e => this.incrementCounter(item.itemId, e)}
           >

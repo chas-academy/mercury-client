@@ -3,17 +3,17 @@ import React from 'react';
 import './Button.css';
 
 const Button = ({
-  type = 'primary',
+  variant = 'primary',
   shape = 'box',
   children,
   ...props
 }: {
-  type: string,
+  variant: string,
   shape: string,
   children: Object | string,
   props: {}
 }) => (
-  <button className={`button ${type} ${shape}`} {...props}>
+  <button className={`button ${variant} ${shape}`} {...props}>
     {children}
   </button>
 );
