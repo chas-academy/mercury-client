@@ -23,6 +23,7 @@ const user = (state = defaultState, action) => {
     case LOGIN_START:
     case LOGOUT_START:
     case AUTH_START:
+    case REGISTRATION_START:
       return {
         ...state,
         fetchingUser: true
@@ -38,12 +39,14 @@ const user = (state = defaultState, action) => {
       };
     case LOGIN_FAILURE:
     case LOGOUT_FAILURE:
+    case REGISTRATION_FAILURE:
       return {
         ...state,
         fetchingUser: false
       };
     case LOGOUT_SUCCESS:
     case AUTH_FAILURE:
+    case REGISTRATION_SUCCESS:
       return {
         ...state,
         fetchingUser: false,
@@ -51,9 +54,6 @@ const user = (state = defaultState, action) => {
         data: {},
         userId: null
       };
-    case REGISTRATION_START:
-    case REGISTRATION_SUCCESS:
-    case REGISTRATION_FAILURE:
     default:
       return state;
   }
